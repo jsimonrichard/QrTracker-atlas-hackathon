@@ -3,5 +3,21 @@
         "name": "resetFunc",
         "private": false,
         "can_evaluate": {}
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "validateSubscription",
+        "private": true
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "onUserDelete",
+        "private": true
     }
 ]

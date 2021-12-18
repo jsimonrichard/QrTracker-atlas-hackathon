@@ -1,0 +1,28 @@
+{
+    "id": "61be148d00125e45b09887a1",
+    "name": "TrackerUpdate",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "UPDATE",
+            "DELETE",
+            "REPLACE"
+        ],
+        "database": "QrTrackerDB",
+        "collection": "tracker",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "project": {},
+        "full_document": true,
+        "full_document_before_change": true,
+        "unordered": true
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "onTrackerUpdate"
+            }
+        }
+    }
+}

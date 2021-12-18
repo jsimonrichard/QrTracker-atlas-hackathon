@@ -1,0 +1,29 @@
+{
+    "id": "61be1563dfa821d232947471",
+    "name": "SubscriptionUpdate",
+    "type": "DATABASE",
+    "config": {
+        "operation_types": [
+            "INSERT",
+            "UPDATE",
+            "DELETE",
+            "REPLACE"
+        ],
+        "database": "QrTrackerDB",
+        "collection": "subscription",
+        "service_name": "mongodb-atlas",
+        "match": {},
+        "project": {},
+        "full_document": true,
+        "full_document_before_change": true,
+        "unordered": false
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "onSubscriptionUpdate"
+            }
+        }
+    }
+}
