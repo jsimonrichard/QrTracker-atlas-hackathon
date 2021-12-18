@@ -9,31 +9,106 @@
             },
             "fields": {
                 "_id": {},
-                "allowAnyoneToUpdateStatus": {},
-                "createdAt": {},
-                "description": {},
+                "allowAnyoneToUpdateStatus": {
+                    "write": true
+                },
+                "collaboratorIds": {
+                    "write": true
+                },
+                "createdAt": {
+                    "write": true
+                },
+                "description": {
+                    "write": true
+                },
                 "history": {},
-                "ownerId": {},
-                "public": {},
-                "status": {},
-                "title": {},
-                "updatedAt": {}
+                "ownerId": {
+                    "write": true
+                },
+                "public": {
+                    "write": true
+                },
+                "status": {
+                    "write": true
+                },
+                "title": {
+                    "write": true
+                },
+                "updatedAt": {
+                    "write": true
+                }
             },
             "read": true,
-            "write": true,
             "insert": true,
             "delete": true,
             "search": true,
-            "additional_fields": {}
+            "additional_fields": {
+                "write": true
+            }
         },
         {
-            "name": "non-owner",
-            "apply_when": {},
+            "name": "collaborator",
+            "apply_when": {
+                "%%user.id": {
+                    "%in": "collaboratorIds"
+                }
+            },
             "fields": {
                 "_id": {
                     "read": true
                 },
                 "allowAnyoneToUpdateStatus": {
+                    "read": true
+                },
+                "collaboratorIds": {
+                    "read": true
+                },
+                "createdAt": {
+                    "read": true
+                },
+                "description": {
+                    "write": true
+                },
+                "history": {
+                    "read": true
+                },
+                "ownerId": {
+                    "read": true
+                },
+                "public": {
+                    "read": true
+                },
+                "status": {
+                    "write": true,
+                    "read": true
+                },
+                "title": {
+                    "read": true
+                },
+                "updatedAt": {
+                    "write": true,
+                    "read": true
+                }
+            },
+            "insert": false,
+            "delete": false,
+            "search": true,
+            "additional_fields": {}
+        },
+        {
+            "name": "public-editor",
+            "apply_when": {
+                "public": true,
+                "allowAnyoneToUpdateStatus": true
+            },
+            "fields": {
+                "_id": {
+                    "read": true
+                },
+                "allowAnyoneToUpdateStatus": {
+                    "read": true
+                },
+                "collaboratorIds": {
                     "read": true
                 },
                 "createdAt": {
@@ -45,8 +120,104 @@
                 "history": {
                     "read": true
                 },
-                "ownerId": {},
-                "public": {},
+                "ownerId": {
+                    "read": true
+                },
+                "public": {
+                    "read": true
+                },
+                "status": {
+                    "write": true,
+                    "read": true
+                },
+                "title": {
+                    "read": true
+                },
+                "updatedAt": {
+                    "write": true,
+                    "read": true
+                }
+            },
+            "insert": false,
+            "delete": false,
+            "search": true,
+            "additional_fields": {}
+        },
+        {
+            "name": "guest-editor",
+            "apply_when": {
+                "allowAnyoneToUpdateStatus": true
+            },
+            "fields": {
+                "_id": {
+                    "read": true
+                },
+                "allowAnyoneToUpdateStatus": {
+                    "read": true
+                },
+                "collaboratorIds": {
+                    "read": true
+                },
+                "createdAt": {
+                    "read": true
+                },
+                "description": {
+                    "read": true
+                },
+                "history": {
+                    "read": true
+                },
+                "ownerId": {
+                    "read": true
+                },
+                "public": {
+                    "read": true
+                },
+                "status": {
+                    "write": true,
+                    "read": true
+                },
+                "title": {
+                    "read": true
+                },
+                "updatedAt": {
+                    "write": true,
+                    "read": true
+                }
+            },
+            "insert": false,
+            "delete": false,
+            "search": false,
+            "additional_fields": {}
+        },
+        {
+            "name": "public",
+            "apply_when": {
+                "public": true
+            },
+            "fields": {
+                "_id": {
+                    "read": true
+                },
+                "allowAnyoneToUpdateStatus": {
+                    "read": true
+                },
+                "collaboratorIds": {},
+                "createdAt": {
+                    "read": true
+                },
+                "description": {
+                    "read": true
+                },
+                "history": {
+                    "read": true
+                },
+                "ownerId": {
+                    "read": true
+                },
+                "public": {
+                    "read": true
+                },
                 "status": {
                     "read": true
                 },
@@ -60,7 +231,7 @@
             "write": false,
             "insert": false,
             "delete": false,
-            "search": false,
+            "search": true,
             "additional_fields": {}
         }
     ]

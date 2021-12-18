@@ -17,6 +17,21 @@
             "delete": true,
             "search": true,
             "additional_fields": {}
+        },
+        {
+            "name": "anonymous",
+            "apply_when": {
+                "anonymous": true
+            },
+            "fields": {
+                "_id": {},
+                "trackerId": {}
+            },
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "search": false,
+            "additional_fields": {}
         }
     ]
 }

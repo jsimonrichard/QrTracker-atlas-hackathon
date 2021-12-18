@@ -6,6 +6,9 @@
         "allowAnyoneToUpdateStatus": {
             "bsonType": "bool"
         },
+        "collaboratorIds": {
+            "bsonType": "objectId"
+        },
         "createdAt": {
             "bsonType": "timestamp"
         },

@@ -4,6 +4,9 @@
         "_id": {
             "bsonType": "objectId"
         },
+        "anonymous": {
+            "bsonType": "bool"
+        },
         "subscriberId": {
             "bsonType": "objectId"
         },
@@ -35,8 +38,8 @@
     "required": [
         "_id",
         "trackerId",
-        "subscriberId",
-        "targets"
+        "targets",
+        "anonymous"
     ],
     "title": "subscription"
 }
