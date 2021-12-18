@@ -1,0 +1,61 @@
+{
+    "collection": "tracker",
+    "database": "QrTrackerDB",
+    "roles": [
+        {
+            "name": "owner",
+            "apply_when": {
+                "ownerId": "%%user.id"
+            },
+            "fields": {
+                "_id": {},
+                "createdAt": {},
+                "description": {},
+                "history": {},
+                "ownerId": {},
+                "status": {},
+                "title": {},
+                "updatedAt": {}
+            },
+            "read": true,
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {}
+        },
+        {
+            "name": "non-owner",
+            "apply_when": {},
+            "fields": {
+                "_id": {
+                    "read": true
+                },
+                "createdAt": {
+                    "read": true
+                },
+                "description": {
+                    "read": true
+                },
+                "history": {
+                    "read": true
+                },
+                "ownerId": {},
+                "status": {
+                    "read": true
+                },
+                "title": {
+                    "read": true
+                },
+                "updatedAt": {
+                    "read": true
+                }
+            },
+            "write": false,
+            "insert": false,
+            "delete": false,
+            "search": false,
+            "additional_fields": {}
+        }
+    ]
+}
