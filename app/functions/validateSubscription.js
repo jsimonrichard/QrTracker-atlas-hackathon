@@ -1,3 +1,6 @@
+var PNF = require('google-libphonenumber').PhoneNumberFormat;
+var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
+
 exports = function(changeEvent) {
   /*
     A Database Trigger will always call a function with a changeEvent.
