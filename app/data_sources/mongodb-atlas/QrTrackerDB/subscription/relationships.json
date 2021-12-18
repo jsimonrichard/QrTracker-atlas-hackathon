@@ -1,8 +1,0 @@
-{
-    "trackerId": {
-        "ref": "#/relationship/mongodb-atlas/QrTrackerDB/tracker",
-        "source_key": "trackerId",
-        "foreign_key": "_id",
-        "is_list": false
-    }
-}
