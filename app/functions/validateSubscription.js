@@ -5,7 +5,7 @@ exports = function(changeEvent) {
   var realm = changeEvent.realm;
   var changes = changeEvent.changes;
   console.log(changes);
-  consoler.log(changeEvent.path);
+  console.log(changeEvent.path);
   /*
     A Database Trigger will always call a function with a changeEvent.
     Documentation on ChangeEvents: https://docs.mongodb.com/manual/reference/change-events/

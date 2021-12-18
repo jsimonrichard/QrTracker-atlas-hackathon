@@ -50,7 +50,7 @@
             "name": "collaborator",
             "apply_when": {
                 "%%user.id": {
-                    "%in": "collaboratorIds"
+                    "$in": "collaboratorIds"
                 }
             },
             "fields": {
@@ -98,8 +98,8 @@
         {
             "name": "public-editor",
             "apply_when": {
-                "public": true,
-                "allowAnyoneToUpdateStatus": true
+                "allowAnyoneToUpdateStatus": true,
+                "public": true
             },
             "fields": {
                 "_id": {
