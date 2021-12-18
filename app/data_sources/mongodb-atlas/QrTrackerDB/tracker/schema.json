@@ -3,6 +3,9 @@
         "_id": {
             "bsonType": "objectId"
         },
+        "allowAnyoneToUpdateStatus": {
+            "bsonType": "bool"
+        },
         "createdAt": {
             "bsonType": "timestamp"
         },
@@ -31,6 +34,9 @@
         "ownerId": {
             "bsonType": "objectId"
         },
+        "public": {
+            "bsonType": "bool"
+        },
         "status": {
             "bsonType": "object"
         },
@@ -48,7 +54,9 @@
         "history",
         "ownerId",
         "createdAt",
-        "updatedAt"
+        "updatedAt",
+        "public",
+        "allowAnyoneToUpdateStatus"
     ],
     "title": "tracker"
 }

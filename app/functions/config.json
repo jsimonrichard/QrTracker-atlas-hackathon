@@ -1,23 +1,23 @@
 [
     {
-        "name": "resetFunc",
-        "private": false,
-        "can_evaluate": {}
+        "name": "onSubscriptionUpdate",
+        "private": true
     },
     {
         "name": "onTrackerUpdate",
         "private": true
     },
     {
-        "name": "validateSubscription",
-        "private": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
         "name": "onUserDelete",
+        "private": true
+    },
+    {
+        "name": "resetFunc",
+        "private": false,
+        "can_evaluate": {}
+    },
+    {
+        "name": "validateSubscription",
         "private": true
     }
 ]

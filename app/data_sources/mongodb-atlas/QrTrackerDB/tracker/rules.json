@@ -9,10 +9,12 @@
             },
             "fields": {
                 "_id": {},
+                "allowAnyoneToUpdateStatus": {},
                 "createdAt": {},
                 "description": {},
                 "history": {},
                 "ownerId": {},
+                "public": {},
                 "status": {},
                 "title": {},
                 "updatedAt": {}
@@ -31,6 +33,9 @@
                 "_id": {
                     "read": true
                 },
+                "allowAnyoneToUpdateStatus": {
+                    "read": true
+                },
                 "createdAt": {
                     "read": true
                 },
@@ -41,6 +46,7 @@
                     "read": true
                 },
                 "ownerId": {},
+                "public": {},
                 "status": {
                     "read": true
                 },
