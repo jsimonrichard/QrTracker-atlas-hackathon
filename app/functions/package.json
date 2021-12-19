@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "google-libphonenumber": "^3.2.25",
-    "nodemailer": "^6.7.2"
+    "@trycourier/courier": "^3.2.0",
+    "google-libphonenumber": "^3.2.25"
   }
 }
