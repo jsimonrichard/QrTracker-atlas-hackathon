@@ -1,0 +1,19 @@
+{
+    "id": "61beae65dfa821d232d19502",
+    "name": "Welcome",
+    "type": "AUTHENTICATION",
+    "config": {
+        "operation_type": "CREATE",
+        "providers": [
+            "local-userpass"
+        ]
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "sendWelcomeEmail"
+            }
+        }
+    }
+}
