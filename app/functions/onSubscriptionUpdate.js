@@ -1,6 +1,8 @@
 exports = function(changeEvent) {
-  var courier = require("@trycourier/courier");
-
+  // var { CourierClient } = require("@trycourier/courier");
+  // var courier = CourierClient({
+  //   authorizationToken: "pk_prod_8MND805QEF41MZNVZ5FEG8S6EDF3"
+  // });
   /*
     A Database Trigger will always call a function with a changeEvent.
     Documentation on ChangeEvents: https://docs.mongodb.com/manual/reference/change-events/
