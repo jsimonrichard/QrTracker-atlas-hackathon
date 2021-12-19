@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "functions",
   "version": "1.0.0",
@@ -13,3 +14,6 @@
     "nodemailer": "^6.7.2"
   }
 }
+=======
+{"dependencies":{"google-libphonenumber":"^3.2.25"}}
+>>>>>>> c4c9fdc84488b17440c2c8ea7987961dadb928c8
