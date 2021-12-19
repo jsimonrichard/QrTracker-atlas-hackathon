@@ -1,19 +1,1 @@
-<<<<<<< HEAD
-{
-  "name": "functions",
-  "version": "1.0.0",
-  "description": "",
-  "main": "onSubscriptionUpdate.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "google-libphonenumber": "^3.2.25",
-    "nodemailer": "^6.7.2"
-  }
-}
-=======
 {"dependencies":{"google-libphonenumber":"^3.2.25"}}
->>>>>>> c4c9fdc84488b17440c2c8ea7987961dadb928c8

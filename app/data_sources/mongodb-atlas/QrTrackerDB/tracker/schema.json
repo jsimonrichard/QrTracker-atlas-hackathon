@@ -47,7 +47,7 @@
             "bsonType": "string"
         },
         "updatedAt": {
-            "bsonType": "date"
+            "bsonType": "timestamp"
         }
     },
     "required": [

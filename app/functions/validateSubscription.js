@@ -1,14 +1,11 @@
 exports = function(changeEvent) {
-  //var PNF = require('google-libphonenumber').PhoneNumberFormat;
-  //var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
+  var PNF = require('google-libphonenumber').PhoneNumberFormat;
+  var phoneUtil = require('google-libphonenumber').PhoneNumberUtil.getInstance();
 
-<<<<<<< HEAD
-=======
   var realm = changeEvent.realm;
   var changes = changeEvent.changes;
   console.log(changes);
   console.log(changeEvent.path);
->>>>>>> c4c9fdc84488b17440c2c8ea7987961dadb928c8
   /*
     A Database Trigger will always call a function with a changeEvent.
     Documentation on ChangeEvents: https://docs.mongodb.com/manual/reference/change-events/
