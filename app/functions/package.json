@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "google-libphonenumber": "^3.2.25"
+    "google-libphonenumber": "^3.2.25",
+    "nodemailer": "^6.7.2"
   }
 }
