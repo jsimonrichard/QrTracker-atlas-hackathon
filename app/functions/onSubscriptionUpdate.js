@@ -1,4 +1,28 @@
 exports = function(changeEvent) {
+  var nodemailer = require("nodemailer");
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: "qrtracker.noreply@gmail.com",
+      password: "%%values.emailPassword"
+    }
+  });
+
+  var email = {
+    from: "qrtracker.noreply@gmail.com",
+    to: "jsimonrichard@gmail.com",
+    subject: "QrTracker - Subscrition Update",
+    text: "Your subscription has been updated"
+  };
+
+  transporter.sendMail(email, function(error, info) {
+    if(error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+  
   /*
     A Database Trigger will always call a function with a changeEvent.
     Documentation on ChangeEvents: https://docs.mongodb.com/manual/reference/change-events/

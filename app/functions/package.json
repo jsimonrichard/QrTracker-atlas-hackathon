@@ -1,1 +1,6 @@
-{"dependencies":{"google-libphonenumber":"^3.2.25"}}
+{
+  "dependencies": {
+    "google-libphonenumber": "^3.2.25",
+    "nodemailer": "^6.7.2"
+  }
+}
