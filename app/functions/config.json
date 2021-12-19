@@ -9,6 +9,10 @@
         "can_evaluate": {}
     },
     {
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
         "name": "validateSubscription",
         "private": true
     },
@@ -18,10 +22,6 @@
     },
     {
         "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "sendWelcomeEmail",
         "private": true
     }
 ]

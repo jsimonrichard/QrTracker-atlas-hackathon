@@ -1,0 +1,5 @@
+{
+    "name": "courierAuthToken",
+    "value": "courierAuthToken",
+    "from_secret": true
+}
