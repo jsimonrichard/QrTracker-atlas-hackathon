@@ -1,5 +1,17 @@
 [
     {
+        "name": "validateSubscription",
+        "private": true
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
         "name": "onUserDelete",
         "private": true
     },
@@ -10,18 +22,6 @@
     },
     {
         "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
-        "name": "validateSubscription",
-        "private": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "onTrackerUpdate",
         "private": true
     }
 ]
