@@ -1,7 +1,7 @@
 exports = function(changeEvent) {
   // var { CourierClient } = require("@trycourier/courier");
   // var courier = CourierClient({
-  //   authorizationToken: "pk_prod_8MND805QEF41MZNVZ5FEG8S6EDF3"
+  //   authorizationToken: ""
   // });
   /*
     A Database Trigger will always call a function with a changeEvent.
