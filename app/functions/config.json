@@ -1,9 +1,5 @@
 [
     {
-        "name": "validateSubscription",
-        "private": true
-    },
-    {
         "name": "onSubscriptionUpdate",
         "private": true
     },
@@ -22,6 +18,14 @@
     },
     {
         "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
+        "name": "validateSubscription",
+        "private": true
+    },
+    {
+        "name": "sendGoodbyeEmail",
         "private": true
     }
 ]

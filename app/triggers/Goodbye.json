@@ -1,0 +1,20 @@
+{
+    "id": "61bff513dfa821d2327cae03",
+    "name": "Goodbye",
+    "type": "AUTHENTICATION",
+    "config": {
+        "operation_type": "DELETE",
+        "providers": [
+            "local-userpass",
+            "oauth2-google"
+        ]
+    },
+    "disabled": false,
+    "event_processors": {
+        "FUNCTION": {
+            "config": {
+                "function_name": "sendGoodbyeEmail"
+            }
+        }
+    }
+}
