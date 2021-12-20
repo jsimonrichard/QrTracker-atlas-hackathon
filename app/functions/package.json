@@ -1,1 +1,7 @@
-{"dependencies":{"@trycourier/courier":"^3.2.0","google-libphonenumber":"^3.2.25"}}
+{
+  "dependencies": {
+    "@trycourier/courier": "^3.2.0",
+    "google-libphonenumber": "^3.2.25",
+    "realm-web": "^1.5.1"
+  }
+}

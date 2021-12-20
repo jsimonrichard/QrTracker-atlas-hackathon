@@ -5,7 +5,7 @@ exports = function(authEvent) {
     var { CourierClient } = require("@trycourier/courier");
     const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
-    // Send welome message
+    // Send message
     courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "38P45E3F3MMC0XG3GQWR22SW68XM",
