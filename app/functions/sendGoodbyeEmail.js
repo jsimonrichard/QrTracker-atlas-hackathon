@@ -1,4 +1,4 @@
-exports = function(authEvent) {
+exports = async function(authEvent) {
   // Check if the email field exists
   if(authEvent.user.data.hasOwnProperty("email")) {
     // Setup courier
@@ -6,7 +6,7 @@ exports = function(authEvent) {
     const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
     // Send message
-    courier.send({
+    var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "38P45E3F3MMC0XG3GQWR22SW68XM",
       recipientId: "cfa09c6d-39ef-451e-91ed-457795d03c70",
@@ -15,10 +15,10 @@ exports = function(authEvent) {
       },
       data: {},
       override: {},
-    }).then(function({messageId}) {
-      // Log confirmation
-      console.log("Message "+messageId+" sent");
     });
+
+    // Log confirmation
+    console.log("Message "+messageId+" sent");
 
   } else {
 

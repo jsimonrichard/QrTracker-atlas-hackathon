@@ -1,21 +1,21 @@
-exports = function(changeEvent) {
+exports = async function(changeEvent) {
   // Check if the email field exists
   if(context.user.data.hasOwnProperty("email")) {
     // Get associated tracker
     var trackers = context.service.get("mongodb-atlas").db("QrTrackerDB").collection("tracker");
-    var tracker = trackers.findOne({ _id: changeEvent.fullDocument.trackerId });
+    var tracker = await trackers.findOne({ _id: changeEvent.fullDocument.trackerId });
 
 
     // Generate message
     var message = "";
     if(changeEvent.operationType == "insert") {
-      message = `You have been subcribed to ${tracker.title}. See it's current status <link href="${context.values.get("domainName")}/${tracker._id}">here</link>.`;
+      message = `You have been subcribed to ${tracker.title}. See it's current status <a href="${context.values.get("domainName")}/${tracker._id}">here</a>.`;
 
     } else if(changeEvent.operationType == "delete") {
       message = `Your subscription to ${tracker.title} has been removed.`;
 
     } else {
-      message = `Your subscription to ${tracker.title} has been updated. See it's current status <link href="${context.values.get("domainName")}/${tracker._id}">here</link>.`;
+      message = `Your subscription to ${tracker.title} has been updated. See it's current status <a href="${context.values.get("domainName")}/${tracker._id}">here</a>.`;
     }
 
 
@@ -25,7 +25,7 @@ exports = function(changeEvent) {
     const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
     // Send message
-    courier.send({
+    var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "RV6FCVCJWZM885GZ72GYDW48RDC6",
       recipientId: "1827d074-ff99-4f56-aae5-e95e2ce87eee",
@@ -33,13 +33,13 @@ exports = function(changeEvent) {
         email: context.user.data.email,
       },
       data: {
-        message: ""
+        message: message
       },
       override: {},
-    }).then(function({messageId}) {
-      // Log confirmation
-      console.log("Message "+messageId+" sent");
     });
+
+    // Log confirmation
+    console.log("Message "+messageId+" sent");
 
   } else {
 
