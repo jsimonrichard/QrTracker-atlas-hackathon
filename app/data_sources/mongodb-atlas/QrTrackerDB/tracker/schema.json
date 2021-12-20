@@ -22,7 +22,19 @@
                 "bsonType": "object",
                 "properties": {
                     "status": {
-                        "bsonType": "object"
+                        "bsonType": "object",
+                        "properties": {
+                            "editorId": {
+                                "bsonType": "objectId"
+                            },
+                            "title": {
+                                "bsonType": "string"
+                            }
+                        },
+                        "required": [
+                            "editorId",
+                            "title"
+                        ]
                     },
                     "timestamp": {
                         "bsonType": "timestamp"
@@ -41,7 +53,19 @@
             "bsonType": "bool"
         },
         "status": {
-            "bsonType": "object"
+            "bsonType": "object",
+            "properties": {
+                "editorId": {
+                    "bsonType": "objectId"
+                },
+                "title": {
+                    "bsonType": "string"
+                }
+            },
+            "required": [
+                "editorId",
+                "title"
+            ]
         },
         "title": {
             "bsonType": "string"
