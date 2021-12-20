@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="49.296902mm"
+   height="10.256261mm"
+   viewBox="0 0 49.296902 10.256261"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
+   sodipodi:docname="oldlogo.svg"
+   inkscape:export-filename="/home/jsimonrichard/Documents/DevPosts/QrTracker-atlas-hackathon/logo.png"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:snap-grids="false"
+     inkscape:zoom="7.2466938"
+     inkscape:cx="38.017337"
+     inkscape:cy="26.218853"
+     inkscape:window-width="1848"
+     inkscape:window-height="1137"
+     inkscape:window-x="72"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="27.305168"
+       y="27.46213"
+       width="516.61121"
+       height="85.828117"
+       id="rect4851" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-12.417786,-5.5254729)">
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text4849"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect4851);fill:#000000;fill-opacity:1;stroke:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583"
+       x="11.11604"
+       y="13.738113"
+       id="text31403"><tspan
+         sodipodi:role="line"
+         id="tspan31401"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold Italic';stroke-width:0.264583"
+         x="11.11604"
+         y="13.738113">QrTracker</tspan></text>
+    <path
+       style="color:#000000;fill:#000000;-inkscape-stroke:none"
+       d="m 18.724692,14.582304 -0.418696,1.127731 43.404941,9.03e-4 v -1.175782 z"
+       id="path60804"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+</svg>
