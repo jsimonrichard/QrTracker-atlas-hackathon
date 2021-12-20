@@ -1,13 +1,8 @@
 exports = function(changeEvent) {
   // Check if the email field exists
   if(authEvent.user.data.hasOwnProperty("email")) {
-    // Connect to mongodb
-    var Realm = require("realm-web");
-    var app = Realm.App({ id: "qrtracker-yibtf" });
-    var mongodb = app.currentUser.mongoClient("mongodb-atlas");
-
     // Get associated tracker
-    var trackers = mongodb.db("QrTrackerDB").collection("tracker");
+    var trackers = context.service.get("mongodb-atlas").db("QrTrackerDB").collection("tracker");
     var tracker = trackers.findOne({ _id: changeEvent.fullDocument.trackerId });
 
 
