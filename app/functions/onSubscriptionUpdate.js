@@ -30,7 +30,7 @@ exports = function(changeEvent) {
       eventId: "RV6FCVCJWZM885GZ72GYDW48RDC6",
       recipientId: "1827d074-ff99-4f56-aae5-e95e2ce87eee",
       profile: {
-        email: authEvent.user.data.email,
+        email: context.user.data.email,
       },
       data: {
         message: ""
@@ -43,6 +43,6 @@ exports = function(changeEvent) {
 
   } else {
 
-    console.log("No email associated with user: " +authEvent.user.id);
+    console.log("No email associated with user: " +context.user.id);
   }
 };
