@@ -1,41 +1,51 @@
-exports = function(changeEvent) {
-  /*
-    A Database Trigger will always call a function with a changeEvent.
-    Documentation on ChangeEvents: https://docs.mongodb.com/manual/reference/change-events/
+exports = async function(changeEvent) {
+  // Generate message
+  var message = "";
+  if(changeEvent.operationType == "update" && changeEvent.updateDescription.updateFields.hasOwnProperty("status")) {
+    message = `The tracker ${changeEvent.fullDocument.title} has a new status: ${changeEvent.fullDocument.status.title}. Click <a href="${context.values.get("domainName")}/${changeEvent.documentKey._id}">here</a> for more details.`;
 
-    Access the _id of the changed document:
-    const docId = changeEvent.documentKey._id;
+  } else if (changeEvent.operationType == "delete") {
+    message = `The tracker ${changeEvent.fullDocument.title} has been deleted and your subscription to that tracker has been removed.`
+  }
 
-    Access the latest version of the changed document
-    (with Full Document enabled for Insert, Update, and Replace operations):
-    const fullDocument = changeEvent.fullDocument;
 
-    const updateDescription = changeEvent.updateDescription;
+  // Get subscriptions
+  var subscription_collection = context.service("mongodb-atlas").db("QrTRackerDB").collection("subscription");
+  var subscriptions = await subscription_collection.find({ trackerId: context.documentKey._id });
 
-    See which fields were changed (if any):
-    if (updateDescription) {
-      const updatedFields = updateDescription.updatedFields; // A document containing updated fields
-    }
+  // Delete subscriptions if the tracker has been deleted
+  if(changeEvent.operationType == "delete") {
+    await subscription_collection.deleteMany({ trackerId: context.documentKey._id});
+  }
 
-    See which fields were removed (if any):
-    if (updateDescription) {
-      const removedFields = updateDescription.removedFields; // An array of removed fields
-    }
 
-    Functions run by Triggers are run as System users and have full access to Services, Functions, and MongoDB Data.
+  // Generate email list from subscriptions
+  var email_list = "";
+  subscriptions.forEach(subscription => {
+    email_list += subscription.targets.email.join(",") + ",";
+  });
 
-    Access a mongodb service:
-    const collection = context.services.get("mongodb-atlas").db("QrTrackerDB").collection("tracker");
-    const doc = collection.findOne({ name: "mongodb" });
 
-    Note: In Atlas Triggers, the service name is defaulted to the cluster name.
+  // Send the emails as long as email_list != ""
+  if(email_list) {
+    // Setup courier
+    var { CourierClient } = require("@trycourier/courier");
+    const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
-    Call other named functions if they are defined in your application:
-    const result = context.functions.execute("function_name", arg1, arg2);
+    // Send message
+    var { messageId } = await courier.send({
+      brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
+      eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
+      profile: {
+        email: email_list,
+      },
+      data: {
+        message: ""
+      },
+      override: {},
+    });
 
-    Access the default http client and execute a GET request:
-    const response = context.http.get({ url: <URL> })
-
-    Learn more about http client here: https://docs.mongodb.com/realm/functions/context/#context-http
-  */
+    // Log confirmation
+    console.log("Message "+messageId+" sent");
+  }
 };
