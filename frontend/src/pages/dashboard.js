@@ -1,4 +1,4 @@
-export function Dashboard({user, setUser}) {
+export default function Dashboard({user, setUser}) {
     return (
         <div></div>
     );

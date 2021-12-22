@@ -1,72 +1,17 @@
 import './App.scss';
 import React, { useState } from "react";
-import { Route, Switch, Link } from "wouter";
+import { Route, Switch, Redirect } from "wouter";
 import * as Realm from 'realm-web';
 
-import smallLogoPng from './logo-small.png';
 
-import { Welcome } from './pages/welcome';
-import { Dashboard } from './pages/dashboard';
-import { Page404 } from './pages/page404';
-import { ButtonLink } from './components/basic';
+import Welcome from './pages/welcome';
+import Dashboard from './pages/dashboard';
+import Page404 from './pages/page404';
+import Login from './pages/login';
+import SignUp from './pages/signup';
+import { Header, Footer } from './components/pageTemplate';
 
 
-function Header({ user }) {
-  const [expanded, setExpanded] = useState(false);
-  
-  return (
-    <header className={expanded ? "nav-expanded" : ""}>
-      <div className='mobile-header-wrapper'>
-        <Link href="/">
-          <div className='logo-wrapper'>
-            <img className='logo-small' src={smallLogoPng} alt="QrTracker"/>
-          </div>
-        </Link>
-
-        <div className='mobile-header-spacer' />
-
-        <div class="mobile-btn" onClick={()=>setExpanded(!expanded)}>
-          Menu
-        </div>
-      </div>
-
-      <div className='desktop-header-spacer' />
-
-      {user ? <UserNav user={user} /> : <PubNav />}
-
-    </header>
-  );
-}
-
-function UserNav({ user }) {
-  return (
-    <div className='nav-links'>
-      <div className='nav-link'>
-        <ButtonLink path="/create" color="brand1" slim={true}>Create a Tracker</ButtonLink>
-      </div>
-
-      <div className='nav-link'>
-        <Link href=''>Browse</Link>
-      </div>
-
-      <div className='nav-link'>
-        <Link>Log Out</Link>
-      </div>
-    </div>
-  );
-}
-
-function PubNav() {
-  return (
-    <div className="nav-links">
-      <Link href='/log-in'>
-        <div className='nav-link'>
-          Log In
-        </div>
-      </Link>
-    </div>
-  );
-}
 
 function App() {
   const app = new Realm.App({ id: "qrtracker-yibtf" });
@@ -84,11 +29,20 @@ function App() {
             <Header user={user}/>
 
             <Switch>
-              <Route>
+              <Route path="/login">
+                {user ? <Redirect to="/" /> : <Login />}
+              </Route>
 
+              <Route path="/signup">
+                {user ? <Redirect to="/" /> : <SignUp />}
+              </Route>
+
+              <Route>
                 <Page404 />
               </Route>
             </Switch>
+
+            <Footer />
           </Route>
         </Switch>
       </div>

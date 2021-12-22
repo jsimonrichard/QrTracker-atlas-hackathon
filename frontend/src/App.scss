@@ -37,58 +37,6 @@ $logo-max-width: 50rem;
   }
 }
 
-.Welcome {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .hero {
-    background-color: $offwhite;
-    border-radius: 1rem;
-    margin-top: 5.5rem;
-    margin-bottom: 3rem;
-    width: 95%;
-
-    @media (min-width: 600px) {
-      margin-top: 7rem;
-      width: 90%;
-    }
-
-    @media (min-width: 1000px) {
-      width: 800px;
-    }
-  
-    .hero-header {
-      margin: auto;
-      width: fit-content;
-
-      position: relative;
-      top: -3rem;
-      @media (min-width: 600px) {
-        top: -5rem;
-      }
-  
-      .logo {
-        max-width: 100%;
-      }
-    }
-
-    .content {
-      padding: 1.5rem;
-      margin-top: -5rem;
-  
-      @media (min-width: 1000px) {
-        padding: 3rem;
-      }
-
-      h1 {
-        text-align: center;
-      }
-    }
-  }
-}
-
 header {
   position: sticky;
   top: 0px;
@@ -163,12 +111,6 @@ header {
     }
   }
 
-
-
-  .mobile-menu {
-    
-  }
-
   .mobile-btn {
     display: grid;
     justify-content: right;
@@ -182,8 +124,19 @@ header {
   }
 }
 
+footer {
+  width: 100%;
+  background-color: $background-polka;
+  border-top: 2px solid $background;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  font-size: 0.9rem;
+}
 
-
+.unstyled-link {
+  cursor: pointer;
+}
 
 // .logo-container {
 //   margin: 0 5*$logo-border-width 0 5*$logo-border-width;
@@ -201,6 +154,26 @@ header {
 //     max-width: 100%;
 //   }
 // }
+
+.content {
+  background-color: $offwhite;
+  padding: 1.5rem;
+  margin: auto;
+  min-height: calc(100vh - 7.9rem);
+
+  @media (min-width: 600px) {
+    width: 80%;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1000px;
+  }
+
+  .center {
+    text-align: center;
+    margin-top: 30vh;
+  }
+}
 
 a {
   text-decoration: none;
@@ -262,4 +235,57 @@ p {
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+
+.Welcome {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .hero {
+    background-color: $offwhite;
+    border-radius: 1rem;
+    margin-top: 5.5rem;
+    margin-bottom: 3rem;
+    width: 95%;
+
+    @media (min-width: 600px) {
+      margin-top: 7rem;
+      width: 90%;
+    }
+
+    @media (min-width: 1000px) {
+      width: 800px;
+    }
+  
+    .hero-header {
+      margin: auto;
+      width: fit-content;
+
+      position: relative;
+      top: -3rem;
+      @media (min-width: 600px) {
+        top: -5rem;
+      }
+  
+      .logo {
+        max-width: 100%;
+      }
+    }
+
+    .hero-content {
+      padding: 1.5rem;
+      margin-top: -5rem;
+  
+      @media (min-width: 1000px) {
+        padding: 3rem;
+      }
+
+      h1 {
+        text-align: center;
+      }
+    }
+  }
 }

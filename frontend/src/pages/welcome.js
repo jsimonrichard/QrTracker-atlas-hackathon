@@ -1,7 +1,7 @@
 import logoPng from '../logo.png';
 import { ButtonLink } from '../components/basic';
 
-export function Welcome() {
+export default function Welcome() {
     return (
       <div className="Welcome">
         <div className="hero">
@@ -9,7 +9,7 @@ export function Welcome() {
             <img className="logo" src={logoPng} alt="QrTracker"/>
           </div>
         
-          <div className="content">
+          <div className="hero-content">
             <h1>Welcome</h1>
             
             <p>
@@ -36,8 +36,8 @@ export function Welcome() {
             </p>
     
             <div class="button-row">
-              <ButtonLink path="/sign-up" color="brand3">Sign Up</ButtonLink>
-              <ButtonLink path="/log-in" color="brand1">Log In</ButtonLink>
+              <ButtonLink path="/signup" color="brand3">Sign Up</ButtonLink>
+              <ButtonLink path="/login" color="brand1">Log In</ButtonLink>
               <ButtonLink path="/browse" color="brand2">Browse Public Trackers</ButtonLink>
             </div>
     
