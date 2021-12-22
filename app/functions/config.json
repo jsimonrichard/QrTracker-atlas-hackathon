@@ -1,10 +1,14 @@
 [
     {
-        "name": "onTrackerUpdate",
+        "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "onSubscriptionUpdate",
         "private": true
     },
     {
-        "name": "onUserDelete",
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -22,10 +26,6 @@
     },
     {
         "name": "validateSubscription",
-        "private": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
         "private": true
     }
 ]
