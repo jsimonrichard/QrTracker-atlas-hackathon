@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv build/* ../app/hosting/files",
+    "build": "react-scripts build && rm -r ../app/hosting/files/* && mv build/* ../app/hosting/files",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
