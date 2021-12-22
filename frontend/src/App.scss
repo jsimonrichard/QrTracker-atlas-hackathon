@@ -1,0 +1,265 @@
+$background: #52473D;
+$background-polka: #6A5B4E;
+
+$brand1: #EF5B5B;
+$brand2: #20A39E;
+$brand3: #FFBA49;
+$offwhite: #F5F5F5;
+
+$logo-border-width: 0.8rem;
+$logo-border-radius: 1rem;
+$logo-offset: 2*$logo-border-width + $logo-border-radius;
+$logo-max-width: 50rem; 
+
+.App {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  font-size: 1.2rem;
+
+  &:before {
+    content: "";
+    position: fixed;
+    width: max(250vh, 250vw);
+    height: max(250vh, 250vw);
+    top: -100%;
+    left: -100%;
+    z-index: -1;
+    background-image: radial-gradient($background-polka 7%, $background 8%);
+    background-color: #3F372F;
+    background-position: 0 0, 50px, 50px;
+    background-size: 100px 100px;
+    transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+  }
+}
+
+.Welcome {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .hero {
+    background-color: $offwhite;
+    border-radius: 1rem;
+    margin-top: 5.5rem;
+    margin-bottom: 3rem;
+    width: 95%;
+
+    @media (min-width: 600px) {
+      margin-top: 7rem;
+      width: 90%;
+    }
+
+    @media (min-width: 1000px) {
+      width: 800px;
+    }
+  
+    .hero-header {
+      margin: auto;
+      width: fit-content;
+
+      position: relative;
+      top: -3rem;
+      @media (min-width: 600px) {
+        top: -5rem;
+      }
+  
+      .logo {
+        max-width: 100%;
+      }
+    }
+
+    .content {
+      padding: 1.5rem;
+      margin-top: -5rem;
+  
+      @media (min-width: 1000px) {
+        padding: 3rem;
+      }
+
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}
+
+header {
+  position: sticky;
+  top: 0px;
+
+  background-color: $offwhite;
+  border-bottom: 2px solid $background;
+
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+  }
+  
+  &.nav-expanded {
+    height: fit-content;
+  }
+
+  .mobile-header-wrapper {
+    display: flex;
+    flex-direction: row;
+
+    .logo-wrapper {
+      cursor: pointer;
+      padding: 1rem;
+      justify-content: start;
+  
+      .logo-small {
+        width: 40px;
+        height: 40px;
+        margin: 0px;
+      }
+    }
+
+    .mobile-header-spacer {
+      flex: 1 0 auto;
+    }
+
+    .mobile-btn {
+      padding: 1.5rem;
+    }
+  }
+
+  .desktop-header-spacer {
+    display: none;
+    
+    @media (min-width: 600px) {
+      display: block;
+      flex: 1 0 auto;
+    }
+  }
+
+  .nav-links {
+    display: flex;
+    align-content: stretch;
+    flex-direction: column;
+
+    @media (min-width: 600px) {
+      flex-direction: row;
+    }
+
+    .nav-link {
+      cursor: pointer;
+      padding: 1.5rem;
+
+      &:hover {
+        background-color: darken($offwhite, 10%);
+      }
+    }
+  }
+
+
+
+  .mobile-menu {
+    
+  }
+
+  .mobile-btn {
+    display: grid;
+    justify-content: right;
+    align-content: center;
+    grid-auto-flow: column;
+    cursor: pointer;
+
+    @media (min-width: 600px) {
+      display: none;
+    }
+  }
+}
+
+
+
+
+// .logo-container {
+//   margin: 0 5*$logo-border-width 0 5*$logo-border-width;
+//   width: fit-content;
+//   position: relative;
+//   top: -5rem;
+
+//   padding: 2rem;
+//   background-color: $brand1;
+//   border-radius: $logo-border-radius;
+//   box-shadow: $logo-border-width $logo-border-width 0 0 $brand2,
+//               -$logo-border-width (-$logo-border-width) 0 0 $brand3;
+  
+//   img {
+//     max-width: 100%;
+//   }
+// }
+
+a {
+  text-decoration: none;
+
+  :hover {
+    text-decoration: none;
+  }
+}
+
+p {
+  text-indent: 2em;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footnotes {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.button {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  display: inline-block;
+  margin: 0.5rem;
+
+  &.brand1:hover {
+    background-color: darken($brand1, 10%);
+  }
+
+  &.brand2:hover {
+    background-color: darken($brand2, 10%);
+  }
+
+  &.brand3:hover {
+    background-color: darken($brand3, 10%);
+  }
+}
+
+.button-slim {
+  padding: 0.6rem;
+}
+
+.brand1 {
+  background-color: $brand1;
+}
+
+.brand2 {
+  background-color: $brand2;
+}
+
+.brand3 {
+  background-color: $brand3;
+}
+
+.button-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}

@@ -9,9 +9,9 @@
    id="svg5"
    inkscape:version="1.1.1 (eb90963e84, 2021-10-02)"
    sodipodi:docname="favicon.svg"
-   inkscape:export-filename="/home/jsimonrichard/Documents/DevPosts/QrTracker-atlas-hackathon/favicon64.png"
-   inkscape:export-xdpi="114.06538"
-   inkscape:export-ydpi="114.06538"
+   inkscape:export-filename="/home/jsimonrichard/Documents/DevPosts/QrTracker-atlas-hackathon/frontend/src/logo-small.png"
+   inkscape:export-xdpi="228.13063"
+   inkscape:export-ydpi="228.13063"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@
      id="layer1"
      transform="translate(-11.417786,-3.850134)">
     <rect
-       style="fill:#ffffff;stroke-width:1.165"
+       style="fill:#ef5b5b;stroke-width:1.165;fill-opacity:1"
        id="rect848"
        width="14.251484"
        height="14.251475"
@@ -70,17 +70,17 @@
        style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect4851);fill:#000000;fill-opacity:1;stroke:none" />
     <text
        xml:space="preserve"
-       style="font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583"
+       style="font-size:10.5833px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:Ubuntu;stroke-width:0.264583;fill:#f5f5f5;fill-opacity:1"
        x="10.891246"
        y="13.968074"
        id="text31403"><tspan
          sodipodi:role="line"
          id="tspan31401"
-         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold Italic';stroke-width:0.264583"
+         style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Bold Italic';stroke-width:0.264583;fill:#f5f5f5;fill-opacity:1"
          x="10.891246"
          y="13.968074">Qr</tspan></text>
     <path
-       style="color:#000000;fill:#000000;-inkscape-stroke:none"
+       style="color:#000000;fill:#f5f5f5;-inkscape-stroke:none;fill-opacity:1"
        d="m 18.499897,14.812264 -0.418696,1.127731 6.363274,9.03e-4 v -1.175782 z"
        id="path60804"
        sodipodi:nodetypes="ccccc" />
