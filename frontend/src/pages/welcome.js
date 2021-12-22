@@ -13,7 +13,7 @@ export function Welcome() {
             <h1>Welcome</h1>
             
             <p>
-              Welcome to QrTracker, my submission for the Atlas Hackathon put on by MongoDB
+              Welcome to QrTracker, a submission for the Atlas Hackathon put on by MongoDB
               and <a href="https://dev.to">dev.to</a>! QrTracker is a multi-purpose tracking<sup>1</sup> alternative
               that gives small business owners (or anyone else, really) the ability to create,
               as well as consume, tracking information.
