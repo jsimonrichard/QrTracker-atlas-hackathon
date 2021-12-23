@@ -1,5 +1,5 @@
 import { ButtonLink } from "../components/basic";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function ConfirmEmail({ app }) {
   const urlParams = new URLSearchParams(window.location.search);
