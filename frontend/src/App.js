@@ -1,13 +1,13 @@
 import './App.scss';
 import React, { useState } from "react";
-import { Route, Switch, Redirect } from "wouter";
+import { Route, Switch, Redirect, Router } from "wouter";
 import * as Realm from 'realm-web';
 
 
 import Welcome from './pages/welcome';
 import Dashboard from './pages/dashboard';
 import Page404 from './pages/page404';
-import Login from './pages/login';
+import LogIn from './pages/login';
 import SignUp from './pages/signup';
 import ConfirmEmail from './pages/confirmEmail';
 import { Header, Footer } from './components/pageTemplate';
@@ -29,16 +29,28 @@ function App() {
 
             <Switch>
               <Route path="/login">
-                {app.currentUser ? <Redirect to="/" /> : <Login />}
+                {app.currentUser ? <Redirect to="/home" /> : <LogIn app={app}/>}
               </Route>
 
               <Route path="/signup">
-                {app.currentUser ? <Redirect to="/" /> : <SignUp app={app} />}
+                {app.currentUser ? <Redirect to="/home" /> : <SignUp app={app} />}
               </Route>
 
               <Route path="/confirmEmail">
                 <ConfirmEmail app={app}/>
               </Route>
+
+              <Route path="/browse">
+
+              </Route>
+
+              <Router base="/home">
+                <Switch>
+                  <Route path="/">
+                    
+                  </Route>
+                </Switch>
+              </Router>
 
               <Route>
                 <Page404 />
