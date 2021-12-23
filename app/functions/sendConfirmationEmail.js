@@ -7,7 +7,7 @@ exports = async function(token, tokenId, email) {
   const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
   // Send message
-  console.log(username);
+  console.log(email);
   var { messageId } = await courier.send({
     brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
     eventId: "C2JMC6WNHD4TC3MQA46XSQENCFJQ",
