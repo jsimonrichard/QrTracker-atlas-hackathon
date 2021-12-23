@@ -14,7 +14,7 @@
         "type": "local-userpass",
         "config": {
             "autoConfirm": false,
-            "confirmationFunctionName": "sendConfirmEmail",
+            "confirmationFunctionName": "confirmUser",
             "resetFunctionName": "sendResetPasswordEmail",
             "runConfirmationFunction": true,
             "runResetFunction": true

@@ -1,13 +1,5 @@
 [
     {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
-        "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
         "name": "validateSubscription",
         "private": true
     },
@@ -28,7 +20,19 @@
         "private": true
     },
     {
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
         "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
+        "name": "confirmUser",
         "private": true
     }
 ]
