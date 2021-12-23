@@ -169,9 +169,26 @@ footer {
     width: 1000px;
   }
 
+  .center-content {
+    margin: auto;
+    margin-top: 10vh;
+
+    @media (min-width: 600px) {
+      width: 80%;
+    }
+
+    @media (min-width: 1200px) {
+      width: 550px;
+    }
+  }
+
   .center {
     text-align: center;
     margin-top: 30vh;
+  }
+
+  .text-center {
+    text-align: center;
   }
 }
 
@@ -200,6 +217,13 @@ p {
   color: white;
   display: inline-block;
   margin: 0.5rem;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: none;
+    color: white;
+  }
 
   &.brand1:hover {
     background-color: darken($brand1, 10%);

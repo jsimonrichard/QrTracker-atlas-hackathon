@@ -35,13 +35,13 @@ export default function Welcome() {
               one of the buttons below.
             </p>
     
-            <div class="button-row">
+            <div className="button-row">
               <ButtonLink path="/signup" color="brand3">Sign Up</ButtonLink>
               <ButtonLink path="/login" color="brand1">Log In</ButtonLink>
               <ButtonLink path="/browse" color="brand2">Browse Public Trackers</ButtonLink>
             </div>
     
-            <ol class="footnotes">
+            <ol className="footnotes">
               <li>A loose definition of tracking</li>
               <li>Well, no, there not. I'd like to be optimistic, though</li>
             </ol>

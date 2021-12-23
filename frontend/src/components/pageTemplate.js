@@ -66,6 +66,11 @@ function UserNav({ user }) {
 function PubNav() {
   return (
     <div className="nav-links">
+      <Link href='/signup'>
+        <div className='nav-link'>
+          Sign Up
+        </div>
+      </Link>
       <Link href='/login'>
         <div className='nav-link'>
           Log In

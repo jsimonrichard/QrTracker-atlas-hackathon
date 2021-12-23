@@ -16,25 +16,23 @@ import { Header, Footer } from './components/pageTemplate';
 function App() {
   const app = new Realm.App({ id: "qrtracker-yibtf" });
 
-  const [user, setUser] = useState(app.currentUser);
-
   return (
       <div className="App">
         <Switch>
           <Route path="/">
-            {user ? <Dashboard user={user} setUser={setUser}/> : <Welcome setUser={setUser}/>}
+            {app.currentUser ? <Dashboard user={app.currentUser} /> : <Welcome />}
           </Route>
 
           <Route>
-            <Header user={user}/>
+            <Header user={app.currentUser}/>
 
             <Switch>
               <Route path="/login">
-                {user ? <Redirect to="/" /> : <Login />}
+                {app.currentUser ? <Redirect to="/" /> : <Login />}
               </Route>
 
               <Route path="/signup">
-                {user ? <Redirect to="/" /> : <SignUp />}
+                {app.currentUser ? <Redirect to="/" /> : <SignUp app={app} />}
               </Route>
 
               <Route>
