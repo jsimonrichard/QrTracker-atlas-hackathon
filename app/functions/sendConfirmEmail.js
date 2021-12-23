@@ -49,11 +49,7 @@
 
 exports = async function({ token, tokenId, username }) {
   // construct confirm link
-  var buildUrl = require("build-url");
-  var link = buildUrl("https://" + context.values.get("domainName"), {
-    path: "confirmEmail",
-    queryParams: { token, tokenId }
-  });
+  var link = `https://${context.values.get("domainName")}/confirmEmail?token=${encodeURIComponent(token)}&tokenId=${encodeURIComponent(tokenId)}`
   
   // Setup courier
   var { CourierClient } = require("@trycourier/courier");
