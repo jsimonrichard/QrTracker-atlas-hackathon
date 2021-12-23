@@ -11,11 +11,12 @@ exports = async function(token, tokenId, email) {
   var { messageId } = await courier.send({
     brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
     eventId: "C2JMC6WNHD4TC3MQA46XSQENCFJQ",
+    recipientId: email,
     profile: {
       email: email,
     },
     data: {
-      confirmLink: link
+      confirmLink: ""
     },
     override: {},
   });

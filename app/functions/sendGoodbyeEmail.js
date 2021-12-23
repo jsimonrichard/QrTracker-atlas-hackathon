@@ -9,6 +9,7 @@ exports = async function(authEvent) {
     var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "38P45E3F3MMC0XG3GQWR22SW68XM",
+      recipientId: authEvent.user.email,
       profile: {
         email: authEvent.user.data.email,
       },

@@ -28,6 +28,7 @@ exports = async function(changeEvent) {
     var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "RV6FCVCJWZM885GZ72GYDW48RDC6",
+      recipientId: context.user.data.email,
       profile: {
         email: context.user.data.email,
       },
