@@ -9,6 +9,7 @@ import Dashboard from './pages/dashboard';
 import Page404 from './pages/page404';
 import Login from './pages/login';
 import SignUp from './pages/signup';
+import ConfirmEmail from './pages/confirmEmail';
 import { Header, Footer } from './components/pageTemplate';
 
 
@@ -33,6 +34,10 @@ function App() {
 
               <Route path="/signup">
                 {app.currentUser ? <Redirect to="/" /> : <SignUp app={app} />}
+              </Route>
+
+              <Route path="/confirmEmail">
+                <ConfirmEmail app={app}/>
               </Route>
 
               <Route>
