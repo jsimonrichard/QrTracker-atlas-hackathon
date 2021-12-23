@@ -5,15 +5,18 @@ export default function ConfirmEmail({ app }) {
   const urlParams = new URLSearchParams(window.location.search);
   const [message, setMessage] = useState("Loading...");
 
-  app.emailPasswordAuth.confirmUser({ 
-    token: urlParams.get("token"),
-    tokenId: urlParams.get("tokenId")
-  }).then(() => {
-    setMessage("Your email has been confirmed");
-  }).catch(error => {
-    setMessage("There was an error");
-    console.log(error);
-  })
+  // Run only once
+  useEffect(() => {
+    app.emailPasswordAuth.confirmUser({ 
+      token: urlParams.get("token"),
+      tokenId: urlParams.get("tokenId")
+    }).then(() => {
+      setMessage("Your email has been confirmed");
+    }).catch(error => {
+      setMessage("There was an error");
+      console.log(error);
+    })
+  }, []);
 
   return (
     <div className="content">
