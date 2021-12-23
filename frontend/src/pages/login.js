@@ -13,10 +13,7 @@ export default function Login({ app }) {
   const onSubmit = data => {
     setLoading(true);
 
-    const creds = Realm.Credentials.emailPassword({
-        email: data.email,
-        password: data.password
-    });
+    const creds = Realm.Credentials.emailPassword(data.email, data.password);
 
     app.logIn(creds).then(result => {
       setLoading(false);
