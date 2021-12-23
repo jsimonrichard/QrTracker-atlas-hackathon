@@ -16,7 +16,7 @@ exports = async function(token, tokenId, email) {
       email: email,
     },
     data: {
-      confirmLink: ""
+      confirmLink: link
     },
     override: {},
   });
