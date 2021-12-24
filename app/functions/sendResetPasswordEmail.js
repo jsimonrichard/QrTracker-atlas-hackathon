@@ -1,55 +1,25 @@
+exports = async function(token, tokenId, email) {
+  // Build URL
+  var link = `https://${}/resetPassword?token=${encodeURIComponent(token)}&tokenId=${encodeURIComponent(tokenId)}`;
 
-  /*
-    This function will be run when the client SDK 'callResetPasswordFunction' and is called with an object parameter
-    which contains four keys: 'token', 'tokenId', 'username', and 'password', and additional parameters
-    for each parameter passed in as part of the argument list from the SDK.
+  // Setup courier
+  var { CourierClient } = require("@trycourier/courier");
+  const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
-    The return object must contain a 'status' key which can be empty or one of three string values:
-      'success', 'pending', or 'fail'
+  // Send welome message
+  var { messageId } = await courier.send({
+    brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
+    eventId: "ZX33F16S8KMF7JMQYYR3Y0C8BXV0",
+    recipientId: email,
+    profile: {
+      email: email,
+    },
+    data: {
+      resetLink: link
+    },
+    override: {},
+  });
 
-    'success': the user's password is set to the passed in 'password' parameter.
-
-    'pending': the user's password is not reset and the UserPasswordAuthProviderClient 'resetPassword' function would
-      need to be called with the token, tokenId, and new password via an SDK. (see below)
-
-      const Realm = require("realm");
-      const appConfig = {
-          id: "my-app-id",
-          timeout: 1000,
-          app: {
-              name: "my-app-name",
-              version: "1"
-          }
-        };
-      let app = new Realm.App(appConfig);
-      let client = app.auth.emailPassword;
-      await client.resetPassword(token, tokenId, newPassword);
-
-    'fail': the user's password is not reset and will not be able to log in with that password.
-
-    If an error is thrown within the function the result is the same as 'fail'.
-
-    Example below:
-
-    exports = ({ token, tokenId, username, password }, sendEmail, securityQuestionAnswer) => {
-      // process the reset token, tokenId, username and password
-      if (sendEmail) {
-        context.functions.execute('sendResetPasswordEmail', username, token, tokenId);
-        // will wait for SDK resetPassword to be called with the token and tokenId
-        return { status: 'pending' };
-      } else if (context.functions.execute('validateSecurityQuestionAnswer', username, securityQuestionAnswer)) {
-        // will set the users password to the password parameter
-        return { status: 'success' };
-      }
-
-      // will not reset the password
-      return { status: 'fail' };
-    };
-
-    The uncommented function below is just a placeholder and will result in failure.
-  */
-
-  exports = ({ token, tokenId, username, password }) => {
-    // will not reset the password
-    return { status: 'fail' };
-  };
+  // Log confirmation
+  console.log("Message "+messageId+" sent");
+}

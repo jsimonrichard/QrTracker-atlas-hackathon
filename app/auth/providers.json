@@ -15,7 +15,7 @@
         "config": {
             "autoConfirm": false,
             "confirmationFunctionName": "confirmUser",
-            "resetFunctionName": "sendResetPasswordEmail",
+            "resetFunctionName": "resetPassword",
             "runConfirmationFunction": true,
             "runResetFunction": true
         },

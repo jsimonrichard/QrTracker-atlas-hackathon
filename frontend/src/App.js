@@ -3,37 +3,41 @@ import React, { useState } from "react";
 import { Route, Switch, Redirect, Router } from "wouter";
 import * as Realm from 'realm-web';
 
+import { Header, Footer } from './components/pageTemplate';
 
 import Welcome from './pages/welcome';
-import Dashboard from './pages/dashboard';
 import Page404 from './pages/page404';
 import LogIn from './pages/login';
 import SignUp from './pages/signup';
+import Browse from './pages/browse';
 import ConfirmEmail from './pages/confirmEmail';
-import { Header, Footer } from './components/pageTemplate';
+
+
+import Home from './pages/user/home';
 
 
 
 function App() {
   const app = new Realm.App({ id: "qrtracker-yibtf" });
+  const [user, setUser] = useState(app.currentUser);
 
   return (
       <div className="App">
         <Switch>
           <Route path="/">
-            {app.currentUser ? <Dashboard user={app.currentUser} /> : <Welcome />}
+            {user ? <Redirect to="/home"/> : <Welcome />}
           </Route>
 
           <Route>
-            <Header user={app.currentUser}/>
+            <Header user={user} setUser={setUser}/>
 
             <Switch>
               <Route path="/login">
-                {app.currentUser ? <Redirect to="/home" /> : <LogIn app={app}/>}
+                {user ? <Redirect to="/home" /> : <LogIn app={app} setUser={setUser}/>}
               </Route>
 
               <Route path="/signup">
-                {app.currentUser ? <Redirect to="/home" /> : <SignUp app={app} />}
+                {user ? <Redirect to="/home" /> : <SignUp app={app} />}
               </Route>
 
               <Route path="/confirmEmail">
@@ -41,13 +45,19 @@ function App() {
               </Route>
 
               <Route path="/browse">
-
+                <Browse app={app} />
               </Route>
 
               <Router base="/home">
                 <Switch>
+                  {!user & (
+                    <Route>
+                      <Page404 />
+                    </Route>
+                  )}
+
                   <Route path="/">
-                    
+                    <Home user={user} app={app}/>
                   </Route>
                 </Switch>
               </Router>

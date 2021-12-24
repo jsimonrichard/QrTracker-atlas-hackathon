@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useLocation } from 'wouter';
 import * as Realm from 'realm-web';
 
-export default function Login({ app }) {
+export default function Login({ app, setUser }) {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
@@ -17,6 +17,7 @@ export default function Login({ app }) {
 
     app.logIn(creds).then(result => {
       setLoading(false);
+      setUser(app.currentUser);
       setLocation("/home");
     }).catch(error => {
       setLoading(false);

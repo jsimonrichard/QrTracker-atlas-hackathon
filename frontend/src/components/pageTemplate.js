@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ButtonLink } from './basic';
-import { Link } from 'wouter';
+import { Link, useLocation } from 'wouter';
 
 import smallLogoPng from './logo-small.png';
 
 
-export function Header({ user }) {
+export function Header({ user, setUser }) {
   const [expanded, setExpanded] = useState(false);
   
   return (
@@ -26,7 +26,7 @@ export function Header({ user }) {
 
       <div className='desktop-header-spacer' />
 
-      {user ? <UserNav user={user} /> : <PubNav />}
+      {user ? <UserNav user={user} setUser={setUser}/> : <PubNav />}
 
     </header>
   );
@@ -41,23 +41,37 @@ export function Footer() {
           QrTracker
         </div>
       </Link>
+
+      <a href="">GitHub Page</a>
     </footer>
   )
 }
 
-function UserNav({ user }) {
+function UserNav({ user, setUser }) {
+  const [location, setLocation] = useLocation();
+
+  const logOut = () => {
+    user.logOut();
+    setUser(null);
+    setLocation("/");
+  }
+
   return (
     <div className='nav-links'>
-      <div className='nav-link'>
-        <ButtonLink path="/create" color="brand1" slim={true}>Create a Tracker</ButtonLink>
-      </div>
+      <Link href="/home/create">
+        <div className='nav-link'>
+          Create a Tracker
+        </div>
+      </Link>
 
-      <div className='nav-link'>
-        <Link href=''>Browse</Link>
-      </div>
+      <Link href="/browse">
+        <div className='nav-link'>
+          Browse
+        </div>
+      </Link>
 
-      <div className='nav-link'>
-        <Link>Log Out</Link>
+      <div className='nav-link' onClick={logOut}>
+        Log Out
       </div>
     </div>
   );
