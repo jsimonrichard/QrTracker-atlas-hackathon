@@ -11,7 +11,8 @@ import LogIn from './pages/login';
 import SignUp from './pages/signup';
 import Browse from './pages/browse';
 import ConfirmEmail from './pages/confirmEmail';
-
+import ResetPassword from './pages/resetPassword';
+import HandlePasswordReset from './pages/handlePasswordReset';
 
 import Home from './pages/user/home';
 
@@ -42,6 +43,14 @@ function App() {
 
               <Route path="/confirmEmail">
                 <ConfirmEmail app={app}/>
+              </Route>
+
+              <Route path="/resetPassword">
+                <ResetPassword app={app} />
+              </Route>
+
+              <Route path="/handlePasswordReset">
+                <HandlePasswordReset app={app} />
               </Route>
 
               <Route path="/browse">

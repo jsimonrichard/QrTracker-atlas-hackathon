@@ -50,7 +50,6 @@
   */
 
   exports = ({ token, tokenId, username, password }) => {
-    // will not reset the password
     context.functions.execute('sendResetPasswordEmail', token, tokenId, username);
     return { status: 'pending' };
   };

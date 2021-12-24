@@ -1,36 +1,36 @@
 import { useForm } from 'react-hook-form';
 import { FormGroup, Alert } from '@blueprintjs/core';
 import { useState } from 'react';
-import { Link, useLocation } from 'wouter';
 import * as Realm from 'realm-web';
 
-export default function Login({ app, setUser }) {
+export default function ResetPassword({ app }) {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const [loading, setLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [location, setLocation] = useLocation();
+  const [alertIntent, setAlertIntent] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = data => {
     setLoading(true);
 
-    const creds = Realm.Credentials.emailPassword(data.email, data.password);
-
-    app.logIn(creds).then(result => {
+    app.emailPasswordAuth.callResetPasswordFunction({
+      email: data.email,
+      password: 'dummypassword'
+    }).then(() => {
       setLoading(false);
-      setUser(app.currentUser);
-      setLocation("/home");
+      setAlertMessage("A password reset link will be sent to you inbox")
+      setAlertIntent("primary");
     }).catch(error => {
       setLoading(false);
-      console.log("Something went wrong...", error);
-      
       setAlertMessage(error.error);
+      setAlertIntent("danger");
+      console.log(error);
     });
   }
 
   return (
     <div className="content">
       <div className="center-content">
-        <h1>Log In</h1>
+        <h1>Reset your password</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormGroup label="Email"
@@ -48,33 +48,15 @@ export default function Login({ app, setUser }) {
             </div>
           </FormGroup>
 
-          <FormGroup label="Password"
-            intent={errors.password ? "danger": ""}
-            helperText={errors.password ? 
-              (errors.password.type === "required" ? "Password is required" : "Password must be between 6 and 128 characters")
-              : ""}>
-            <div className="bp3-input-group bp3-large">
-              <input
-                className="bp3-input"
-                {...register("password", {
-                  required: true
-                })}
-                placeholder="Enter your password..."
-              type="password"/>
-            </div>
-          </FormGroup>
-
-          <Link href="/resetPassword" style={{fontSize: "0.9rem"}}>Forgot your password? Reset it here</Link>
-
           <div className="text-center">
-            <input type="submit" className="button brand2" value={loading ? "Loading..." : "Log In"}/>
+            <input type="submit" className="button brand2" value={loading ? "Loading..." : "Send Password Reset Email"}/>
           </div>
         </form>
       </div>
 
-      <Alert isOpen={alertMessage} onClose={() => {setAlertMessage("")}} intent="danger">
+      <Alert isOpen={alertMessage} onClose={() => {setAlertMessage("")}} intent={alertIntent}>
         {alertMessage}
       </Alert>
     </div>
-  );
+  )
 }
