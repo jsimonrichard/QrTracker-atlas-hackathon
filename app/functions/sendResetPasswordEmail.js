@@ -1,6 +1,6 @@
 exports = async function(token, tokenId, email) {
   // Build URL
-  var link = `https://${}/resetPassword?token=${encodeURIComponent(token)}&tokenId=${encodeURIComponent(tokenId)}`;
+  var link = `https://${context.values.get("domainName")}/resetPassword?token=${encodeURIComponent(token)}&tokenId=${encodeURIComponent(tokenId)}`;
 
   // Setup courier
   var { CourierClient } = require("@trycourier/courier");
