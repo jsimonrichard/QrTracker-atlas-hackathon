@@ -37,12 +37,10 @@ export function Footer() {
   return (
     <footer>
       <Link href="/">
-        <div className="unstyled-link">
-          QrTracker
-        </div>
+          QrTracker Home
       </Link>
 
-      <a href="">GitHub Page</a>
+      <a href="https://github.com/jsimonrichard/QrTracker-atlas-hackathon">GitHub Page</a>
     </footer>
   )
 }
@@ -58,7 +56,7 @@ function UserNav({ user, setUser }) {
 
   return (
     <div className='nav-links'>
-      <Link href="/home/create">
+      <Link href="/create">
         <div className='nav-link'>
           Create a Tracker
         </div>

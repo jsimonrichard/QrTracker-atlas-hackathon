@@ -132,6 +132,20 @@ footer {
   text-align: center;
   color: white;
   font-size: 0.9rem;
+
+  * {
+    display: inline-block;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  a {
+    color: white;
+
+    &:hover {
+      color: white;
+    }
+  }
 }
 
 .unstyled-link {
@@ -310,6 +324,44 @@ p {
       h1 {
         text-align: center;
       }
+    }
+  }
+}
+
+.tracker-list {
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+
+  margin-bottom: 5rem;
+
+  .tracker-list-item {
+    background-color: darken($offwhite, 5%);
+    border: 2px solid darken($offwhite, 30%);
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    padding: 1rem;
+
+    &:hover {
+      background-color: darken($offwhite, 15%);
+    }
+
+    h4 {
+      margin: 0px;
+    }
+  }
+
+  .tracker-list-add-item {
+    display: flex;
+    background-color: darken($offwhite, 3%);
+    border: 2px dashed darken($offwhite, 20%);
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: darken($offwhite, 8%);
     }
   }
 }

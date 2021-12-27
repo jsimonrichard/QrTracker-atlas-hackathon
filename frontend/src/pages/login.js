@@ -18,7 +18,7 @@ export default function Login({ app, setUser }) {
     app.logIn(creds).then(result => {
       setLoading(false);
       setUser(app.currentUser);
-      setLocation("/home");
+      setLocation("/dashboard");
     }).catch(error => {
       setLoading(false);
       console.log("Something went wrong...", error);

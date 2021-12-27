@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Route, Switch, Redirect, Router } from "wouter";
 import * as Realm from 'realm-web';
 
+
 import { Header, Footer } from './components/pageTemplate';
 
 import Welcome from './pages/welcome';
@@ -14,8 +15,8 @@ import ConfirmEmail from './pages/confirmEmail';
 import ResetPassword from './pages/resetPassword';
 import HandlePasswordReset from './pages/handlePasswordReset';
 
-import Home from './pages/user/home';
-
+import Dashboard from './pages/user/dashboard';
+import CreateTracker from './pages/user/create';
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
       <div className="App">
         <Switch>
           <Route path="/">
-            {user ? <Redirect to="/home"/> : <Welcome />}
+            {user ? <Redirect to="/dashboard"/> : <Welcome />}
           </Route>
 
           <Route>
@@ -34,11 +35,11 @@ function App() {
 
             <Switch>
               <Route path="/login">
-                {user ? <Redirect to="/home" /> : <LogIn app={app} setUser={setUser}/>}
+                {user ? <Redirect to="/dashboard" /> : <LogIn app={app} setUser={setUser}/>}
               </Route>
 
               <Route path="/signup">
-                {user ? <Redirect to="/home" /> : <SignUp app={app} />}
+                {user ? <Redirect to="/dashboard" /> : <SignUp app={app} />}
               </Route>
 
               <Route path="/confirmEmail">
@@ -57,19 +58,13 @@ function App() {
                 <Browse app={app} />
               </Route>
 
-              <Router base="/home">
-                <Switch>
-                  {!user & (
-                    <Route>
-                      <Page404 />
-                    </Route>
-                  )}
+              <Route path="/dashboard">
+                {user ? <Dashboard app={app} user={user} /> : <Redirect to="/login" />}
+              </Route>
 
-                  <Route path="/">
-                    <Home user={user} app={app}/>
-                  </Route>
-                </Switch>
-              </Router>
+              <Route path="/create">
+                {user ? <CreateTracker app={app} user={user} /> : <Redirect to="/login" />}
+              </Route>
 
               <Route>
                 <Page404 />
