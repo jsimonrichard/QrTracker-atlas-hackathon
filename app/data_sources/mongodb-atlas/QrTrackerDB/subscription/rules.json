@@ -9,7 +9,7 @@
             },
             "fields": {
                 "_id": {},
-                "trackerId": {}
+                "tracker": {}
             },
             "read": true,
             "write": true,
