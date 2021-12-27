@@ -24,13 +24,13 @@
                 }
             }
         },
-        "trackerId": {
+        "tracker": {
             "bsonType": "objectId"
         }
     },
     "required": [
         "_id",
-        "trackerId",
+        "tracker",
         "targets",
         "anonymous"
     ],
