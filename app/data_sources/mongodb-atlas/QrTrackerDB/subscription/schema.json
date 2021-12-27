@@ -26,13 +26,21 @@
         },
         "tracker": {
             "bsonType": "objectId"
+        },
+        "createdAt": {
+            "bsonType": "date"
+        },
+        "updatedAt": {
+            "bsonType": "date"
         }
     },
     "required": [
         "_id",
         "tracker",
         "targets",
-        "anonymous"
+        "anonymous",
+        "createdAt",
+        "updatedAt"
     ],
     "title": "subscription"
 }

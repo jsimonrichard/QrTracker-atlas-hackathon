@@ -13,7 +13,7 @@
             }
         },
         "createdAt": {
-            "bsonType": "timestamp"
+            "bsonType": "date"
         },
         "description": {
             "bsonType": "string"
@@ -40,7 +40,7 @@
                         ]
                     },
                     "timestamp": {
-                        "bsonType": "timestamp"
+                        "bsonType": "date"
                     }
                 },
                 "required": [
@@ -74,7 +74,7 @@
             "bsonType": "string"
         },
         "updatedAt": {
-            "bsonType": "timestamp"
+            "bsonType": "date"
         }
     },
     "required": [
