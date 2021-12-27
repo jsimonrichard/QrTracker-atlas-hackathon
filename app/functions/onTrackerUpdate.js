@@ -11,11 +11,11 @@ exports = async function(changeEvent) {
 
   // Get subscriptions
   var subscription_collection = context.service("mongodb-atlas").db("QrTRackerDB").collection("subscription");
-  var subscriptions = await subscription_collection.find({ trackerId: context.documentKey._id });
+  var subscriptions = await subscription_collection.find({ tracker: context.documentKey._id });
 
   // Delete subscriptions if the tracker has been deleted
   if(changeEvent.operationType == "delete") {
-    await subscription_collection.deleteMany({ trackerId: context.documentKey._id});
+    await subscription_collection.deleteMany({ tracker: context.documentKey._id});
   }
 
 
