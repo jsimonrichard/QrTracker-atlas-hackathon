@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { FormGroup, Alert } from '@blueprintjs/core';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AppContext } from "..";
 
 
-export default function SignUp({ app }) {
+export default function SignUp() {
+  const app = useContext(AppContext);
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");

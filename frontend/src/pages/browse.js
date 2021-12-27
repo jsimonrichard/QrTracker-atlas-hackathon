@@ -1,4 +1,4 @@
-export default function Browse({ app }) {
+export default function Browse() {
   return (
     <div className="content">
         

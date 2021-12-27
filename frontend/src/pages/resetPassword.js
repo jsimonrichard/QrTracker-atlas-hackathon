@@ -1,9 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { FormGroup, Alert } from '@blueprintjs/core';
-import { useState } from 'react';
-import * as Realm from 'realm-web';
+import { useContext, useState } from 'react';
+import { AppContext } from '..';
 
-export default function ResetPassword({ app }) {
+export default function ResetPassword() {
+  const app = useContext(AppContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [alertMessage, setAlertMessage] = useState("");
   const [alertIntent, setAlertIntent] = useState("");

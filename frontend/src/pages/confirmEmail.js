@@ -1,7 +1,9 @@
 import { ButtonLink } from "../components/basic";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { AppContext } from "..";
 
-export default function ConfirmEmail({ app }) {
+export default function ConfirmEmail() {
+  const app = useContext(AppContext);
   const urlParams = new URLSearchParams(window.location.search);
   const [message, setMessage] = useState("Loading...");
 

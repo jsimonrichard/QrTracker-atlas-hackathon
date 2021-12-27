@@ -1,10 +1,12 @@
 import { useForm } from 'react-hook-form';
 import { FormGroup, Alert } from '@blueprintjs/core';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import * as Realm from 'realm-web';
+import { AppContext } from '..';
 
-export default function Login({ app, setUser }) {
+export default function Login({ setUser }) {
+  const app = useContext(AppContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
