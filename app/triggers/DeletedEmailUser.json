@@ -1,6 +1,6 @@
 {
     "id": "61d21e9e649f5fc55f3ccd3a",
-    "name": "DeltedEmailUser",
+    "name": "DeletedEmailUser",
     "type": "AUTHENTICATION",
     "config": {
         "operation_type": "DELETE",

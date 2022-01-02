@@ -1,10 +1,14 @@
 [
     {
-        "name": "sendWelcomeEmail",
+        "name": "sendGoodbyeEmail",
         "private": true
     },
     {
-        "name": "onSubscriptionUpdate",
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -12,15 +16,7 @@
         "private": false
     },
     {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "sendResetPasswordEmail",
+        "name": "sendWelcomeEmail",
         "private": true
     },
     {
@@ -28,11 +24,15 @@
         "private": true
     },
     {
-        "name": "deleteUsersItems",
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "resetPassword",
         "private": false
     },
     {
-        "name": "sendGoodbyeEmail",
-        "private": true
+        "name": "deleteUsersItems",
+        "private": false
     }
 ]
