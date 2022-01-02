@@ -1,27 +1,28 @@
 {
-    "id": "61be1faf56c6371c95d001b5",
-    "name": "TrackerUpdate",
+    "id": "61be1faf56c6371c95d001b4",
+    "name": "UpdatedSubscription",
     "type": "DATABASE",
     "config": {
         "operation_types": [
+            "INSERT",
             "UPDATE",
             "DELETE",
             "REPLACE"
         ],
         "database": "QrTrackerDB",
-        "collection": "tracker",
+        "collection": "subscription",
         "service_name": "mongodb-atlas",
         "match": {},
         "project": {},
         "full_document": true,
         "full_document_before_change": true,
-        "unordered": true
+        "unordered": false
     },
     "disabled": false,
     "event_processors": {
         "FUNCTION": {
             "config": {
-                "function_name": "onTrackerUpdate"
+                "function_name": "onSubscriptionUpdate"
             }
         }
     }
