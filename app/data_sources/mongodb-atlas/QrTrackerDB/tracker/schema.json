@@ -83,8 +83,6 @@
         "status",
         "history",
         "ownerId",
-        "createdAt",
-        "updatedAt",
         "public",
         "allowAnyoneToUpdateStatus"
     ],
