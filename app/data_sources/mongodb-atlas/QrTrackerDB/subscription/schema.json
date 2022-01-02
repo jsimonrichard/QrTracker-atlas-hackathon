@@ -7,6 +7,9 @@
         "anonymous": {
             "bsonType": "bool"
         },
+        "createdAt": {
+            "bsonType": "date"
+        },
         "subscriberId": {
             "bsonType": "objectId"
         },
@@ -26,9 +29,6 @@
         },
         "tracker": {
             "bsonType": "objectId"
-        },
-        "createdAt": {
-            "bsonType": "date"
         },
         "updatedAt": {
             "bsonType": "date"
