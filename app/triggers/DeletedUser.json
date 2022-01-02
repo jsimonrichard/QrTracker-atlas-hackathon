@@ -1,6 +1,6 @@
 {
     "id": "61be1faf56c6371c95d001b3",
-    "name": "CleanSubscriptionsOnUserDelete",
+    "name": "DeletedUser",
     "type": "AUTHENTICATION",
     "config": {
         "operation_type": "DELETE",

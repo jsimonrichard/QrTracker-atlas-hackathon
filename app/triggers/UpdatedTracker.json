@@ -1,6 +1,6 @@
 {
     "id": "61be1faf56c6371c95d001b5",
-    "name": "TrackerUpdate",
+    "name": "UpdatedTracker",
     "type": "DATABASE",
     "config": {
         "operation_types": [

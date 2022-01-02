@@ -1,19 +1,18 @@
 {
-    "id": "61bfff87d42f78a900ed3970",
-    "name": "Goodbye",
+    "id": "61beaeca25e80f136b10a5f0",
+    "name": "CreatedUser",
     "type": "AUTHENTICATION",
     "config": {
-        "operation_type": "DELETE",
+        "operation_type": "CREATE",
         "providers": [
-            "local-userpass",
-            "oauth2-google"
+            "local-userpass"
         ]
     },
     "disabled": false,
     "event_processors": {
         "FUNCTION": {
             "config": {
-                "function_name": "sendGoodbyeEmail"
+                "function_name": "sendWelcomeEmail"
             }
         }
     }

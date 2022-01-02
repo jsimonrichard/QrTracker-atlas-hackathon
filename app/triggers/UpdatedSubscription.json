@@ -1,6 +1,6 @@
 {
     "id": "61be1faf56c6371c95d001b4",
-    "name": "SubscriptionUpdate",
+    "name": "UpdateSubscription",
     "type": "DATABASE",
     "config": {
         "operation_types": [

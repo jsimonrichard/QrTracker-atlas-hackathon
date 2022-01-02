@@ -1,18 +1,19 @@
 {
-    "id": "61beaeca25e80f136b10a5f0",
-    "name": "Welcome",
+    "id": "61bfff87d42f78a900ed3970",
+    "name": "DeltedEmailUser",
     "type": "AUTHENTICATION",
     "config": {
-        "operation_type": "CREATE",
+        "operation_type": "DELETE",
         "providers": [
-            "local-userpass"
+            "local-userpass",
+            "oauth2-google"
         ]
     },
     "disabled": false,
     "event_processors": {
         "FUNCTION": {
             "config": {
-                "function_name": "sendWelcomeEmail"
+                "function_name": "sendGoodbyeEmail"
             }
         }
     }
