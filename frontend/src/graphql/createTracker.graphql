@@ -1,0 +1,5 @@
+mutation CreateTracker($tracker: TrackerInput) {
+  insertOneTracker(data: $tracker) {
+    _id
+  }
+}

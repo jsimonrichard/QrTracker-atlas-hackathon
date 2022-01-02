@@ -7,6 +7,7 @@
     "@blueprintjs/core": "^3.52.0",
     "@blueprintjs/icons": "^3.31.0",
     "graphql": "^16.2.0",
+    "graphql.macro": "^1.4.2",
     "node-sass": "^7.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

@@ -1,13 +1,16 @@
-import { Icon } from "@blueprintjs/core";
-import { useEffect } from "react";
+import { Icon, NonIdealState, Spinner } from "@blueprintjs/core";
+import { useQuery } from "@apollo/client";
 import { Link } from 'wouter';
+import { loader } from 'graphql.macro';
+import { useContext } from "react";
+import { AppContext } from "../..";
 
-function TrackerItem({ title, status, updatedAt}) {
+function TrackerItem({ tracker }) {
   return (
     <div className="tracker-list-item">
-      <h4>{title}</h4>
+      <h4>{tracker.title}</h4>
       <div>
-        {updatedAt} - {status.title}
+        {tracker.updatedAt} - {tracker.status.title}
       </div>
     </div>
   )
@@ -23,26 +26,53 @@ function AddTrackerLink({ href }) {
   )
 }
 
-export default function Dashboard({ app, user }) {
-  
-  // Run on mount
-  useEffect({
-    // Get subscriptions
-    
-  }, []);
+export default function Dashboard({ user }) {
+  const app = useContext(AppContext);
+  const { loading, error, data } = useQuery(loader('../../graphql/dashboardQuery.graphql'), {
+    variables: {
+      userId: app.currentUser.id
+    }
+  });
 
-  return (
-    <div className="content">
-      <h1>Your Subscriptions</h1>
-      <div className="tracker-list">
-        <TrackerItem title="My Tracker" updatedAt={"Jan 16th"} status={{title: "Moved to chicago"}} />
-        <AddTrackerLink href="/browse"/>
+  if(loading) {
+    return (
+      <div className="content">
+        <Spinner className="tall-spinner"/>
       </div>
+    );
+  } else if(error) {
+    console.log(error);
+    return (
+      <div className="content">
+        <NonIdealState
+          icon="error"
+          title="An error occured"
+          description={error.error}/>
+      </div>
+    )
+  } else {
+    return (
+      <div className="content">
+        <h1>Your Subscriptions</h1>
+        <div className="tracker-list">
 
-      <h1>Your Trackers</h1>
-      <div className="tracker-list">
-        <AddTrackerLink href="/create" />
+          {data.subscriptions.forEach(subscription => 
+            <TrackerItem tracker={subscription.tracker}/>
+          )}
+
+          <AddTrackerLink href="/browse"/>
+        </div>
+
+        <h1>Your Trackers</h1>
+        <div className="tracker-list">
+
+          {data.trackers.forEach(tracker => 
+            <TrackerItem tracker={tracker} />
+          )}
+
+          <AddTrackerLink href="/create" />
+        </div>
       </div>
-    </div>
-  );
+    )
+  }
 }

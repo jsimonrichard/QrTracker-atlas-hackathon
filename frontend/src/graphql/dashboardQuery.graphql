@@ -1,0 +1,19 @@
+query GetOwnedTrackers($userId: ObjectId!) {
+  trackers(query: {ownerId: $userId}) {
+    title
+    status {
+      title
+    }
+    updatedAt
+  }
+
+  subscriptions(query: {subscriberId: $userId}) {
+    tracker {
+      title
+      status {
+        title
+      }
+      updatedAt
+    }
+  }
+}
