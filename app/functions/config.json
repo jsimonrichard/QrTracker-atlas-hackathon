@@ -38,9 +38,5 @@
     {
         "name": "onTrackerUpdate",
         "private": true
-    },
-    {
-        "name": "onTrackerCreation",
-        "private": false
     }
 ]
