@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { FormGroup, Alert } from '@blueprintjs/core';
 import { useContext, useState } from 'react';
 import { AppContext } from "..";
+import { Confirmation, EmailInput, PasswordInput, Submit } from "../components/form";
 
 
 export default function SignUp() {
@@ -38,60 +39,37 @@ export default function SignUp() {
         <h1>Sign Up</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormGroup label="Email" labelInfo="(required)"
-              intent={errors.email ? "danger" : ""}
-              helperText={errors.email ?
-                (errors.email.type === "required" ? "Email is required" : "Invalid Email")
-                : ""}>
-            <div className="bp3-input-group bp3-large">
-              <input className="bp3-input"
-                {...register("email", {
-                  required: true,
-                  pattern: /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/i
-                })}
-                placeholder="johndoe1234@gmail.com"/>
-            </div>
-          </FormGroup>
+          <EmailInput name="email"
+            label="Email"
+            placeholder="johndoe1234@gmail.com"
+            labelInfo="(required)"
+            required={true}
+            register={register}
+            errors={errors} />
+          
+          <PasswordInput name="password"
+            label="Password"
+            placeholder="Enter your password..."
+            labelInfo="(required)"
+            required={true}
+            minLength={6}
+            maxLength={128}
+            register={register}
+            errors={errors} />
+          
+          <Confirmation name="password_confirmation"
+            label="Password Confirmation"
+            type="password"
+            labelInfo="(required)"
+            placeholder="Enter the same password again..."
+            required={true}
+            register={register}
+            errors={errors}
+            watch={watch}
+            watching={"password"}
+            watchingLabel="Password" />
 
-          <FormGroup label="Password" labelInfo="(required)"
-            intent={errors.password ? "danger": ""}
-            helperText={errors.password ? 
-              (errors.password.type === "required" ? "Password is required" : "Password must be between 6 and 128 characters")
-              : ""}>
-            <div className="bp3-input-group bp3-large">
-              <input
-                className="bp3-input"
-                {...register("password", {
-                  required: true,
-                  maxLength: 128,
-                  minLength: 6
-                })}
-                placeholder="Enter your password..."
-              type="password"/>
-            </div>
-          </FormGroup>
-
-          <FormGroup label="Password Confirmation" labelInfo="(required)"
-            intent={errors.password_confirmation ? "danger" : ""}
-            helperText={errors.password_confirmation ?
-              (errors.password?.type === "required" ? "Password Confirmation is required" : "Passwords don't match")
-              : ""}>
-            <div className="bp3-input-group bp3-large">
-              <input
-                className="bp3-input"
-                {...register("password_confirmation", {
-                  required: true,
-                  validate: value => value === watch("password")
-                })}
-                placeholder="Enter the same password again..."
-                type="password"/>
-            </div>
-          </FormGroup>
-
-          <div className="text-center">
-            <input type="submit" className="button brand2" value={loading ? "Loading..." : "Sign Up"}/>
-
-          </div>
+          <Submit text="Sign Up" loading={loading} />
         </form>
       </div>
 

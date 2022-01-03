@@ -204,6 +204,10 @@ footer {
   .text-center {
     text-align: center;
   }
+
+  .text-right {
+    text-align: right;
+  }
 }
 
 a {
@@ -368,4 +372,8 @@ p {
       background-color: darken($offwhite, 8%);
     }
   }
+}
+
+textarea {
+  width: 100%;
 }

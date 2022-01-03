@@ -4,13 +4,14 @@ import { useContext, useState } from 'react';
 import { Link, useLocation } from 'wouter';
 import * as Realm from 'realm-web';
 import { AppContext } from '..';
+import { EmailInput, PasswordInput, Submit } from '../components/form';
 
 export default function Login({ setUser }) {
   const app = useContext(AppContext);
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
-  const [location, setLocation] = useLocation();
+  const [_, setLocation] = useLocation();
 
   const onSubmit = data => {
     setLoading(true);
@@ -35,42 +36,25 @@ export default function Login({ setUser }) {
         <h1>Log In</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <FormGroup label="Email"
-              intent={errors.email ? "danger" : ""}
-              helperText={errors.email ?
-                (errors.email.type === "required" ? "Email is required" : "Invalid Email")
-                : ""}>
-            <div className="bp3-input-group bp3-large">
-              <input className="bp3-input"
-                {...register("email", {
-                  required: true,
-                  pattern: /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/i
-                })}
-                placeholder="johndoe1234@gmail.com"/>
-            </div>
-          </FormGroup>
+          <EmailInput
+            name="email"
+            label="Email"
+            placeholder="johndoe1234@gmail.com"
+            required={true}
+            register={register}
+            errors={errors}/>
 
-          <FormGroup label="Password"
-            intent={errors.password ? "danger": ""}
-            helperText={errors.password ? 
-              (errors.password.type === "required" ? "Password is required" : "Password must be between 6 and 128 characters")
-              : ""}>
-            <div className="bp3-input-group bp3-large">
-              <input
-                className="bp3-input"
-                {...register("password", {
-                  required: true
-                })}
-                placeholder="Enter your password..."
-              type="password"/>
-            </div>
-          </FormGroup>
+          <PasswordInput
+            name="password"
+            label="Password"
+            placeholder="Enter your password..."
+            required={true}
+            register={register}
+            errors={errors}/>
 
           <Link href="/resetPassword" style={{fontSize: "0.9rem"}}>Forgot your password? Reset it here</Link>
 
-          <div className="text-center">
-            <input type="submit" className="button brand2" value={loading ? "Loading..." : "Log In"}/>
-          </div>
+          <Submit text="Log In" loading={loading} />
         </form>
       </div>
 

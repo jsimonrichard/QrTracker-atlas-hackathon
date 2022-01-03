@@ -7,3 +7,11 @@ export function ButtonLink(props) {
     </Link>
   );
 }
+
+export function Button({onClick, brand="brand2", className="", children}) {
+  return (
+    <button onClick={onClick} className={["button", brand, className].join(" ")}>
+      {children}
+    </button>
+  )
+}
