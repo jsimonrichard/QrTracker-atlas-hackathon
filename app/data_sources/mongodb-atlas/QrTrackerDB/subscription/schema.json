@@ -38,9 +38,7 @@
         "_id",
         "tracker",
         "targets",
-        "anonymous",
-        "createdAt",
-        "updatedAt"
+        "anonymous"
     ],
     "title": "subscription"
 }
