@@ -54,7 +54,10 @@ export default function Login({ setUser }) {
 
           <Link href="/resetPassword" style={{fontSize: "0.9rem"}}>Forgot your password? Reset it here</Link>
 
-          <Submit text="Log In" loading={loading} />
+
+          <div className="text-center">
+            <Submit text="Log In" loading={loading} />
+          </div>
         </form>
       </div>
 

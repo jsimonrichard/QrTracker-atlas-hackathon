@@ -30,6 +30,7 @@ export function TextInput({name, type, label, labelInfo, placeholder, formHook, 
   )
 }
 
+export const EMAIL_REGEX = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/i;
 
 export function EmailInput({
   name, type, label, labelInfo, placeholder,
@@ -47,7 +48,7 @@ export function EmailInput({
       
       formHook={register(name, {
         required,
-        pattern: /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/i
+        pattern: EMAIL_REGEX
       })}/>
   )
 }
@@ -108,11 +109,12 @@ export function Confirmation({
 }
 
 
-export function Submit({ text, loading }) {
+export function Submit(props) {
   return (
-    <div className="text-center">
-      <input type="submit" className="button brand2" value={loading ? "Loading..." : text}/>
-    </div>
+    <input {...props}
+      type="submit"
+      className={classNames("button", "brand1", props.className)}
+      value={props.loading ? "Loading..." : props.text}/>
   )
 }
 

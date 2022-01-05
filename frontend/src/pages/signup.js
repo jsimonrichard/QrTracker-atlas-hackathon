@@ -69,7 +69,10 @@ export default function SignUp() {
             watching={"password"}
             watchingLabel="Password" />
 
-          <Submit text="Sign Up" loading={loading} />
+
+          <div className="text-center">
+            <Submit text="Sign Up" loading={loading} />
+          </div>
         </form>
       </div>
 

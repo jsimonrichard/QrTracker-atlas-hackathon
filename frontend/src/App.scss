@@ -224,6 +224,12 @@ p {
   margin-bottom: 0.5rem;
 }
 
+.small-paragraph {
+  text-indent: 1em;
+  margin-top: 0.3rem;
+  font-size: 1rem;
+}
+
 .footnotes {
   font-size: 0.9rem;
   opacity: 0.8;
@@ -376,4 +382,57 @@ p {
 
 textarea {
   width: 100%;
+  resize: vertical;
+}
+
+
+.table-wrapper {
+  margin-bottom: 5rem;
+
+  h3 {
+    margin-bottom: 0.1rem;
+  }
+}
+
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+
+  thead {
+    border-bottom: 1px solid black;
+
+    th {
+      text-align: left;
+    }
+  }
+}
+
+.bp3-dialog {
+  padding: 0px;
+}
+
+.dialog-content-wrapper {
+  padding: 1rem;
+
+  .button-wrapper {
+    text-align: right;
+    margin-top: 0.5rem;
+  }
+}
+
+.horizontal-grid-wrapper {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-auto-flow: column;
+}
+
+.popover-select-button {
+  width: 100%;
+  display: block;
+}
+
+.field-chooser {
+  border: 1px solid black;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }

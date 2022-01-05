@@ -3,7 +3,7 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "allowAnyoneToUpdateStatus": {
+        "updateStatusWithLink": {
             "bsonType": "bool"
         },
         "collaboratorIds": {
@@ -70,6 +70,27 @@
                 "title"
             ]
         },
+        "statusFields": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "object",
+                "properties": {
+                    "fieldName": {
+                        "bsonType": "string"
+                    },
+                    "fieldType": {
+                        "bsonType": "string"
+                    }
+                },
+                "required": [
+                    "fieldName",
+                    "fieldType"
+                ]
+            }
+        },
+        "statusTitleField": {
+            "bsonType": "string"
+        },
         "title": {
             "bsonType": "string"
         },
@@ -80,11 +101,11 @@
     "required": [
         "_id",
         "title",
-        "status",
-        "history",
         "ownerId",
+        "statusFields",
+        "statusTitleField",
         "public",
-        "allowAnyoneToUpdateStatus"
+        "updateStatusWithLink"
     ],
     "title": "tracker"
 }
