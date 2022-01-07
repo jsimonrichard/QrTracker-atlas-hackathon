@@ -15,7 +15,7 @@
             "additional_fields": {}
         },
         {
-            "name": "recipient",
+            "name": "role 2",
             "apply_when": {
                 "email": "%%user.data.email"
             },
