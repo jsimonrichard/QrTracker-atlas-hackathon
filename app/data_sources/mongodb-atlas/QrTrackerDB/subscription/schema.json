@@ -4,41 +4,20 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "anonymous": {
-            "bsonType": "bool"
-        },
         "createdAt": {
             "bsonType": "date"
         },
         "subscriberId": {
             "bsonType": "objectId"
         },
-        "targets": {
-            "bsonType": "object",
-            "properties": {
-                "email": {
-                    "bsonType": "array",
-                    "items": {
-                        "bsonType": "string",
-                        "pattern": "^([a-zA-Z0-9_\\-\\.]+)@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.)|(([a-zA-Z0-9\\-]+\\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\\]?)$"
-                    },
-                    "maxItems": 5,
-                    "minItems": 1
-                }
-            }
-        },
         "tracker": {
             "bsonType": "objectId"
-        },
-        "updatedAt": {
-            "bsonType": "date"
         }
     },
     "required": [
         "_id",
         "tracker",
-        "targets",
-        "anonymous"
+        "subscriberId"
     ],
     "title": "subscription"
 }
