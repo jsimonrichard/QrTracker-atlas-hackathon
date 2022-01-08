@@ -1,35 +1,53 @@
-import { useForm } from 'react-hook-form';
-import { Switch, Button, Dialog, InputGroup, FormGroup, TagInput, Collapse } from '@blueprintjs/core';
+import {
+  Switch,
+  Button,
+  Dialog,
+  InputGroup,
+  FormGroup,
+  TagInput,
+  TextArea,
+  Alert
+} from '@blueprintjs/core';
 import { Select } from '@blueprintjs/select';
-import { useEffect, useState } from 'react';
-import { EMAIL_REGEX, TextArea, TextInput } from '../../components/form';
+import { useContext, useState } from 'react';
+import { loader } from "graphql.macro";
+import { useMutation } from '@apollo/client';
+import { EMAIL_REGEX } from '../../components/form';
 
 import ShortString from '../../components/status/types/short_string';
 import LongString from '../../components/status/types/long_string';
 import Location from '../../components/status/types/location';
 import { TYPES_LIST } from '../../components/status/types/types';
+import { useLocation } from 'wouter';
+import { AppContext } from '../..';
 
 
 function PageOne({
-  isVisible, register, errors, public_, setPublic, trigger, setPage
+  isVisible, title, setTitle, description, setDescription,
+  public_, setPublic, setPage
 }) {
+  const [titleError, setTitleError] = useState("");
+
   return (
     <div style={{display: isVisible ? "inherit" : "none"}}>
       <h1>Create a Tracker</h1>
 
-      <TextInput name="title"
-        label="Title"
-        placeholder="Write a descriptive title here..."
-        formHook={register("title", {
-          required: true
-        })}
-        errors={errors}/>
+      <FormGroup label="Title" labelInfo="(required)"
+        intent={titleError ? "danger": ""}
+        helperText={titleError}>
+        <InputGroup
+          large={true}
+          placeholder="Write a descriptive title here..."
+          value={title}
+          onChange={event => setTitle(event.target.value)}/>
+      </FormGroup>
       
-      <TextArea name="description"
-        label="Description"
-        placeholder="Add some more details..."
-        formHook={register("description")}
-        errors={errors}/>
+      <FormGroup label="Description">
+        <TextArea placeholder='Add some more details...'
+          large={true}
+          value={description}
+          onChange={event => setDescription(event.target.value)}/>
+      </FormGroup>
       
       <Switch checked={public_}
         large={true}
@@ -43,11 +61,12 @@ function PageOne({
           large={true}
           rightIcon='arrow-right'
           onClick={()=>{
-            trigger(["title", "description"]).then(result => {
-              if(result) {
-                setPage(2);
-              }
-            })
+            if(title) {
+              setTitleError("");
+              setPage(2);
+            } else {
+              setTitleError("Title is required")
+            }
           }}>
           Next
         </Button>
@@ -57,7 +76,7 @@ function PageOne({
 }
 
 
-function AddCustom({included, setIncluded}) {
+function AddCustom({fields, setFields}) {
   const [isOpen, setIsOpen] = useState(false);
   const [nameError, setNameError] = useState("");
 
@@ -114,10 +133,10 @@ function AddCustom({included, setIncluded}) {
               intent="primary"
               large={true}
               onClick={() => {
-                if(included.filter(({fieldName}) => fieldName === name).length !== 0) {
+                if(fields.filter(({fieldName}) => fieldName === name).length !== 0) {
                   setNameError("Field name already exists");
                 } else {
-                  setIncluded(included.concat({
+                  setFields(fields.concat({
                     fieldName: name,
                     fieldType: typeName
                   }));
@@ -136,10 +155,8 @@ function AddCustom({included, setIncluded}) {
 
 
 function PageTwo({
-  isVisible, updateStatusWithLink, setUpdateStatusWithLink,
-  includedFields, setIncludedFields,
-  atAGlanceField, setAtAGlanceField,
-  setPage
+  isVisible, statusFields, setStatusFields,
+  atAGlanceField, setAtAGlanceField, setPage
 }) {
   const DEFAULT_FIELDS = [
     {fieldName: "Title", fieldType: ShortString.NAME},
@@ -170,9 +187,9 @@ function PageTwo({
             </thead>
 
             <tbody>
-              {includedFields.length == 0 ? 
+              {statusFields.length == 0 ? 
               <tr><td className='text-center' colSpan="3">None</td></tr> :
-              includedFields.map(({fieldName, fieldType}, index) => {
+              statusFields.map(({fieldName, fieldType}, index) => {
                 return <tr key={index}>
                   <td>{fieldName}</td>
                   <td>{fieldType}</td>
@@ -180,7 +197,7 @@ function PageTwo({
                   <td style={{textAlign: "right"}}>
                     <Button icon='minus' outlined={true} onClick={() => {
                       // Remove from included
-                      setIncludedFields(includedFields => includedFields.filter((_, i) => i != index));
+                      setStatusFields(fields => fields.filter((_, i) => i != index));
 
                       // Check if it's the at a glance field
                       if(atAGlanceField.fieldName == fieldName) {
@@ -196,7 +213,7 @@ function PageTwo({
             </tbody>
           </table>
 
-          <AddCustom included={includedFields} setIncluded={setIncludedFields}/>
+          <AddCustom field={statusFields} setField={setStatusFields}/>
         </div>
 
         <div className='table-wrapper'>
@@ -227,7 +244,7 @@ function PageTwo({
                         setExcluded(excluded => excluded.filter((_, i) => i != index))
 
                         // Add to included
-                        includedFields.push({fieldName, fieldType});
+                        statusFields.push({fieldName, fieldType});
                       }} />
                   </td>
                 </tr>
@@ -243,7 +260,7 @@ function PageTwo({
         helperText={atAGlanceError}
         intent={atAGlanceError ? "danger" : ""}>
           <Select
-            items={includedFields}
+            items={statusFields}
             itemRenderer={(item, {handleClick}) => (
               <Button
                 onClick={event => {
@@ -256,13 +273,13 @@ function PageTwo({
               </Button>
             )}
             filterable={false}
-            disabled={!includedFields.length}>
+            disabled={!statusFields.length}>
               <Button
                 large={true}
                 text={atAGlanceField ? atAGlanceField.fieldName : "Select"}
                 style={{width: "100%"}}
                 rightIcon="double-caret-vertical"
-                disabled={!includedFields.length}/>
+                disabled={!statusFields.length}/>
           </Select>
       </FormGroup>
 
@@ -301,10 +318,9 @@ function PageTwo({
 }
 
 
-/* TODO: Write first status */
 function PageThree({
   isVisible, setPage, updateStatusWithLink, setUpdateStatusWithLink, collaborators,
-  setCollaborators, loading, submit
+  setCollaborators, loading, onSubmit
 }) {
   return (
     <div style={{display: isVisible ? "inherit" : "none"}}>
@@ -348,9 +364,10 @@ function PageThree({
             intent="primary"
             outlined={true}
             large={true}
+            loading={loading}
             style={{float: "right"}}
             onClick={()=>{
-              submit();
+              onSubmit();
             }}>
             Submit
           </Button>
@@ -361,25 +378,64 @@ function PageThree({
 
 
 export default function CreateTracker({ user }) {
+  const app = useContext(AppContext);
+
   const [page, setPage] = useState(1);
+  const [_, setLocation] = useLocation();
 
-  const { register, trigger, handleSubmit, formState: { errors } } = useForm();
   const [public_, setPublic] = useState(true);
-
-  const [includedFields, setIncludedFields] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [statusFields, setStatusFields] = useState([]);
   const [atAGlanceField, setAtAGlanceField] = useState("");
   const [updateStatusWithLink, setUpdateStatusWithLink] = useState(false);
   const [collaborators, setCollaborators] = useState([]);
 
   const [loading, setLoading] = useState(false);
-  const [alertMessage, setAlertMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const [createTracker] = useMutation(loader("../../graphql/createTracker.graphql"), {
+    variables: {
+      tracker: {
+        title,
+        description,
+        statusFields,
+        atAGlanceField,
+        updateStatusWithLink,
+        ownerId: app.currentUser.id
+      }
+    }
+  });
 
   const onSubmit = data => {
+    setLoading(true);
+
     // Call apollo api
+    createTracker().then(_id => {
+      console.log(_id);
 
-    // Send collaborator emails
+      // Send collaborator emails
+      app.currentUser.functions.inviteCollaborators(
+        collaborators.filter(email => EMAIL_REGEX.text(email)),
+        _id
+      ).then(() => {
+        setLoading(false);
+        
+        // Go to tracker page
+        setLocation(`/tracker/${_id}`);
 
-    // Go to tracker page
+      }).catch(error => {
+        setLoading(false);
+
+        console.log(error);
+        setErrorMessage(error.error);
+      });
+    }).catch(error => {
+      setLoading(false);
+      
+      console.log(error);
+      setErrorMessage(error.error);
+    });
   }
 
   return (
@@ -387,33 +443,31 @@ export default function CreateTracker({ user }) {
       <div className="center-content">
         <form>
           <PageOne isVisible={page==1}
-            register={register}
-            errors={errors}
             public_={public_}
+            title={title}
+            setTitle={setTitle}
+            description={description}
+            setDescription={setDescription}
             setPublic={setPublic}
-            trigger={trigger}
             setPage={setPage}/>
 
           <PageTwo isVisible={page==2}
-            register={register}
-            errors={errors}
-            includedFields={includedFields}
-            setIncludedFields={setIncludedFields}
+            statusFields={statusFields}
+            setStatusFields={setStatusFields}
             atAGlanceField={atAGlanceField}
             setAtAGlanceField={setAtAGlanceField}
-            trigger={trigger}
             setPage={setPage}/>
           
           <PageThree isVisible={page==3}
-            register={register}
-            errors={errors}
             setPage={setPage}
             collaborators={collaborators}
             setCollaborators={setCollaborators}
             updateStatusWithLink={updateStatusWithLink}
             setUpdateStatusWithLink={setUpdateStatusWithLink}
-            submit={handleSubmit(onSubmit)}
+            onSubmit={onSubmit}
             loading={loading}/>
+          
+          <Alert isOpen={errorMessage} onClose={() => setErrorMessage("")}/>
         </form>
       </div>
     </div>

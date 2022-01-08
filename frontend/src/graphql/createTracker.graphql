@@ -1,4 +1,4 @@
-mutation CreateTracker($tracker: TrackerInput) {
+mutation CreateTracker($tracker: TrackerInsertInput) {
   insertOneTracker(data: $tracker) {
     _id
   }
