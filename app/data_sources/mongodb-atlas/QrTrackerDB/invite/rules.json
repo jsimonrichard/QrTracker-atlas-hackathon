@@ -1,0 +1,28 @@
+{
+    "collection": "invite",
+    "database": "QrTrackerDB",
+    "roles": [
+        {
+            "name": "owner",
+            "apply_when": {
+                "senderId": "%%user.id"
+            },
+            "read": true,
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {}
+        },
+        {
+            "name": "role 2",
+            "apply_when": {
+                "email": "%%user.data.email"
+            },
+            "insert": false,
+            "delete": false,
+            "search": true,
+            "additional_fields": {}
+        }
+    ]
+}

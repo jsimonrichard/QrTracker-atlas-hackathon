@@ -3,7 +3,7 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "updateStatusWithLink": {
+        "allowAnyoneToUpdateStatus": {
             "bsonType": "bool"
         },
         "collaboratorIds": {
@@ -101,11 +101,11 @@
     "required": [
         "_id",
         "title",
+        "status",
+        "history",
         "ownerId",
-        "statusFields",
-        "statusTitleField",
         "public",
-        "updateStatusWithLink"
+        "allowAnyoneToUpdateStatus"
     ],
     "title": "tracker"
 }

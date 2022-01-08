@@ -3,13 +3,6 @@
     "type": "mongodb-atlas",
     "config": {
         "clusterName": "Cluster0",
-        "namespacePreimageConfigs": [
-            {
-                "collectionName": "subscription",
-                "dbName": "QrTrackerDB",
-                "recordPreimages": true
-            }
-        ],
         "readPreference": "primary",
         "wireProtocolEnabled": false
     },
