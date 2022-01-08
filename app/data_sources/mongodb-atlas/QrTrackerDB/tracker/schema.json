@@ -3,8 +3,8 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "updateStatusWithLink": {
-            "bsonType": "bool"
+        "atAGlanceField": {
+            "bsonType": "string"
         },
         "collaboratorIds": {
             "bsonType": "array",
@@ -88,11 +88,11 @@
                 ]
             }
         },
-        "atAGlanceField": {
-            "bsonType": "string"
-        },
         "title": {
             "bsonType": "string"
+        },
+        "updateStatusWithLink": {
+            "bsonType": "bool"
         },
         "updatedAt": {
             "bsonType": "date"
