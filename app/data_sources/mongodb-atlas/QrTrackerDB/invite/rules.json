@@ -3,7 +3,7 @@
     "database": "QrTrackerDB",
     "roles": [
         {
-            "name": "owner",
+            "name": "sender",
             "apply_when": {
                 "senderId": "%%user.id"
             },
@@ -15,7 +15,7 @@
             "additional_fields": {}
         },
         {
-            "name": "role 2",
+            "name": "recipient",
             "apply_when": {
                 "email": "%%user.data.email"
             },
