@@ -1,29 +1,5 @@
 [
     {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
-        "name": "acceptInvitation",
-        "private": false
-    },
-    {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "inviteCollaborators",
-        "private": false
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
         "name": "sendWelcomeEmail",
         "private": true
     },
@@ -40,11 +16,40 @@
         "private": true
     },
     {
+        "name": "acceptInvitation",
+        "private": false
+    },
+    {
+        "name": "inviteCollaborators",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
         "name": "deleteUsersItems",
         "private": false
     },
     {
+        "name": "getGoogleAPIKey",
+        "private": false
+    },
+    {
         "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
         "private": true
     }
 ]
