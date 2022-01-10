@@ -7,30 +7,11 @@
             "apply_when": {
                 "subscriberId": "%%user.id"
             },
-            "fields": {
-                "_id": {},
-                "tracker": {}
-            },
             "read": true,
             "write": true,
             "insert": true,
             "delete": true,
             "search": true,
-            "additional_fields": {}
-        },
-        {
-            "name": "anonymous",
-            "apply_when": {
-                "anonymous": true
-            },
-            "fields": {
-                "_id": {},
-                "tracker": {}
-            },
-            "write": true,
-            "insert": true,
-            "delete": true,
-            "search": false,
             "additional_fields": {}
         }
     ]
