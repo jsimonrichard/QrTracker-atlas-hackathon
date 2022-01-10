@@ -19,30 +19,30 @@ exports = async function(emails, tracker_id) {
   // Loop through each email address
   emails.forEach(email => {
     // Create invite
-    let invite_id = await invite_collection.insertOne({
+    invite_collection.insertOne({
       email: email,
       tracker: tracker_id,
       senderId: context.user.id
+    }).then(invite_id => {
+      var inviteLink = `https://${context.values.get("domainName")}/acceptInvitation?invite=${encodeURIComponent(invite_id)}`;
+
+      // Send message
+      courier.send({
+        brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
+        eventId: "RY3D9578YE4122MVDT6R5R7STG4B",
+        recipientId: email,
+        profile: {
+          email: email,
+        },
+        data: {
+          trackerName: tracker.title,
+          inviteLink: inviteLink
+        },
+        override: {},
+      }).then(({messageId})=>{
+        // Log confirmation
+        console.log("Message "+messageId+" sent");
+      });
     });
-
-    var inviteLink = `https://${context.values.get("domainName")}/acceptInvitation?invite=${encodeURIComponent(invite_id)}`;
-
-    // Send message
-    courier.send({
-      brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
-      eventId: "RY3D9578YE4122MVDT6R5R7STG4B",
-      recipientId: email,
-      profile: {
-        email: email,
-      },
-      data: {
-        trackerName: tracker.title,
-        inviteLink: inviteLink
-      },
-      override: {},
-    }).then(({messageId})=>{
-      // Log confirmation
-      console.log("Message "+messageId+" sent");
-    })
   });
 }
