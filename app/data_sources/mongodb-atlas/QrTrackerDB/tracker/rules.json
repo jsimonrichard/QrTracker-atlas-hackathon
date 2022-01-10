@@ -49,9 +49,7 @@
         {
             "name": "collaborator",
             "apply_when": {
-                "%%user.id": {
-                    "$in": "collaboratorIds"
-                }
+                "collaboratorIds": "%%user.id"
             },
             "fields": {
                 "_id": {
@@ -90,7 +88,7 @@
                     "read": true
                 }
             },
-            "insert": false,
+            "insert": true,
             "delete": false,
             "search": true,
             "additional_fields": {}
@@ -138,7 +136,7 @@
                     "read": true
                 }
             },
-            "insert": false,
+            "insert": true,
             "delete": false,
             "search": true,
             "additional_fields": {}
@@ -185,7 +183,7 @@
                     "read": true
                 }
             },
-            "insert": false,
+            "insert": true,
             "delete": false,
             "search": false,
             "additional_fields": {}
@@ -229,7 +227,7 @@
                 }
             },
             "write": false,
-            "insert": false,
+            "insert": true,
             "delete": false,
             "search": true,
             "additional_fields": {}
