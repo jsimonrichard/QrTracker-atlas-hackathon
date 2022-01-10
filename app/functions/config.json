@@ -1,10 +1,18 @@
 [
     {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
         "name": "inviteCollaborators",
         "private": false
     },
     {
-        "name": "onSubscriptionUpdate",
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -12,12 +20,8 @@
         "private": true
     },
     {
-        "name": "sendConfirmationEmail",
+        "name": "deleteUsersItems",
         "private": false
-    },
-    {
-        "name": "onTrackerUpdate",
-        "private": true
     },
     {
         "name": "sendResetPasswordEmail",
@@ -32,19 +36,15 @@
         "private": false
     },
     {
-        "name": "deleteUsersItems",
-        "private": false
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
         "name": "confirmUser",
         "private": true
     },
     {
         "name": "sendGoodbyeEmail",
         "private": true
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
     }
 ]
