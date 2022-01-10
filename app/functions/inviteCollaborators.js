@@ -3,8 +3,8 @@ exports = async function(emails, tracker_id) {
   let tracker_collection = db.collection("tracker");
 
   let trackers = await tracker_collection.find();
-  for(let key in trackers) {
-    console.log(key, trackers[key])
+  for(tracker of trackers) {
+    console.log(tracker);
   }
 
   let tracker = await tracker_collection.findOne({_id: tracker_id});
