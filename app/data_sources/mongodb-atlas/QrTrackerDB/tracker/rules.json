@@ -49,6 +49,9 @@
         {
             "name": "collaborator",
             "apply_when": {
+                "collaboratorIds": {
+                    "$exists": true
+                },
                 "%%user.id": {
                     "$in": "collaboratorIds"
                 }
