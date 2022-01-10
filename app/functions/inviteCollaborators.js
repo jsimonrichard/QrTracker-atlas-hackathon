@@ -2,12 +2,8 @@ exports = async function(emails, tracker_id) {
 
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let tracker_collection = db.collection("tracker");
-
-  let trackers = await tracker_collection.find();
-
   let tracker = await tracker_collection.findOne({_id: BSON.ObjectId(tracker_id)});
 
-  console.log(JSON.stringify(tracker));
   if(context.user.id != tracker.ownerId) {
     console.log(context.user.id, tracker.ownerId);
     throw Error("Only owners can invite new collaborators");
@@ -23,6 +19,7 @@ exports = async function(emails, tracker_id) {
   // Loop through each email address
   emails.forEach(email => {
     // Create invite
+    console.log(context.user.id);
     invite_collection.insertOne({
       email: email,
       tracker: tracker_id,
@@ -47,10 +44,12 @@ exports = async function(emails, tracker_id) {
         // Log confirmation
         console.log("Message "+messageId+" sent");
       }).catch(error => {
-        throw error;
+        console.log(error);
+        throw Error(error);
       });
     }).catch(error => {
-      throw error;
+      console.log(error);
+      throw Error(error);
     })
   });
 }
