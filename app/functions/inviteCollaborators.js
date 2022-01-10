@@ -48,7 +48,9 @@ exports = async function(emails, tracker_id) {
         console.log("Message "+messageId+" sent");
       }).catch(error => {
         throw error;
-      })
-    });
+      });
+    }).catch(error => {
+      throw error;
+    })
   });
 }
