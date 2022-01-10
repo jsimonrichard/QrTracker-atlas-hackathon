@@ -1,5 +1,5 @@
 exports = async function(inviteId) {
-  let db = context.service("mongodb-atlas").db("QrTrackerDB");
+  let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let invite = db.collection("invite").findOne({_id: inviteId});
 
   if(context.user.data.email != invite.email) {

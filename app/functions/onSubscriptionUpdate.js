@@ -2,7 +2,7 @@ exports = async function(changeEvent) {
   // Check if the email field exists
   if(context.user.data.hasOwnProperty("email")) {
     // Get associated tracker
-    var trackers = context.service.get("mongodb-atlas").db("QrTrackerDB").collection("tracker");
+    var trackers = context.services.get("mongodb-atlas").db("QrTrackerDB").collection("tracker");
     var tracker = await trackers.findOne({ _id: changeEvent.fullDocument.trackerId });
 
 

@@ -31,7 +31,7 @@ async function sendUpdateTrackerEmail(subscriptions, message) {
 }
 
 async function setUpdateAt(tracker_id) {
-  var tracker_collection = context.service("mongodb-atlas").db("QrTrackerDB").collection("tracker");
+  var tracker_collection = context.services.get("mongodb-atlas").db("QrTrackerDB").collection("tracker");
   await tracker_collection.updateOne(
     {_id: tracker_id},
     {$set: {
@@ -67,7 +67,7 @@ exports = async function(changeEvent) {
   
   if(message != "") {
     // Get subscriptions
-    var subscription_collection = context.service("mongodb-atlas").db("QrTrackerDB").collection("subscription");
+    var subscription_collection = context.services.get("mongodb-atlas").db("QrTrackerDB").collection("subscription");
     var subscriptions = await subscription_collection.find({ tracker: context.documentKey._id });
 
     // Delete subscriptions if the tracker has been deleted
