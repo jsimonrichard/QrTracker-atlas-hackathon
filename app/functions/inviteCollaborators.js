@@ -19,7 +19,6 @@ exports = async function(emails, tracker_id) {
   // Loop through each email address
   emails.forEach(async email => {
     // Create invite
-    console.log(context.user.id);
     let inviteId = await invite_collection.insertOne({
       email: email,
       tracker: tracker_id,
