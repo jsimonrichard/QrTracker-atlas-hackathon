@@ -2,14 +2,9 @@ exports = async function(emails, tracker_id) {
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let tracker_collection = db.collection("tracker");
 
-  let trackers = await tracker_collection.find();
-  for(let tracker of trackers) {
-    console.log(tracker);
-  }
-
   let tracker = await tracker_collection.findOne({_id: tracker_id});
 
-  console.log(tracker);
+  console.log(JSON.stringify(tracker));
   if(context.user.id != tracker.ownerId) {
     console.log(context.user.id, tracker.ownerId);
     throw Error("Only owners can invite new collaborators");
