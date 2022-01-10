@@ -25,7 +25,7 @@ exports = async function(emails, tracker_id) {
       senderId: context.user.id
     });
 
-    console.log(results);
+    console.log(JSON.stringify(results));
 
     var inviteLink = `https://${context.values.get("domainName")}/acceptInvitation?invite=${encodeURIComponent(inviteId)}`;
 
