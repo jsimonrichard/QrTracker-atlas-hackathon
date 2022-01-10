@@ -2,8 +2,7 @@ exports = async function(emails, tracker_id) {
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let tracker_collection = db.collection("tracker");
 
-  console.log(tracker_id);
-  let tracker = await tracker_collection.findOne({_id: tracker_id});
+  let tracker = await tracker_collection.findOne({_id: new ObjectId(tracker_id)});
 
   console.log(JSON.stringify(tracker));
   if(context.user.id != tracker.ownerId) {
