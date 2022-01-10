@@ -4,6 +4,7 @@
     "roles": [
         {
             "name": "sender",
+            "apply_when": {},
             "read": true,
             "write": true,
             "insert": true,
