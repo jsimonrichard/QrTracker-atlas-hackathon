@@ -1,4 +1,6 @@
 exports = async function(emails, tracker_id) {
+  let { ObjectId } = require('bson');
+  
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let tracker_collection = db.collection("tracker");
 
