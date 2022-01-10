@@ -19,12 +19,11 @@ exports = async function(emails, tracker_id) {
   // Loop through each email address
   emails.forEach(async email => {
     // Create invite
-    let result = await invite_collection.insertOne({
+    let {_id: inviteId} = await invite_collection.insertOne({
       email: email,
       tracker: tracker_id,
       senderId: context.user.id
     });
-    console.log(result);
 
     var inviteLink = `https://${context.values.get("domainName")}/acceptInvitation?invite=${encodeURIComponent(inviteId)}`;
 

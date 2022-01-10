@@ -1,18 +1,22 @@
 [
     {
-        "name": "sendWelcomeEmail",
+        "name": "confirmUser",
         "private": true
     },
     {
-        "name": "sendConfirmationEmail",
-        "private": false
+        "name": "sendResetPasswordEmail",
+        "private": true
     },
     {
         "name": "sendGoodbyeEmail",
         "private": true
     },
     {
-        "name": "sendResetPasswordEmail",
+        "name": "getGoogleAPIKey",
+        "private": false
+    },
+    {
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -29,8 +33,8 @@
         "private": true
     },
     {
-        "name": "resetPassword",
-        "private": false
+        "name": "sendWelcomeEmail",
+        "private": true
     },
     {
         "name": "setUpTracker",
@@ -41,15 +45,11 @@
         "private": false
     },
     {
-        "name": "getGoogleAPIKey",
+        "name": "resetPassword",
         "private": false
     },
     {
-        "name": "confirmUser",
-        "private": true
-    },
-    {
-        "name": "onTrackerUpdate",
-        "private": true
+        "name": "sendConfirmationEmail",
+        "private": false
     }
 ]
