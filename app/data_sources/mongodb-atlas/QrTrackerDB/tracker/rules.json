@@ -12,8 +12,8 @@
                     "write": false
                 }
             },
-            "write": true,
             "read": true,
+            "write": true,
             "insert": true,
             "delete": true,
             "search": true,
@@ -53,10 +53,12 @@
                 }
             },
             "read": true,
-            "insert": true,
             "write": {
-                "%%prevRoot": { "%exists": false }
+                "%%prevRoot": {
+                    "$exists": false
+                }
             },
+            "insert": true,
             "delete": false,
             "search": true,
             "additional_fields": {}
