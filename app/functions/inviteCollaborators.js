@@ -46,7 +46,9 @@ exports = async function(emails, tracker_id) {
       }).then(({messageId})=>{
         // Log confirmation
         console.log("Message "+messageId+" sent");
-      });
+      }).catch(error => {
+        throw error;
+      })
     });
   });
 }
