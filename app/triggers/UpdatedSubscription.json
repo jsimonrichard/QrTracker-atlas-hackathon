@@ -4,7 +4,6 @@
     "type": "DATABASE",
     "config": {
         "operation_types": [
-            "INSERT",
             "UPDATE"
         ],
         "database": "QrTrackerDB",
