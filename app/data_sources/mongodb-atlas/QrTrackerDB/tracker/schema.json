@@ -50,7 +50,7 @@
             }
         },
         "ownerId": {
-            "bsonType": "objectId"
+            "bsonType": "string"
         },
         "public": {
             "bsonType": "bool"

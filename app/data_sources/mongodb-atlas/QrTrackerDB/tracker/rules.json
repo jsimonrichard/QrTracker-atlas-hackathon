@@ -60,14 +60,6 @@
             "delete": false,
             "search": true,
             "additional_fields": {}
-        },
-        {
-            "name": "default",
-            "read": false,
-            "insert": true,
-            "write": {
-                "%%prevRoot": { "%exists": false }
-            }
         }
     ]
 }
