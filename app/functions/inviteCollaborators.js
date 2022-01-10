@@ -3,6 +3,7 @@ exports = async function(emails, tracker_id) {
   let tracker_collection = db.collection("tracker");
   let tracker = tracker_collection.findOne({_id: tracker_id});
 
+  console.log(tracker);
   if(context.user.id != tracker.ownerId) {
     console.log(context.user.id, tracker.ownerId);
     throw Error("Only owners can invite new collaborators");

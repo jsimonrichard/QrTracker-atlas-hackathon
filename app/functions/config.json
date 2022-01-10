@@ -1,6 +1,6 @@
 [
     {
-        "name": "onSubscriptionUpdate",
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -8,12 +8,16 @@
         "private": false
     },
     {
-        "name": "inviteCollaborators",
-        "private": false
+        "name": "sendGoodbyeEmail",
+        "private": true
     },
     {
-        "name": "onTrackerUpdate",
+        "name": "sendWelcomeEmail",
         "private": true
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
     },
     {
         "name": "setUpTracker",
@@ -24,11 +28,11 @@
         "private": false
     },
     {
-        "name": "sendResetPasswordEmail",
-        "private": true
+        "name": "inviteCollaborators",
+        "private": false
     },
     {
-        "name": "sendWelcomeEmail",
+        "name": "onSubscriptionUpdate",
         "private": true
     },
     {
@@ -40,11 +44,7 @@
         "private": true
     },
     {
-        "name": "sendGoodbyeEmail",
+        "name": "sendResetPasswordEmail",
         "private": true
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
     }
 ]
