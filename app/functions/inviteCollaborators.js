@@ -1,7 +1,7 @@
 exports = async function(emails, tracker_id) {
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let tracker_collection = db.collection("tracker");
-  let tracker = tracker_collection.findOne({_id: tracker_id});
+  let tracker = await tracker_collection.findOne({_id: tracker_id});
 
   console.log(tracker);
   if(context.user.id != tracker.ownerId) {
@@ -19,7 +19,7 @@ exports = async function(emails, tracker_id) {
   // Loop through each email address
   emails.forEach(email => {
     // Create invite
-    let invite_id = invite_collection.insertOne({
+    let invite_id = await invite_collection.insertOne({
       email: email,
       tracker: tracker_id,
       senderId: context.user.id
