@@ -5,7 +5,7 @@
         "clusterName": "Cluster0",
         "namespacePreimageConfigs": [
             {
-                "collectionName": "subscription",
+                "collectionName": "tracker",
                 "dbName": "QrTrackerDB",
                 "recordPreimages": true
             }

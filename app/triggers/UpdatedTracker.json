@@ -4,9 +4,7 @@
     "type": "DATABASE",
     "config": {
         "operation_types": [
-            "UPDATE",
-            "DELETE",
-            "REPLACE"
+            "UPDATE"
         ],
         "database": "QrTrackerDB",
         "collection": "tracker",
@@ -14,7 +12,7 @@
         "match": {},
         "project": {},
         "full_document": true,
-        "full_document_before_change": true,
+        "full_document_before_change": false,
         "unordered": true
     },
     "disabled": false,

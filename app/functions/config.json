@@ -46,9 +46,5 @@
     {
         "name": "confirmUser",
         "private": true
-    },
-    {
-        "name": "sendSubscriptionDeleteEmails",
-        "private": true
     }
 ]
