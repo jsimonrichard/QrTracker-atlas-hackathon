@@ -105,7 +105,8 @@
         "public",
         "statusFields",
         "atAGlanceField",
-        "updateStatusWithLink"
+        "updateStatusWithLink",
+        "collaboratorIds"
     ],
     "title": "tracker"
 }

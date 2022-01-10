@@ -1,26 +1,6 @@
 [
     {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
-        "name": "sendResetPasswordEmail",
-        "private": true
-    },
-    {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
         "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
-        "name": "confirmUser",
         "private": true
     },
     {
@@ -28,23 +8,43 @@
         "private": false
     },
     {
-        "name": "onTrackerUpdate",
+        "name": "setUpTracker",
         "private": true
     },
     {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "acceptInvitation",
-        "private": false
+        "name": "confirmUser",
+        "private": true
     },
     {
         "name": "resetPassword",
         "private": false
     },
     {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "acceptInvitation",
+        "private": false
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
         "name": "inviteCollaborators",
         "private": false
+    },
+    {
+        "name": "sendGoodbyeEmail",
+        "private": true
     }
 ]
