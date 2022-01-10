@@ -16,6 +16,18 @@ exports = async function(emails, tracker_id) {
   var { CourierClient } = require("@trycourier/courier");
   const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
+  invite_collection.insertOne({
+    email: emails[0],
+    tracker: tracker_id,
+    senderId: context.user.id
+  }).then(id => {
+    console.log("Id:", id);
+  }).catch(error => {
+    throw error;
+  });
+
+  return 0;
+
   // Loop through each email address
   emails.forEach(email => {
     // Create invite
