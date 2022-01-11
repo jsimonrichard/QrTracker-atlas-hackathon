@@ -8,13 +8,13 @@
                 "ownerId": "%%user.id"
             },
             "fields": {
+                "createdAt": {
+                    "write": false
+                },
                 "history": {
                     "write": false
                 },
                 "updatedAt": {
-                    "write": false
-                },
-                "createdAt": {
                     "write": false
                 }
             },
