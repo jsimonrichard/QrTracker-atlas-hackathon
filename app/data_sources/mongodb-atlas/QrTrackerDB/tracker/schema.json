@@ -3,9 +3,6 @@
         "_id": {
             "bsonType": "objectId"
         },
-        "atAGlanceField": {
-            "bsonType": "string"
-        },
         "collaboratorIds": {
             "bsonType": "array",
             "items": {
@@ -30,13 +27,19 @@
                             "editorId": {
                                 "bsonType": "objectId"
                             },
-                            "title": {
+                            "message": {
                                 "bsonType": "string"
+                            },
+                            "details": {
+                                "bsonType": "string"
+                            },
+                            "location": {
+                                "bsonType": "objectId"
                             }
                         },
                         "required": [
                             "editorId",
-                            "title"
+                            "message"
                         ]
                     },
                     "timestamp": {
@@ -61,31 +64,27 @@
                 "editorId": {
                     "bsonType": "objectId"
                 },
-                "title": {
+                "message": {
                     "bsonType": "string"
+                },
+                "details": {
+                    "bsonType": "string"
+                },
+                "location": {
+                    "bsonType": "objectId"
                 }
             },
             "required": [
                 "editorId",
-                "title"
+                "message"
             ]
         },
-        "statusFields": {
-            "bsonType": "array",
-            "items": {
-                "bsonType": "object",
-                "properties": {
-                    "fieldName": {
-                        "bsonType": "string"
-                    },
-                    "fieldType": {
-                        "bsonType": "string"
-                    }
-                },
-                "required": [
-                    "fieldName",
-                    "fieldType"
-                ]
+        "statusTemplateInclude": {
+            "details": {
+                "bsonType": "bool"
+            },
+            "location": {
+                "bsonType": "bool"
             }
         },
         "title": {

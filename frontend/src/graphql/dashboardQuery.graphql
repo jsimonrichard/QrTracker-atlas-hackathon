@@ -1,19 +1,24 @@
-query GetOwnedTrackers($userId: String!) {
+query GetDashboardInfo($userId: String!) {
   trackers(query: {ownerId: $userId}) {
-    title
-    status {
-      title
-    }
-    updatedAt
+    ...MinFields
   }
 
   subscriptions(query: {subscriberId: $userId}) {
     tracker {
-      title
-      status {
-        title
-      }
-      updatedAt
+      ...MinFields
     }
   }
+
+  shared: trackers(query: {collaboratorIds: [$userId]}) {
+    ...MinFields
+  }
+}
+
+fragment MinFields on Tracker {
+  title
+  status {
+    message
+  }
+  atAGlanceField
+  updatedAt
 }
