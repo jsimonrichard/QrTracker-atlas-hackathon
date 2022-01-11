@@ -1,35 +1,3 @@
-async function sendUpdateTrackerEmails(subscriptions, data) {
-  // Generate email list from subscriptions
-  var email_list = "";
-  subscriptions.forEach(subscription => {
-    email_list += subscription.targets.email.join(",") + ",";
-  });
-
-  // Send the emails as long as email_list != ""
-  if(email_list) {
-    // Setup courier
-    var { CourierClient } = require("@trycourier/courier");
-    const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
-
-    // Send message
-    var { messageId } = await courier.send({
-      brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
-      eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
-      recipientId: email_list,
-      profile: {
-        email: email_list,
-      },
-      data,
-      override: {},
-    });
-
-    // Log confirmation
-    console.log("Message "+messageId+" sent");
-  }
-}
-
-
-
 exports = async function(changeEvent) {
   // Prevent trigger cascade
   if( Object.keys(changeEvent.updateDescription.updatedFields)
@@ -53,7 +21,7 @@ exports = async function(changeEvent) {
 
 
   // If status has been updated, send email and copy to history
-  if(changeEvent.updateDescription.updateFields.hasOwnProperty("status")) {
+  if(changeEvent.updateDescription.updatedFields.hasOwnProperty("status")) {
 
     // Push status to history
     update.$push = {
@@ -86,3 +54,34 @@ exports = async function(changeEvent) {
   );
 
 };
+
+
+async function sendUpdateTrackerEmails(subscriptions, data) {
+  // Generate email list from subscriptions
+  var email_list = "";
+  subscriptions.forEach(subscription => {
+    email_list += subscription.targets.email.join(",") + ",";
+  });
+
+  // Send the emails as long as email_list != ""
+  if(email_list) {
+    // Setup courier
+    var { CourierClient } = require("@trycourier/courier");
+    const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
+
+    // Send message
+    var { messageId } = await courier.send({
+      brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
+      eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
+      recipientId: email_list,
+      profile: {
+        email: email_list,
+      },
+      data,
+      override: {},
+    });
+
+    // Log confirmation
+    console.log("Message "+messageId+" sent");
+  }
+}
