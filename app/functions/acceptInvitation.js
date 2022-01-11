@@ -2,6 +2,8 @@ exports = async function(inviteId) {
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let invite = await db.collection("invite").findOne({_id: BSON.ObjectId(inviteId)});
 
+  console.log(JSON.stringify(context.user.data));
+
   if(context.user.data.email != invite.email) {
     throw Error("This invite is not associated with the user that is currently logged in");
   }
