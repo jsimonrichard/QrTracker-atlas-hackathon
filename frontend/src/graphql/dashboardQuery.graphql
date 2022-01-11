@@ -1,4 +1,4 @@
-query GetOwnedTrackers($userId: ObjectId!) {
+query GetOwnedTrackers($userId: String!) {
   trackers(query: {ownerId: $userId}) {
     title
     status {
