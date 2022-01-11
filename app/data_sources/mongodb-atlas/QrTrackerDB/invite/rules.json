@@ -19,8 +19,9 @@
             "apply_when": {
                 "email": "%%user.data.email"
             },
+            "read": true,
             "insert": false,
-            "delete": false,
+            "delete": true,
             "search": true,
             "additional_fields": {}
         }
