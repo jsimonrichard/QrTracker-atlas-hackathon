@@ -2,6 +2,8 @@ exports = async function(changeEvent) {
   let tracker_collection = context.services.get("mongodb-atlas").db("QrTrackerDB")
     .collection("tracker");
   
+  console.log(JSON.stringify(changeEvent.documentKey));
+  
   await tracker_collection.updateOne(
     {_id: BSON.ObjectId(changeEvent.documentKey._id)},
     {"$set": {
