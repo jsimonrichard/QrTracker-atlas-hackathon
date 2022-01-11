@@ -7,11 +7,10 @@ exports = async function(changeEvent) {
     {"$set": {
       "collaboratorIds": [],
       "history": [],
-      "createdAt": Date.now(),
-      "updatedAt": Date.now()
+      "createdAt": Date.now()
     }}
   );
-t
+
   if(matchedCount) {
     console.log("Successfully updated tracker");
   } else {
