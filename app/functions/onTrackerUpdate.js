@@ -32,8 +32,7 @@ async function sendUpdateTrackerEmails(subscriptions, data) {
 
 exports = async function(changeEvent) {
   // Prevent trigger cascade
-  console.log(JSON.stringify(changeEvent.updateDescription.updatedFields));
-  if( changeEvent.updateDescription.updatedFields.keys()
+  if( Object.keys(changeEvent.updateDescription.updatedFields)
       .every(value => ["updatedAt", "history"].includes(value)) ) {
 
     console.log("Echo event");
