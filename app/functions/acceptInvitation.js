@@ -20,8 +20,8 @@ exports = async function(inviteId) {
   // Add user id to collaborators in tracker
   await db.collection("tracker").updateOne(
     {_id: invite.tracker},
-    {"$addToSet": {
-      "collaborators": context.user.id
+    {$addToSet: {
+      "collaboratorIds": context.user.id
     }}
   );
 
