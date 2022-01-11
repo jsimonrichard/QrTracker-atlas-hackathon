@@ -18,15 +18,26 @@ exports = async function(inviteId) {
   }
 
   // Add user id to collaborators in tracker
-  await db.collection("tracker").updateOne(
-    {_id: invite.tracker},
+  let { matchedCount } = await db.collection("tracker").updateOne(
+    {_id: BSON.ObjectId(invite.tracker)},
     {$addToSet: {
-      "collaboratorIds": context.user.id
+      collaboratorIds: context.user.id
     }}
   );
 
+  if(matchedCount) {
+    console.log("Successfully added collaborator");
+  } else {
+    throw Error("No matching tracker found");
+  }
+
   // Remove invite
-  await db.collection("invite").deleteOne({_id: BSON.ObjectId(inviteId)});
+  let { deletedCount } = await db.collection("invite").deleteOne({_id: BSON.ObjectId(inviteId)});
+  if(deletedCount) {
+    console.log("Deleted invite after use");
+  } else {
+    throw Error("No invite found");
+  }
 
   return invite.tracker;
 }
