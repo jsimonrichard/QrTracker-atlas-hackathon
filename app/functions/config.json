@@ -1,6 +1,33 @@
 [
     {
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "acceptInvitation",
+        "private": false,
+        "run_as_system": true,
+        "can_evaluate": {}
+    },
+    {
+        "name": "inviteCollaborators",
+        "private": false,
+        "run_as_system": true
+    },
+    {
         "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "sendGoodbyeEmail",
         "private": true
     },
     {
@@ -8,7 +35,11 @@
         "private": true
     },
     {
-        "name": "sendGoodbyeEmail",
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "sendWelcomeEmail",
         "private": true
     },
     {
@@ -20,36 +51,7 @@
         "private": true
     },
     {
-        "name": "acceptInvitation",
-        "private": false
-    },
-    {
-        "name": "inviteCollaborators",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
         "name": "deleteUsersItems",
-        "private": false
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "sendConfirmationEmail",
         "private": false
     }
 ]
