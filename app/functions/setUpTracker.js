@@ -2,10 +2,8 @@ exports = async function(changeEvent) {
   let tracker_collection = context.services.get("mongodb-atlas").db("QrTrackerDB")
     .collection("tracker");
   
-  console.log(JSON.stringify(changeEvent.documentKey._id));
-  
-  await tracker_collection.updateOne(
-    {_id: BSON.ObjectId(changeEvent.documentKey._id)},
+  let { matchedCount } = await tracker_collection.updateOne(
+    {_id: changeEvent.documentKey._id},
     {"$set": {
       "collaboratorIds": [],
       "history": [],
@@ -13,4 +11,10 @@ exports = async function(changeEvent) {
       "updatedAt": Date.now()
     }}
   );
+t
+  if(matchedCount) {
+    console.log("Successfully updated tracker");
+  } else {
+    console.log("No matching documen");
+  }
 };
