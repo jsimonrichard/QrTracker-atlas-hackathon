@@ -1,4 +1,4 @@
-exports = function(changeEvent) {
+exports = async function(changeEvent) {
   let tracker_collection = context.services.get("mongodb-atlas").db("QrTrackerDB")
     .collection("tracker");
   
