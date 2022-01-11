@@ -22,7 +22,7 @@ exports = async function(inviteId) {
   );
 
   // Remove invite
-  await db.collection("invite").deleteOne({_id: BSON.Object(inviteId)});
+  await db.collection("invite").deleteOne({_id: BSON.ObjectId(inviteId)});
 
   return invite.tracker;
 }
