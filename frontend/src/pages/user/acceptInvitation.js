@@ -21,7 +21,7 @@ export default function AcceptInvitation({ user }) {
 
   return (
     <div className="content">
-      <div className="content-center">
+      <div className="center-content">
         {user ?
           <div>
             {trackerId ? <Redirect to={`/tracker/${trackerId}`}/> : <Spinner className="tall-spinner" />}
@@ -37,13 +37,12 @@ export default function AcceptInvitation({ user }) {
             <div className="button-row">
               <ButtonLink path="/signup" color="brand3">Sign Up</ButtonLink>
               <ButtonLink path="/login" color="brand1">Log In</ButtonLink>
-              <ButtonLink path="/browse" color="brand2">Browse Public Trackers</ButtonLink>
             </div>
           </div>
         }
       </div>
 
-      <Alert isOpen={errorMessage} onClose={setErrorMessage("")} intent="danger">
+      <Alert isOpen={errorMessage} onClose={() => setErrorMessage("")} intent="danger">
         {errorMessage}
       </Alert>
     </div>
