@@ -9,7 +9,7 @@
         "collaboratorIds": {
             "bsonType": "array",
             "items": {
-                "bsonType": "objectId"
+                "bsonType": "string"
             }
         },
         "createdAt": {
