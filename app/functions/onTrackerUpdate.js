@@ -1,4 +1,4 @@
-async function sendUpdateTrackerEmail(subscriptions, message) {
+async function sendUpdateTrackerEmails(subscriptions, data) {
   // Generate email list from subscriptions
   var email_list = "";
   subscriptions.forEach(subscription => {
@@ -19,9 +19,7 @@ async function sendUpdateTrackerEmail(subscriptions, message) {
       profile: {
         email: email_list,
       },
-      data: {
-        message: message
-      },
+      data,
       override: {},
     });
 
@@ -30,51 +28,61 @@ async function sendUpdateTrackerEmail(subscriptions, message) {
   }
 }
 
-async function setUpdateAt(tracker_id) {
-  var tracker_collection = context.services.get("mongodb-atlas").db("QrTrackerDB").collection("tracker");
-  await tracker_collection.updateOne(
-    {_id: tracker_id},
-    {$set: {
-      updateAt: Date.now()
-    }}
-  );
-}
-
-async function cleanSubscriptions(tracker_id) {
-  await subscription_collection.deleteMany({ tracker: tracker_id});
-}
 
 
 exports = async function(changeEvent) {
-  // Generate message
-  var message = "";
+  // Prevent trigger cascade
+  if( changeEvent.updateDescription.updatedFields.keys()
+      .every(value => ["updatedAt", "history"].includes(value)) ) {
 
-  if(changeEvent.operationType == "update") {
-    setUpdateAt(changeEvent.documentKey._id);
-
-    if(changeEvent.updateDescription.updateFields.hasOwnProperty("status")) {
-      message = `The tracker ${changeEvent.fullDocument.title} has a new status: \
-                  ${changeEvent.fullDocument.status.title}. Click \
-                  <a href="${context.values.get("domainName")}/${changeEvent.documentKey._id}"\
-                  >here</a> for more details.`;
-    }
-
-  } else if (changeEvent.operationType == "delete") {
-    message = `The tracker ${changeEvent.fullDocument.title} has been deleted and \
-              your subscription to that tracker has been removed.`
+    console.log("Echo event");
+    return 0
   }
 
-  
-  if(message != "") {
-    // Get subscriptions
-    var subscription_collection = context.services.get("mongodb-atlas").db("QrTrackerDB").collection("subscription");
+
+  // Generate update var with updatedAt
+  let update = {
+    $set: {
+      updatedAt: Date.now()
+    }
+  };
+
+
+  // Get db
+  let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
+
+
+  // If status has been updated, send email and copy to history
+  if(changeEvent.updateDescription.updateFields.hasOwnProperty("status")) {
+
+    // Push status to history
+    update.$push = {
+      "history": changeEvent.updateDescription.updateFields.status
+    }
+
+
+    // Get supscribers
+    var subscription_collection = db.collection("subscription");
     var subscriptions = await subscription_collection.find({ tracker: context.documentKey._id });
 
-    // Delete subscriptions if the tracker has been deleted
-    if(changeEvent.operationType == "delete") {
-      cleanSubscriptions(changeEvent.documentKey._id);
+    // Format data
+    let data = {
+      trackerName: changeEvent.fullDocument.title,
+      trackerAtAGlance: changeEvent.updateDescription.updateFields.status[
+        changeEvent.fullDocument.atAGlanceField
+      ],
+      trackerLink: `https://${context.values.get("domainName")}/tracker/${changeEvent.documentKey._id}`
     }
 
-    sendUpdateTrackerEmail(subscriptions, message);
+    // Send email
+    sendUpdateTrackerEmails(subscriptions, data);
   }
+
+  // Update tracker
+  var tracker_collection = db.collection("tracker");
+  await tracker_collection.updateOne(
+    {_id: changeEvent.documentKey._id},
+    update
+  );
+
 };

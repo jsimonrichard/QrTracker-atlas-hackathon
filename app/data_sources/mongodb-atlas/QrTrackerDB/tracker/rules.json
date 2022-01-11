@@ -10,6 +10,12 @@
             "fields": {
                 "history": {
                     "write": false
+                },
+                "updatedAt": {
+                    "write": false
+                },
+                "createdAt": {
+                    "write": false
                 }
             },
             "read": true,
