@@ -1,6 +1,34 @@
 [
     {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
         "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
+        "name": "sendWelcomeEmail",
         "private": true
     },
     {
@@ -15,43 +43,15 @@
         "run_as_system": true
     },
     {
-        "name": "confirmUser",
-        "private": true
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
-        "name": "sendResetPasswordEmail",
-        "private": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
-        "name": "getGoogleAPIKey",
-        "private": false
-    },
-    {
         "name": "onTrackerUpdate",
         "private": true
     },
     {
         "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "getGoogleAPIKey",
         "private": false
     }
 ]
