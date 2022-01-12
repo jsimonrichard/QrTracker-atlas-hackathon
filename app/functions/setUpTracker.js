@@ -4,13 +4,14 @@ exports = async function(changeEvent) {
   
   let { matchedCount } = await tracker_collection.updateOne(
     {_id: changeEvent.documentKey._id},
-    {"$set": {
-      "collaboratorIds": [],
-      "history": [],
-      "createdAt": new Date(Date.now()),
-      "status": {
-        "message": "Tracker Created",
-        "editorId": changeEvent.fullDocument.ownerId
+    {$set: {
+      collaboratorIds: [],
+      history: [],
+      createdAt: new Date(Date.now()),
+      status: {
+        message: "Tracker Created",
+        editorId: changeEvent.fullDocument.ownerId,
+        timestamp: new Date(Date.now())
       }
     }}
   );
