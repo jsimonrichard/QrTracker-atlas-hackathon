@@ -79,7 +79,7 @@
                 "message"
             ]
         },
-        "statusTemplateInclude": {
+        "statusTemplateIncludes": {
             "details": {
                 "bsonType": "bool"
             },
