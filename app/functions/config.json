@@ -10,35 +10,19 @@
         "can_evaluate": {}
     },
     {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "sendConfirmationEmail",
+        "name": "deleteUsersItems",
         "private": false
-    },
-    {
-        "name": "getGoogleAPIKey",
-        "private": false
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "confirmUser",
-        "private": true
     },
     {
         "name": "sendResetPasswordEmail",
         "private": true
     },
     {
-        "name": "setUpInvite",
-        "private": true
+        "name": "resetPassword",
+        "private": false
     },
     {
-        "name": "sendGoodbyeEmail",
+        "name": "setUpInvite",
         "private": true
     },
     {
@@ -46,11 +30,27 @@
         "private": true
     },
     {
-        "name": "deleteUsersItems",
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "getGoogleAPIKey",
         "private": false
     },
     {
-        "name": "resetPassword",
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "sendConfirmationEmail",
         "private": false
     },
     {
