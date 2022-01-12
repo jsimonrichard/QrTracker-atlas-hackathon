@@ -37,7 +37,7 @@ export default function Share({trackerId}) {
             <SendEmailList label="Invite Collaborators" labelInfo="(they will have full access)"
               onSubmit={(emails, setLoading, setErrorMessage) => {
                 // Send collaborator emails
-                app.currentUser.functions.inviteCollaborators(emails, trackerId)
+                app.currentUser.functions.sendInvite(emails, trackerId, "collaborate")
                   .then(() => {
                     setLoading(false);
                   }).catch(error => {

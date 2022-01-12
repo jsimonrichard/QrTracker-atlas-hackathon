@@ -17,16 +17,27 @@ exports = async function(inviteId) {
     throw Error("This invite is not associated with the user that is currently logged in");
   }
 
-  // Add user id to collaborators in tracker
+  // Add user id to collaborators/subscribers in tracker
+  let idField;
+  if(invite.type === "collaborate") {
+    idField = "collaboratorIds";
+  } else if(invite.type === "subscribe") {
+    idField = "subscriberIds"
+  } else {
+    throw Error("Unrecognized invite type");
+  }
+
+  let data = {};
+  data[idField] = context.user.id;
+
   let { matchedCount } = await db.collection("tracker").updateOne(
     {_id: BSON.ObjectId(invite.tracker)},
-    {$addToSet: {
-      collaboratorIds: context.user.id
-    }}
+    {$addToSet: data}
   );
 
+  // Check result
   if(matchedCount) {
-    console.log("Successfully added collaborator");
+    console.log("Successfully added collaborator/subscriber");
   } else {
     throw Error("No matching tracker found");
   }
