@@ -1,30 +1,10 @@
 [
     {
-        "name": "latestHistoryResolver",
+        "name": "deleteUsersItems",
         "private": false
     },
     {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
-        "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
-        "name": "sharedTrackerResolver",
-        "private": false
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "sendResetPasswordEmail",
+        "name": "setUpInvite",
         "private": true
     },
     {
@@ -32,25 +12,15 @@
         "private": true
     },
     {
-        "name": "setUpTracker",
-        "private": true
+        "name": "getGoogleAPIKey",
+        "private": false
     },
     {
-        "name": "acceptInvitation",
-        "private": false,
-        "run_as_system": true,
-        "can_evaluate": {}
+        "name": "sharedTrackerResolver",
+        "private": false
     },
     {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "setUpInvite",
-        "private": true
-    },
-    {
-        "name": "deleteUsersItems",
+        "name": "latestHistoryResolver",
         "private": false
     },
     {
@@ -59,11 +29,41 @@
         "run_as_system": true
     },
     {
-        "name": "getGoogleAPIKey",
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "resetPassword",
         "private": false
     },
     {
-        "name": "onTrackerUpdate",
+        "name": "acceptInvitation",
+        "private": false,
+        "run_as_system": true,
+        "can_evaluate": {}
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "onSubscriptionUpdate",
         "private": true
     }
 ]
