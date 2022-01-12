@@ -28,7 +28,7 @@
                                 "bsonType": "string"
                             },
                             "editorId": {
-                                "bsonType": "objectId"
+                                "bsonType": "string"
                             },
                             "location": {
                                 "bsonType": "object",
@@ -90,7 +90,7 @@
                     "bsonType": "string"
                 },
                 "editorId": {
-                    "bsonType": "objectId"
+                    "bsonType": "string"
                 },
                 "location": {
                     "bsonType": "object",
