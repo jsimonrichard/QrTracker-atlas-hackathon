@@ -23,11 +23,14 @@ exports = async function(changeEvent) {
   // If status has been updated, send email and copy to history
   if(changeEvent.updateDescription.updatedFields.hasOwnProperty("status")) {
 
-    // Push status to history
+    // Add timestamp and push status to history
+    update.$set.status = {
+      timestamp: new Date(Date.now())
+    };
+
     update.$push = {
-      "history": {
-        "status": changeEvent.updateDescription.updatedFields.status,
-        "timestamp": new Date(Date.now())
+      history: {
+        status: changeEvent.updateDescription.updatedFields.status,
       }
     };
 
