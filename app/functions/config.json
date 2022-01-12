@@ -1,18 +1,19 @@
 [
     {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
-        "name": "sendResetPasswordEmail",
-        "private": true
-    },
-    {
-        "name": "getGoogleAPIKey",
+        "name": "deleteUsersItems",
         "private": false
     },
     {
-        "name": "sendWelcomeEmail",
+        "name": "inviteCollaborators",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "sendResetPasswordEmail",
         "private": true
     },
     {
@@ -20,19 +21,11 @@
         "private": true
     },
     {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "deleteUsersItems",
-        "private": false
-    },
-    {
         "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -40,7 +33,11 @@
         "private": true
     },
     {
-        "name": "setUpTracker",
+        "name": "sharedTrackerResolver",
+        "private": false
+    },
+    {
+        "name": "sendGoodbyeEmail",
         "private": true
     },
     {
@@ -50,16 +47,19 @@
         "can_evaluate": {}
     },
     {
-        "name": "inviteCollaborators",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "onTrackerUpdate",
+        "name": "sendWelcomeEmail",
         "private": true
     },
     {
-        "name": "sharedTrackerResolver",
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "getGoogleAPIKey",
         "private": false
     }
 ]
