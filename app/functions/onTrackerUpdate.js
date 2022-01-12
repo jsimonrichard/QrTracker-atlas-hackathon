@@ -25,7 +25,7 @@ exports = async function(changeEvent) {
 
     // Push status to history
     update.$push = {
-      "history": changeEvent.updateDescription.updateFields.status
+      "history": changeEvent.updateDescription.updatedFields.status
     }
 
 
