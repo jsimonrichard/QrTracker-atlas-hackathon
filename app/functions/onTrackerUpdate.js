@@ -11,7 +11,7 @@ exports = async function(changeEvent) {
   // Generate update var with updatedAt
   let update = {
     $set: {
-      updatedAt: Date.now()
+      updatedAt: BSON.Date.now()
     }
   };
 
