@@ -25,8 +25,11 @@ exports = async function(changeEvent) {
 
     // Push status to history
     update.$push = {
-      "history": changeEvent.updateDescription.updatedFields.status
-    }
+      "history": {
+        "status": changeEvent.updateDescription.updatedFields.status,
+        "timestamp": new Date(Date.now())
+      }
+    };
 
 
     // Get supscribers
