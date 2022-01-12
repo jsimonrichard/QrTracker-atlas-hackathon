@@ -63,7 +63,7 @@
         "private": true
     },
     {
-        "name": "sendDeleteSubscriptionNotice",
-        "private": true
+        "name": "latestHistoryResolver",
+        "private": false
     }
 ]
