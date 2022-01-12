@@ -31,32 +31,7 @@
                                 "bsonType": "objectId"
                             },
                             "location": {
-                                "bsonType": "object",
-                                "properties": {
-                                    "formatted_address": {
-                                        "bsonType": "string"
-                                    },
-                                    "geometry": {
-                                        "bsonType": "object",
-                                        "properties": {
-                                            "location": {
-                                                "bsonType": "array",
-                                                "items": {
-                                                    "bsonType": "double"
-                                                },
-                                                "maxItems": 2,
-                                                "minItems": 2
-                                            }
-                                        },
-                                        "required": [
-                                            "location"
-                                        ]
-                                    }
-                                },
-                                "required": [
-                                    "formatted_address",
-                                    "geometry"
-                                ]
+                                "bsonType": "objectId"
                             },
                             "message": {
                                 "bsonType": "string"
@@ -90,35 +65,10 @@
                     "bsonType": "string"
                 },
                 "editorId": {
-                    "bsonType": "string"
+                    "bsonType": "objectId"
                 },
                 "location": {
-                    "bsonType": "object",
-                    "properties": {
-                        "formatted_address": {
-                            "bsonType": "string"
-                        },
-                        "geometry": {
-                            "bsonType": "object",
-                            "properties": {
-                                "location": {
-                                    "bsonType": "array",
-                                    "items": {
-                                        "bsonType": "double"
-                                    },
-                                    "maxItems": 2,
-                                    "minItems": 2
-                                }
-                            },
-                            "required": [
-                                "location"
-                            ]
-                        }
-                    },
-                    "required": [
-                        "formatted_address",
-                        "geometry"
-                    ]
+                    "bsonType": "objectId"
                 },
                 "message": {
                     "bsonType": "string"
