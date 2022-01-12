@@ -1,15 +1,54 @@
 [
     {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "inviteCollaborators",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "sharedTrackerResolver",
+        "private": false
+    },
+    {
+        "name": "getGoogleAPIKey",
+        "private": false
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
         "name": "deleteUsersItems",
         "private": false
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "sendResetPasswordEmail",
+        "private": true
     },
     {
         "name": "sendGoodbyeEmail",
         "private": true
     },
     {
-        "name": "onSubscriptionUpdate",
+        "name": "setUpInvite",
         "private": true
+    },
+    {
+        "name": "acceptInvitation",
+        "private": false,
+        "run_as_system": true,
+        "can_evaluate": {}
     },
     {
         "name": "confirmUser",
@@ -20,46 +59,11 @@
         "private": false
     },
     {
-        "name": "setUpInvite",
-        "private": true
-    },
-    {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "inviteCollaborators",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
-        "name": "sendResetPasswordEmail",
-        "private": true
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
         "name": "sendWelcomeEmail",
         "private": true
     },
     {
-        "name": "sharedTrackerResolver",
-        "private": false
-    },
-    {
-        "name": "acceptInvitation",
-        "private": false,
-        "run_as_system": true,
-        "can_evaluate": {}
-    },
-    {
-        "name": "getGoogleAPIKey",
-        "private": false
+        "name": "sendDeleteSubscriptionNotice",
+        "private": true
     }
 ]
