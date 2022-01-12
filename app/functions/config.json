@@ -1,5 +1,50 @@
 [
     {
+        "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "setUpInvite",
+        "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "inviteCollaborators",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
         "name": "sendWelcomeEmail",
         "private": true
     },
@@ -8,57 +53,13 @@
         "private": false
     },
     {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "setUpInvite",
-        "private": true
-    },
-    {
         "name": "acceptInvitation",
         "private": false,
         "run_as_system": true,
         "can_evaluate": {}
     },
     {
-        "name": "deleteUsersItems",
-        "private": false
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
         "name": "getGoogleAPIKey",
-        "private": false
-    },
-    {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "confirmUser",
-        "private": true
-    },
-    {
-        "name": "sendResetPasswordEmail",
-        "private": true
-    },
-    {
-        "name": "inviteCollaborators",
         "private": false
     }
 ]
