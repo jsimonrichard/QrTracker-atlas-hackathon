@@ -109,8 +109,7 @@
         "ownerId",
         "title",
         "public",
-        "statusFields",
-        "atAGlanceField",
+        "statusTemplateIncludes",
         "updateStatusWithLink"
     ],
     "title": "tracker"
