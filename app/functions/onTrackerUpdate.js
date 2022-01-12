@@ -31,7 +31,7 @@ exports = async function(changeEvent) {
 
     // Get supscribers
     var subscription_collection = db.collection("subscription");
-    var subscriptions = await subscription_collection.find({ tracker: context.documentKey._id });
+    var subscriptions = await subscription_collection.find({ tracker: changeEvent.documentKey._id });
 
     // Format data
     let data = {
