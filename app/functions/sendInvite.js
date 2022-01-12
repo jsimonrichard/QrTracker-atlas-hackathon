@@ -34,9 +34,9 @@ exports = async function(emails, tracker_id, inviteType) {
     // Build data for email
     var inviteLink = `https://${context.values.get("domainName")}/acceptInvitation?invite=${encodeURIComponent(inviteId)}`;
     let inviteTypePhrase;
-    if(invite.type === "collaborate") {
+    if(inviteType === "collaborate") {
       inviteTypePhrase = "collaborate on";
-    } else if(invite.type === "subscribe") {
+    } else if(inviteType === "subscribe") {
       inviteTypePhrase = "subscribe to";
     } else {
       throw Error("Unrecognized invite type");
