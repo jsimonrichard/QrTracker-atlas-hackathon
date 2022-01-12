@@ -49,6 +49,23 @@
             "search": true
         },
         {
+            "name": "subscriber",
+            "apply_when": {
+                "subscriberIds": "%%user.id"
+            },
+            "fields": {
+                "collaboratorIds": {
+                    "read": false
+                },
+                "subscriberIds": {
+                    "read": false
+                }
+            },
+            "read": true,
+            "write": false,
+            "search": true
+        },
+        {
             "name": "public",
             "apply_when": {
                 "public": true

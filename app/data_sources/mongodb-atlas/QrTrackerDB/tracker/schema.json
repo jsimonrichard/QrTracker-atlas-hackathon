@@ -9,6 +9,12 @@
                 "bsonType": "string"
             }
         },
+        "subscriberIds": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "string"
+            }
+        },
         "createdAt": {
             "bsonType": "date"
         },
