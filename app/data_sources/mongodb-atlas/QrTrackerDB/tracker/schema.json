@@ -24,10 +24,13 @@
                     "status": {
                         "bsonType": "object",
                         "properties": {
-                            "details": {
+                            "editorId": {
                                 "bsonType": "string"
                             },
-                            "editorId": {
+                            "timestamp": {
+                                "bsonType": "date"
+                            },
+                            "details": {
                                 "bsonType": "string"
                             },
                             "location": {
@@ -86,10 +89,13 @@
         "status": {
             "bsonType": "object",
             "properties": {
-                "details": {
+                "editorId": {
                     "bsonType": "string"
                 },
-                "editorId": {
+                "timestamp": {
+                    "bsonType": "date"
+                },
+                "details": {
                     "bsonType": "string"
                 },
                 "location": {
