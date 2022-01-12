@@ -5,7 +5,9 @@ exports = async (source) => {
   let historyItem = await tracker_collection.aggregate([
     { $project: { id: 1, history: { $arrayElemAt: [ "$history", -1 ] } } },
     { $match: { _id: source._id } }
-  ]).next(); // Return the first item
+  ]).next().history; // Return the first item
+
+  
 
   return historyItem;
 };
