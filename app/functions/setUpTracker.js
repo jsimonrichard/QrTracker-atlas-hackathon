@@ -7,7 +7,7 @@ exports = async function(changeEvent) {
     {"$set": {
       "collaboratorIds": [],
       "history": [],
-      "createdAt": BSON.Date.now()
+      "createdAt": Date.now()
     }}
   );
 
