@@ -28,10 +28,18 @@ export default function Share({trackerId}) {
         
           <div className="dialog-content-wrapper">
             <SendEmailList label="Invite Subscribers"
-                onSubmit={(emails, setLoading, setErrorMessage) => {
-                  // Send subscriber emails
-                  
-                }}/>
+              onSubmit={(emails, setLoading, setErrorMessage) => {
+                // Send subscriber emails
+                app.currentUser.functions.sendInvite(emails, trackerId, "subscribe")
+                .then(() => {
+                  setLoading(false);
+                }).catch(error => {
+                  setLoading(false);
+
+                  console.log(error);
+                  setErrorMessage(error.message);
+                });
+              }}/>
 
 
             <SendEmailList label="Invite Collaborators" labelInfo="(they will have full access)"
