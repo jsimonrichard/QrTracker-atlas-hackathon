@@ -7,7 +7,7 @@ exports = async function(changeEvent) {
     {"$set": {
       "collaboratorIds": [],
       "history": [],
-      "createdAt": Date.now()
+      "createdAt": new Date(Date.now())
     }}
   );
 
