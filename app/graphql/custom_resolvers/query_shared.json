@@ -5,5 +5,5 @@
     "input_type_format": "scalar",
     "on_type": "Query",
     "payload_type": "Tracker",
-    "payload_type_format": "generated"
+    "payload_type_format": "generated-list"
 }
