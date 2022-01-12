@@ -3,5 +3,6 @@ exports = async (userId) => {
   let trackers = await tracker_collection.find({
     "collaboratorIds": userId
   });
+  console.log(JSON.stringify(trackers));
   return trackers;
 };
