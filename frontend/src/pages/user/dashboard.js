@@ -48,6 +48,7 @@ export default function Dashboard({ user }) {
     return (
       <div className="content">
         <NonIdealState
+          className="tall-spinner"
           icon="error"
           title="An error occured"
           description={error.error}/>
