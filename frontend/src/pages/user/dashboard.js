@@ -1,8 +1,8 @@
 import { Icon, NonIdealState, Spinner } from "@blueprintjs/core";
-import { useQuery } from "@apollo/client";
+import { useLazyQuery } from "@apollo/client";
 import { Link } from 'wouter';
 import { loader } from 'graphql.macro';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../..";
 
 function TrackerItem({ tracker }) {
@@ -28,13 +28,16 @@ function AddTrackerLink({ href }) {
 
 export default function Dashboard({ user }) {
   const app = useContext(AppContext);
-  const { loading, error, data } = useQuery(loader('../../graphql/dashboardQuery.graphql'), {
+  const [loadData, { called, loading, error, data }] = useLazyQuery(loader('../../graphql/dashboardQuery.graphql'), {
     variables: {
       userId: app.currentUser.id
     }
   });
 
-  if(loading) {
+  // Load data on mount
+  useEffect(loadData, []);
+
+  if(!called || loading) {
     return (
       <div className="content">
         <Spinner className="tall-spinner"/>
