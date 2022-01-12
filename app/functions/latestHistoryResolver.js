@@ -7,7 +7,7 @@ exports = async (source) => {
     { $match: { _id: source._id } }
   ]).next().history; // Return the first item
 
-  
+  throw Error(historyItem);
 
   return historyItem;
 };
