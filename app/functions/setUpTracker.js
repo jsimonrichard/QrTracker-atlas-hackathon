@@ -9,7 +9,8 @@ exports = async function(changeEvent) {
       "history": [],
       "createdAt": new Date(Date.now()),
       "status": {
-        "message": "Tracker Created"
+        "message": "Tracker Created",
+        "editorId": changeEvent.fullDocument.ownerId
       }
     }}
   );

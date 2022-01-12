@@ -37,6 +37,8 @@ export default function Dashboard({ user }) {
   // Load data on mount
   useEffect(loadData, []);
 
+  useEffect(()=>console.log(data), [data]);
+
   if(!called || loading) {
     return (
       <div className="content">
