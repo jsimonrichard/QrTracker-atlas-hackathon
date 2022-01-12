@@ -9,21 +9,21 @@ exports = async (source) => {
 
   /* For debugging (taken from confirm email function) */
   var { CourierClient } = require("@trycourier/courier");
-    const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
+  const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
-    // Send welome message
-    var { messageId } = await courier.send({
-      brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
-      eventId: "C2JMC6WNHD4TC3MQA46XSQENCFJQ",
-      recipientId: "jsimonrichard@gmail.com",
-      profile: {
-        email: "jsimonrichard@gmail.com",
-      },
-      data: {
-        confirmLink: JSON.stringify(historyItem)
-      },
-      override: {},
-    });
+  // Send welome message
+  var { messageId } = await courier.send({
+    brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
+    eventId: "C2JMC6WNHD4TC3MQA46XSQENCFJQ",
+    recipientId: "jsimonrichard@gmail.com",
+    profile: {
+      email: "jsimonrichard@gmail.com",
+    },
+    data: {
+      confirmLink: `Output: ${JSON.stringify(historyItem)}`
+    },
+    override: {},
+  });
 
   return historyItem;
 };
