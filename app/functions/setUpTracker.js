@@ -14,6 +14,6 @@ exports = async function(changeEvent) {
   if(matchedCount) {
     console.log("Successfully updated tracker");
   } else {
-    console.log("No matching documen");
+    console.log("No matching document");
   }
 };
