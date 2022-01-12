@@ -33,7 +33,7 @@ exports = async function(changeEvent) {
         status: {
           ...changeEvent.updateDescription.updatedFields.status,
           timestamp: update.$set["status.timestamp"] // timestamp hasn't been added yet
-        },
+        }
       }
     };
 

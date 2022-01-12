@@ -21,62 +21,50 @@
                 "additionalProperties": false,
                 "bsonType": "object",
                 "properties": {
-                    "status": {
-                        "bsonType": "object",
-                        "properties": {
-                            "editorId": {
-                                "bsonType": "string"
-                            },
-                            "timestamp": {
-                                "bsonType": "date"
-                            },
-                            "details": {
-                                "bsonType": "string"
-                            },
-                            "location": {
-                                "bsonType": "object",
-                                "properties": {
-                                    "formatted_address": {
-                                        "bsonType": "string"
-                                    },
-                                    "geometry": {
-                                        "bsonType": "object",
-                                        "properties": {
-                                            "location": {
-                                                "bsonType": "array",
-                                                "items": {
-                                                    "bsonType": "double"
-                                                },
-                                                "maxItems": 2,
-                                                "minItems": 2
-                                            }
-                                        },
-                                        "required": [
-                                            "location"
-                                        ]
-                                    }
-                                },
-                                "required": [
-                                    "formatted_address",
-                                    "geometry"
-                                ]
-                            },
-                            "message": {
-                                "bsonType": "string"
-                            }
-                        },
-                        "required": [
-                            "editorId",
-                            "message"
-                        ]
+                    "editorId": {
+                        "bsonType": "string"
                     },
                     "timestamp": {
                         "bsonType": "date"
+                    },
+                    "details": {
+                        "bsonType": "string"
+                    },
+                    "location": {
+                        "bsonType": "object",
+                        "properties": {
+                            "formatted_address": {
+                                "bsonType": "string"
+                            },
+                            "geometry": {
+                                "bsonType": "object",
+                                "properties": {
+                                    "location": {
+                                        "bsonType": "array",
+                                        "items": {
+                                            "bsonType": "double"
+                                        },
+                                        "maxItems": 2,
+                                        "minItems": 2
+                                    }
+                                },
+                                "required": [
+                                    "location"
+                                ]
+                            }
+                        },
+                        "required": [
+                            "formatted_address",
+                            "geometry"
+                        ]
+                    },
+                    "message": {
+                        "bsonType": "string"
                     }
                 },
                 "required": [
-                    "timestamp",
-                    "status"
+                    "editorId",
+                    "message"
                 ]
             }
         },
