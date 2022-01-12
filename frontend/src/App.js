@@ -74,11 +74,11 @@ export default function App() {
             </Route>
 
             <Route path="/t/:trackerId/edit">
-              <EditTracker />
+              {params => <EditTracker trackerId={params.trackerId}/>}
             </Route>
 
             <Route path="/t/:trackerId">
-              <ViewTracker />
+              {params => <ViewTracker trackerId={params.trackerId} />}
             </Route>
 
             <Route>

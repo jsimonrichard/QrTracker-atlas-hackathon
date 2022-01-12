@@ -5,12 +5,11 @@ import { Button } from '@blueprintjs/core';
 import { Suggest } from '@blueprintjs/select';
 
 
-export default function GeocodedInput({ defaultValue="" }) {
+export default function GeocodedInput({ defaultValue="", value, setValue, large }) {
   const app = useContext(AppContext);
   const [apiKeyLoaded, setApiKeyLoaded] = useState(false);
 
   const [textValue, setTextValue] = useState(defaultValue);
-  const [value, setValue] = useState(null);
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -26,17 +25,18 @@ export default function GeocodedInput({ defaultValue="" }) {
 
   // Get suggestions from google
   const getSuggestions = () => {
-    console.log("Getting suggestions for", value)
-    setLoading(true);
-    Geocode.fromAddress(textValue).then(response => {
-      setSuggestions(response.results);
-      setLoading(false);
+    if(textValue) {
+      setLoading(true);
+      Geocode.fromAddress(textValue).then(response => {
+        setSuggestions(response.results);
+        setLoading(false);
 
-    }).catch(error => {
-      setErrorMessage(error.error);
-      console.log(error);
-      setLoading(false);
-    });
+      }).catch(error => {
+        setErrorMessage(error.error);
+        console.log(error);
+        setLoading(false);
+      });
+    }
   }
 
   // Call get suggestions after user has finished typing
@@ -51,6 +51,8 @@ export default function GeocodedInput({ defaultValue="" }) {
 
   return (
     <Suggest
+      fill={true}
+      inputProps={{large: large}}
       query={textValue}
       onQueryChange={setTextValue}
       items={loading || errorMessage ? [{}] : suggestions}

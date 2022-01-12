@@ -6,6 +6,7 @@
     "@apollo/client": "^3.5.6",
     "@blueprintjs/core": "^3.52.0",
     "@blueprintjs/icons": "^3.31.0",
+    "@blueprintjs/popover2": "^0.12.9",
     "@blueprintjs/select": "^3.18.11",
     "google-map-react": "^2.1.10",
     "graphql": "^16.2.0",

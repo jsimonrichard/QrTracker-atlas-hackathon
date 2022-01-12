@@ -6,7 +6,7 @@ import { useContext, useEffect } from "react";
 import { AppContext } from "../..";
 
 function TrackerItem({ tracker }) {
-  let datetime = new Date(tracker.updatedAt);
+  let datetime = new Date(tracker.status.timestamp);
   let now = new Date(Date.now())
   let diff = now.getTime() - datetime.getTime();
 
@@ -49,7 +49,7 @@ function AddTrackerLink({ href }) {
   )
 }
 
-export default function Dashboard({ user }) {
+export default function Dashboard() {
   const app = useContext(AppContext);
   const [loadData, { called, loading, error, data }] = useLazyQuery(loader('../../graphql/dashboardQuery.graphql'), {
     variables: {
@@ -87,7 +87,7 @@ export default function Dashboard({ user }) {
         <div className="tracker-list">
 
           {data.subscriptions.map(subscription => 
-            <TrackerItem tracker={subscription.tracker}/>
+            <TrackerItem tracker={subscription.tracker} key={subscription.tracker._id}/>
           )}
 
           <AddTrackerLink href="/browse"/>
@@ -97,7 +97,7 @@ export default function Dashboard({ user }) {
         <div className="tracker-list">
 
           {data.trackers.map(tracker => 
-            <TrackerItem tracker={tracker} />
+            <TrackerItem tracker={tracker} key={tracker._id}/>
           )}
 
           <AddTrackerLink href="/create" />
@@ -107,7 +107,7 @@ export default function Dashboard({ user }) {
         <div className="tracker-list">
 
           {data.shared.length ? data.shared.map(tracker => 
-            <TrackerItem tracker={tracker} />
+            <TrackerItem tracker={tracker} key={tracker._id}/>
           ) :
             <div className="tracker-list-item tracker-list-add-item disabled">
               None

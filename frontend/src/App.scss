@@ -188,11 +188,24 @@ footer {
     margin-top: 10vh;
 
     @media (min-width: 600px) {
-      width: 80%;
+      width: 70%;
     }
 
     @media (min-width: 1200px) {
       width: 550px;
+    }
+  }
+  
+  .center-content-wide {
+    margin: auto;
+    margin-top: 10vh;
+
+    @media (min-width: 600px) {
+      width: 80%;
+    }
+
+    @media (min-width: 1200px) {
+      width: 700px;
     }
   }
 
@@ -429,4 +442,52 @@ table {
 .popover-select-button {
   width: 100%;
   display: block;
+}
+
+.tracker-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+
+  & > * {
+    margin: 0.2rem;
+  }
+
+  h1 {
+    flex: 1 0 auto;
+    margin: 0px;
+  }
+
+  .updated-at-info {
+    opacity: 0.8;
+    font-size: 0.8rem;
+  }
+
+  .button-group > * {
+    margin: 0.2rem;
+  }
+}
+
+.tracker-history-table {
+  width: 100%;
+  background-color: darken($offwhite, 5%);
+  overflow-x: auto;
+
+  table {
+    margin: 0px;
+  }
+
+  .time-column {
+    border-right: 1px black solid;
+  }
+
+  & > table > tbody > tr > * {
+    padding: 1rem;
+  }
+
+  p {
+    text-indent: 0px;
+    font-size: 1rem;
+  }
 }

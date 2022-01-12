@@ -10,7 +10,10 @@ fragment AllHistoryFields on TrackerHistory {
     location {
         formatted_address
         geometry {
-            location
+            location {
+                lat
+                lng
+            }
         }
     }
     timestamp
@@ -22,7 +25,10 @@ fragment AllStatusFields on TrackerStatus {
     location {
         formatted_address
         geometry {
-            location
+            location {
+                lat
+                lng
+            }
         }
     },
     timestamp
@@ -37,7 +43,13 @@ fragment AllFields on Tracker {
     history {
         ...AllHistoryFields
     }
+    statusTemplateIncludes {
+        details
+        location
+    }
     createdAt
     updatedAt
     ownerId
+    public
+    updateStatusWithLink
 }

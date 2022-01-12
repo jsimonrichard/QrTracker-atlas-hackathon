@@ -142,8 +142,8 @@ export default function CreateTracker({ user }) {
 
 
         <Alert isOpen={errorMessage} onClose={() => setErrorMessage("")} intent="danger">
-            {errorMessage}
-          </Alert>
+          {errorMessage}
+        </Alert>
       </div>
     </div>
   )

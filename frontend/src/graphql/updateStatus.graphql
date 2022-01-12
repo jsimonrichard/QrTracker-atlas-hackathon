@@ -1,0 +1,7 @@
+mutation UpdateStatus($id: ObjectId!, $status: TrackerStatusUpdateInput!) {
+    updateOneTracker(query: {_id: $id}, set: {
+        status: $status
+    }) {
+        _id
+    }
+}
