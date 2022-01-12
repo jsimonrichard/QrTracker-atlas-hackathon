@@ -36,7 +36,7 @@ exports = async function(changeEvent) {
     // Format data
     let data = {
       trackerName: changeEvent.fullDocument.title,
-      trackerAtAGlance: changeEvent.updateDescription.updateFields.status.message,
+      trackerAtAGlance: changeEvent.updateDescription.updatedFields.status.message,
       trackerLink: `https://${context.values.get("domainName")}/tracker/${changeEvent.documentKey._id}`
     }
 
