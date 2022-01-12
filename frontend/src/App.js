@@ -17,6 +17,9 @@ import HandlePasswordReset from './pages/handlePasswordReset';
 import Dashboard from './pages/user/dashboard';
 import CreateTracker from './pages/user/create';
 import { AppContext } from '.';
+import ViewTracker from './pages/tracker/viewTracker';
+import EditTracker from './pages/tracker/editTracker';
+import AcceptInvitation from './pages/user/acceptInvitation';
 
 export default function App() {
   const app = useContext(AppContext);
@@ -64,6 +67,18 @@ export default function App() {
 
             <Route path="/create">
               {user ? <CreateTracker user={user} /> : <Redirect to="/login" />}
+            </Route>
+
+            <Route path="/acceptInvitation">
+              <AcceptInvitation user={user}/>
+            </Route>
+
+            <Route path="/t/:trackerId/edit">
+              <EditTracker />
+            </Route>
+
+            <Route path="/t/:trackerId">
+              <ViewTracker />
             </Route>
 
             <Route>

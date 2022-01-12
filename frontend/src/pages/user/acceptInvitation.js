@@ -24,7 +24,7 @@ export default function AcceptInvitation({ user }) {
       <div className="center-content">
         {user ?
           <div>
-            {trackerId ? <Redirect to={`/tracker/${trackerId}`}/> : <Spinner className="tall-spinner" />}
+            {trackerId ? <Redirect to={`/t/${trackerId}`}/> : <Spinner className="tall-spinner" />}
           </div>
         :
           <div>
