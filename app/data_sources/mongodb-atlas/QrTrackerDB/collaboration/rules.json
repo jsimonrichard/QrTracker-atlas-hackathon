@@ -1,0 +1,18 @@
+{
+    "collection": "collaboration",
+    "database": "QrTrackerDB",
+    "roles": [
+        {
+            "name": "owner",
+            "apply_when": {
+                "collaboratorId": "%%user.id"
+            },
+            "read": true,
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {}
+        }
+    ]
+}

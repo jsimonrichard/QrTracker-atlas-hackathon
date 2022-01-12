@@ -21,13 +21,10 @@
                 "additionalProperties": false,
                 "bsonType": "object",
                 "properties": {
-                    "editorId": {
+                    "details": {
                         "bsonType": "string"
                     },
-                    "timestamp": {
-                        "bsonType": "date"
-                    },
-                    "details": {
+                    "editorId": {
                         "bsonType": "string"
                     },
                     "location": {
@@ -67,6 +64,9 @@
                     },
                     "message": {
                         "bsonType": "string"
+                    },
+                    "timestamp": {
+                        "bsonType": "date"
                     }
                 },
                 "required": [
@@ -84,13 +84,10 @@
         "status": {
             "bsonType": "object",
             "properties": {
-                "editorId": {
+                "details": {
                     "bsonType": "string"
                 },
-                "timestamp": {
-                    "bsonType": "date"
-                },
-                "details": {
+                "editorId": {
                     "bsonType": "string"
                 },
                 "location": {
@@ -130,6 +127,9 @@
                 },
                 "message": {
                     "bsonType": "string"
+                },
+                "timestamp": {
+                    "bsonType": "date"
                 }
             },
             "required": [
