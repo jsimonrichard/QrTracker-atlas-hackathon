@@ -17,8 +17,9 @@ exports = async function(emails, tracker_id, inviteType) {
   const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
   // Loop through each email address
-
   emails.forEach(async email => {
+
+    // Build data
     let insert_data = {
       email: email,
       tracker: tracker_id,
@@ -30,7 +31,16 @@ exports = async function(emails, tracker_id, inviteType) {
     // Create invite
     let {insertedId: inviteId} = await invite_collection.insertOne(insert_data);
 
+    // Build data for email
     var inviteLink = `https://${context.values.get("domainName")}/acceptInvitation?invite=${encodeURIComponent(inviteId)}`;
+    let inviteTypePhrase;
+    if(invite.type === "collaborate") {
+      inviteTypePhrase = "collaborate on";
+    } else if(invite.type === "subscribe") {
+      inviteTypePhrase = "subscribe to";
+    } else {
+      throw Error("Unrecognized invite type");
+    }
 
     // Send message
     let messageId = await courier.send({
@@ -42,7 +52,8 @@ exports = async function(emails, tracker_id, inviteType) {
       },
       data: {
         trackerName: tracker.title,
-        inviteLink: inviteLink
+        inviteLink,
+        inviteTypePhrase
       },
       override: {},
     });
