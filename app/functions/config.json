@@ -1,31 +1,6 @@
 [
     {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "inviteCollaborators",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "sharedTrackerResolver",
-        "private": false
-    },
-    {
-        "name": "getGoogleAPIKey",
-        "private": false
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
-        "name": "deleteUsersItems",
+        "name": "latestHistoryResolver",
         "private": false
     },
     {
@@ -33,15 +8,31 @@
         "private": false
     },
     {
-        "name": "sendResetPasswordEmail",
-        "private": true
-    },
-    {
         "name": "sendGoodbyeEmail",
         "private": true
     },
     {
-        "name": "setUpInvite",
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
+        "name": "sharedTrackerResolver",
+        "private": false
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "setUpTracker",
         "private": true
     },
     {
@@ -51,19 +42,28 @@
         "can_evaluate": {}
     },
     {
-        "name": "confirmUser",
+        "name": "onSubscriptionUpdate",
         "private": true
     },
     {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "sendWelcomeEmail",
+        "name": "setUpInvite",
         "private": true
     },
     {
-        "name": "latestHistoryResolver",
+        "name": "deleteUsersItems",
         "private": false
+    },
+    {
+        "name": "inviteCollaborators",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "getGoogleAPIKey",
+        "private": false
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
     }
 ]

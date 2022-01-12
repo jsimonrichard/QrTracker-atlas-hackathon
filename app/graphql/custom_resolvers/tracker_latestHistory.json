@@ -3,6 +3,5 @@
     "function_name": "latestHistoryResolver",
     "input_type_format": "",
     "on_type": "Tracker",
-    "payload_type": "TrackerHistory",
-    "payload_type_format": "generated"
+    "payload_type_format": ""
 }
