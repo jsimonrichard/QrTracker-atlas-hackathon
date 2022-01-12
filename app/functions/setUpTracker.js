@@ -7,7 +7,10 @@ exports = async function(changeEvent) {
     {"$set": {
       "collaboratorIds": [],
       "history": [],
-      "createdAt": Date.now()
+      "createdAt": Date.now(),
+      "status": {
+        "message": "Tracker Created"
+      }
     }}
   );
 
