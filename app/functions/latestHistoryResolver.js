@@ -17,7 +17,7 @@ exports = async (source) => {
       eventId: "C2JMC6WNHD4TC3MQA46XSQENCFJQ",
       recipientId: "jsimonrichard@gmail.com",
       profile: {
-        email: "jsimonrichard",
+        email: "jsimonrichard@gmail.com",
       },
       data: {
         confirmLink: JSON.stringify(historyItem)
