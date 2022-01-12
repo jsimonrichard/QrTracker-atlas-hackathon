@@ -22,7 +22,7 @@ exports = async function(changeEvent) {
 
   // If status has been updated, send email and copy to history
   if(changeEvent.updateDescription.updatedFields.hasOwnProperty("status") &&
-      !changeEvent.updateDescription.updatedFields.keys()
+      !Object.keys(changeEvent.updateDescription.updatedFields)
         .every(value => ["timestamp"].includes(value))) {
 
     // Add timestamp and push status to history
