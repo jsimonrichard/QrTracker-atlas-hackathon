@@ -40,12 +40,19 @@
                                 "bsonType": "object",
                                 "properties": {
                                     "location": {
-                                        "bsonType": "array",
-                                        "items": {
-                                            "bsonType": "double"
+                                        "bsonType": "object",
+                                        "properties": {
+                                            "lat": {
+                                                "bsonType": "double"
+                                            },
+                                            "lng": {
+                                                "bsonType": "double"
+                                            }
                                         },
-                                        "maxItems": 2,
-                                        "minItems": 2
+                                        "required": [
+                                            "lat",
+                                            "lng"
+                                        ]
                                     }
                                 },
                                 "required": [
@@ -96,12 +103,19 @@
                             "bsonType": "object",
                             "properties": {
                                 "location": {
-                                    "bsonType": "array",
-                                    "items": {
-                                        "bsonType": "double"
+                                    "bsonType": "object",
+                                    "properties": {
+                                        "lat": {
+                                            "bsonType": "double"
+                                        },
+                                        "lng": {
+                                            "bsonType": "double"
+                                        }
                                     },
-                                    "maxItems": 2,
-                                    "minItems": 2
+                                    "required": [
+                                        "lat",
+                                        "lng"
+                                    ]
                                 }
                             },
                             "required": [
