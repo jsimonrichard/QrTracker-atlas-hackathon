@@ -70,7 +70,15 @@ export default function CreateTracker({ user }) {
   return (
     <div className="content">
       <div className="center-content">
-        <form>
+        <form onSubmit={event => {
+          event.preventDefault()
+          if(title) {
+            setTitleError("");
+            onSubmit();
+          } else {
+            setTitleError("Title is required")
+          }}}>
+
           <h1>Create a Tracker</h1>
 
           <FormGroup label="Title" labelInfo="(required)"
@@ -127,14 +135,7 @@ export default function CreateTracker({ user }) {
             large={true}
             loading={loading}
             style={{float: "right"}}
-            onClick={()=>{
-              if(title) {
-                setTitleError("");
-                onSubmit();
-              } else {
-                setTitleError("Title is required")
-              }
-            }}>
+            type="submit">
             Submit
           </Button>
         </form>
