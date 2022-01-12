@@ -80,12 +80,19 @@
             ]
         },
         "statusTemplateIncludes": {
-            "details": {
-                "bsonType": "bool"
+            "bsonType": "object",
+            "properties": {
+                "details": {
+                    "bsonType": "bool"
+                },
+                "location": {
+                    "bsonType": "bool"
+                }
             },
-            "location": {
-                "bsonType": "bool"
-            }
+            "required": [
+                "details",
+                "location"
+            ]
         },
         "title": {
             "bsonType": "string"
