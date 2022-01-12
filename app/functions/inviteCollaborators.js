@@ -17,14 +17,15 @@ exports = async function(emails, tracker_id) {
   const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
   // Loop through each email address
-  let insert_data = {
-    email: email,
-    tracker: tracker_id,
-    senderId: context.user.id
-  };
-  console.log("Insert request data:", JSON.stringify(insert_data));
 
   emails.forEach(async email => {
+    let insert_data = {
+      email: email,
+      tracker: tracker_id,
+      senderId: context.user.id
+    };
+    console.log("Insert request data:", JSON.stringify(insert_data));
+    
     // Create invite
     let {insertedId: inviteId} = await invite_collection.insertOne(insert_data);
 
