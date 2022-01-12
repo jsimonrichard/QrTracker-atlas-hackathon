@@ -10,6 +10,10 @@
         },
         "tracker": {
             "bsonType": "objectId"
+        },
+        "type": {
+            "bsonType": "string",
+            "pattern": "/^(collaborate|subscribe)$/"
         }
     },
     "required": [
