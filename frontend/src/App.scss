@@ -407,12 +407,9 @@ table {
   }
 }
 
-.bp3-dialog {
-  padding: 0px;
-}
-
 .dialog-content-wrapper {
   padding: 1rem;
+  padding-bottom: 0px;
 
   .button-wrapper {
     text-align: right;
@@ -429,10 +426,4 @@ table {
 .popover-select-button {
   width: 100%;
   display: block;
-}
-
-.field-chooser {
-  border: 1px solid black;
-  padding: 1rem;
-  margin-bottom: 1rem;
 }
