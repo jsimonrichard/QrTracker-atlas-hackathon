@@ -1,0 +1,43 @@
+query GetTracker($id: ObjectId!) {
+    tracker(query: {_id: $id}) {
+        ...AllFields
+    }
+}
+
+fragment AllHistoryFields on TrackerHistory {
+    message
+    details
+    location {
+        formatted_address
+        geometry {
+            location
+        }
+    }
+    timestamp
+}
+
+fragment AllStatusFields on TrackerStatus {
+    message
+    details
+    location {
+        formatted_address
+        geometry {
+            location
+        }
+    },
+    timestamp
+}
+
+fragment AllFields on Tracker {
+    title
+    description
+    status {
+        ...AllStatusFields
+    }
+    history {
+        ...AllHistoryFields
+    }
+    createdAt
+    updatedAt
+    ownerId
+}

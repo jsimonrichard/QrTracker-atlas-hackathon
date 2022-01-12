@@ -30,10 +30,8 @@ exports = async function(changeEvent) {
 
     update.$push = {
       history: {
-        status: {
-          ...changeEvent.updateDescription.updatedFields.status,
-          timestamp: update.$set["status.timestamp"] // timestamp hasn't been added yet
-        }
+        ...changeEvent.updateDescription.updatedFields.status,
+        timestamp: update.$set["status.timestamp"] // timestamp hasn't been added yet
       }
     };
 

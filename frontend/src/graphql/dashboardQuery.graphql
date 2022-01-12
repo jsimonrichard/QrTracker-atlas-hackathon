@@ -19,6 +19,6 @@ fragment MinFields on Tracker {
   title
   status {
     message
+    timestamp
   }
-  updatedAt
 }
