@@ -9,12 +9,13 @@ query GetDashboardInfo($userId: String!) {
     }
   }
 
-  shared: trackers(query: {collaboratorIds: [$userId]}) {
+  shared(input: $userId) {
     ...MinFields
   }
 }
 
 fragment MinFields on Tracker {
+  _id
   title
   status {
     message

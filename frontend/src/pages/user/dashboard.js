@@ -6,13 +6,36 @@ import { useContext, useEffect } from "react";
 import { AppContext } from "../..";
 
 function TrackerItem({ tracker }) {
+  let datetime = new Date(tracker.updatedAt);
+  let now = new Date(Date.now())
+  let diff = now.getTime() - datetime.getTime();
+
+  let dateString = "";
+  if(diff < (1000 * 3600 * 24) && now.getDay() === datetime.getDay()) {
+    let hours = datetime.getHours();
+    let noonSide = hours <= 12 ? "am" : "pm";
+    hours = (hours-1)%12 + 1;
+    let minutes = String(datetime.getMinutes()).padStart(2, "0");
+
+    dateString = `${hours}:${minutes} ${noonSide}`;
+  } else {
+    let month = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ][datetime.getMonth()]
+    let day = datetime.getDate();
+
+    dateString = `${month} ${day}`;
+  }
+
   return (
-    <div className="tracker-list-item">
-      <h4>{tracker.title}</h4>
-      <div>
-        {tracker.updatedAt} - {tracker.status.title}
+    <Link href={`/t/${tracker._id}`}>
+      <div className="tracker-list-item">
+        <h4>{tracker.title}</h4>
+        <div>
+          {dateString} - {tracker.status.message}
+        </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -37,7 +60,6 @@ export default function Dashboard({ user }) {
   // Load data on mount
   useEffect(loadData, []);
 
-  useEffect(()=>console.log(data), [data]);
 
   if(!called || loading) {
     return (
@@ -59,24 +81,38 @@ export default function Dashboard({ user }) {
   } else {
     return (
       <div className="content">
-        <h1>Your Subscriptions</h1>
+        <h1 style={{textAlign: 'center'}}>Dashboard</h1>
+
+        <h2>Your Subscriptions</h2>
         <div className="tracker-list">
 
-          {data.subscriptions.forEach(subscription => 
+          {data.subscriptions.map(subscription => 
             <TrackerItem tracker={subscription.tracker}/>
           )}
 
           <AddTrackerLink href="/browse"/>
         </div>
 
-        <h1>Your Trackers</h1>
+        <h2>Your Trackers</h2>
         <div className="tracker-list">
 
-          {data.trackers.forEach(tracker => 
+          {data.trackers.map(tracker => 
             <TrackerItem tracker={tracker} />
           )}
 
           <AddTrackerLink href="/create" />
+        </div>
+
+        <h2>Shared with you</h2>
+        <div className="tracker-list">
+
+          {data.shared.length ? data.shared.map(tracker => 
+            <TrackerItem tracker={tracker} />
+          ) :
+            <div className="tracker-list-item tracker-list-add-item disabled">
+              None
+            </div>
+          }
         </div>
       </div>
     )
