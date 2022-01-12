@@ -37,7 +37,7 @@ exports = async function(changeEvent) {
     let data = {
       trackerName: changeEvent.fullDocument.title,
       trackerAtAGlance: changeEvent.updateDescription.updateFields.status.message,
-      trackerLink: `https://${context.values.get("domainName")}/t/${changeEvent.documentKey._id}`
+      trackerLink: `https://${context.values.get("domainName")}/tracker/${changeEvent.documentKey._id}`
     }
 
     // Send email

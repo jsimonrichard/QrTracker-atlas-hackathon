@@ -24,17 +24,17 @@
                     "status": {
                         "bsonType": "object",
                         "properties": {
+                            "details": {
+                                "bsonType": "string"
+                            },
                             "editorId": {
+                                "bsonType": "objectId"
+                            },
+                            "location": {
                                 "bsonType": "objectId"
                             },
                             "message": {
                                 "bsonType": "string"
-                            },
-                            "details": {
-                                "bsonType": "string"
-                            },
-                            "location": {
-                                "bsonType": "objectId"
                             }
                         },
                         "required": [
@@ -61,17 +61,17 @@
         "status": {
             "bsonType": "object",
             "properties": {
+                "details": {
+                    "bsonType": "string"
+                },
                 "editorId": {
+                    "bsonType": "objectId"
+                },
+                "location": {
                     "bsonType": "objectId"
                 },
                 "message": {
                     "bsonType": "string"
-                },
-                "details": {
-                    "bsonType": "string"
-                },
-                "location": {
-                    "bsonType": "objectId"
                 }
             },
             "required": [

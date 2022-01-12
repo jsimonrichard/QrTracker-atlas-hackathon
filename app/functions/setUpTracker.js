@@ -7,16 +7,13 @@ exports = async function(changeEvent) {
     {"$set": {
       "collaboratorIds": [],
       "history": [],
-      "createdAt": Date.now(),
-      "status": {
-        "message": "Tracker Created"
-      }
+      "createdAt": Date.now()
     }}
   );
 
   if(matchedCount) {
     console.log("Successfully updated tracker");
   } else {
-    console.log("No matching document");
+    console.log("No matching documen");
   }
 };

@@ -1,26 +1,5 @@
 [
     {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
-        "name": "deleteUsersItems",
-        "private": false
-    },
-    {
-        "name": "inviteCollaborators",
-        "private": false,
-        "run_as_system": true
-    },
-    {
         "name": "setUpTracker",
         "private": true
     },
@@ -31,11 +10,11 @@
         "can_evaluate": {}
     },
     {
-        "name": "confirmUser",
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
-        "name": "resetPassword",
+        "name": "sendConfirmationEmail",
         "private": false
     },
     {
@@ -47,7 +26,7 @@
         "private": true
     },
     {
-        "name": "sendGoodbyeEmail",
+        "name": "confirmUser",
         "private": true
     },
     {
@@ -57,5 +36,26 @@
     {
         "name": "setUpInvite",
         "private": true
+    },
+    {
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
+        "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "inviteCollaborators",
+        "private": false,
+        "run_as_system": true
     }
 ]
