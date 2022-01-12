@@ -19,6 +19,5 @@ fragment MinFields on Tracker {
   status {
     message
   }
-  atAGlanceField
   updatedAt
 }
