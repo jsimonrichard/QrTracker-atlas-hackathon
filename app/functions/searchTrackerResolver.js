@@ -3,7 +3,15 @@ exports = async (query) => {
     .collection("tracker");
   
   let trackers = await tracker_collection.aggregate([
-    {$search: query}
+    {$search: {
+      index: 'default',
+      text: {
+        query: query,
+        path: {
+          wildcard: '*'
+        }
+      }
+    }}
   ]).toArray();
   
   return trackers;
