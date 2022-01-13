@@ -20,6 +20,7 @@ import { AppContext } from '.';
 import ViewTracker from './pages/tracker/viewTracker';
 import EditTracker from './pages/tracker/editTracker';
 import AcceptInvitation from './pages/user/acceptInvitation';
+import Search from './pages/search';
 
 export default function App() {
   const app = useContext(AppContext);
@@ -59,6 +60,10 @@ export default function App() {
 
             <Route path="/browse">
               <Browse />
+            </Route>
+
+            <Route path="/search">
+              <Search />
             </Route>
 
             <Route path="/dashboard">

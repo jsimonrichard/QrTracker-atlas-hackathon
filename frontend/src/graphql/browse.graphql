@@ -1,0 +1,14 @@
+query Browse {
+  trackerSample {
+    ...MinFields
+  }
+}
+
+fragment MinFields on Tracker {
+  _id
+  title
+  status {
+    message
+    timestamp
+  }
+}

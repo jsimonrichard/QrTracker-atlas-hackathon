@@ -1,9 +1,11 @@
-import { Button, ControlGroup, Dialog, TagInput, FormGroup, Classes } from "@blueprintjs/core";
-import { useState, useContext } from "react";
+import { ApolloConsumer } from "@apollo/client";
+import { Button, ControlGroup, Dialog, TagInput, FormGroup, Classes, InputGroup } from "@blueprintjs/core";
+import { useState, useContext, useEffect } from "react";
 import { AppContext } from "../..";
 import { EMAIL_REGEX } from "../form";
+import copy from 'copy-text-to-clipboard';
 
-export default function Share({trackerId, large}) {
+export default function Share({trackerId, data, large}) {
   const app = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -63,6 +65,21 @@ export default function Share({trackerId, large}) {
               }}/>
 
             <h2>Links</h2>
+
+            <GetShareLink
+              trackerId={trackerId}
+              label="For Subscribers"
+              link={data.subscriberLink}
+              type="subscribe"
+              large={true}/>
+            
+
+            <GetShareLink
+              trackerId={trackerId}
+              label="For Collaborators"
+              link={data.collaboratorLink}
+              type="collaborate"
+              large={true}/>
           </div>
       </Dialog>
     </>
@@ -111,5 +128,91 @@ function SendEmailList({ label, labelInfo, onSubmit }) {
             onClick={handleSubmit}/>
         </ControlGroup>
     </FormGroup>
+  );
+}
+
+function GetShareLink({trackerId, link, label, type, large}) {
+  const app = useContext(AppContext);
+
+  const [domainName, setDomainName] = useState("");
+
+  const [message, setMessage] = useState("");
+  const [messageIntent, setMessageIntent] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    app.currentUser.functions.getDomainName().then(dn => {
+      setLoading(false);
+      setDomainName(dn);
+    }).catch(console.log);
+  }, []);
+  
+  const formatLink = link => `https://${domainName}/acceptInvitation?invite=${link._id}&key=${link.key}`;
+
+  const copyToClipBoard = () => {
+    setLoading(true);
+    setMessage("");
+    setMessageIntent("");
+
+    copy(formatLink(link));
+    setLoading(false);
+    setMessage("Copied!");
+    setMessageIntent("success");
+  }
+
+  const createLink = client => {
+    setLoading(true);
+    setMessage("");
+    setMessageIntent("");
+
+    app.currentUser.functions.createInviteLink(trackerId, type).then(() => {
+      // Reload queries
+      client.refetchQueries({
+        include: "active"
+      }).then(() => {
+        setLoading(false);
+      }).catch(error => {
+        setLoading(false);
+        setMessage(error.error);
+        setMessageIntent("danger");
+
+        console.log(error);
+      })
+
+    }).catch(error => {
+      setLoading(false);
+      setMessage(error.error);
+      setMessageIntent("danger");
+
+      console.log(error);
+    });
+  }
+
+  return (
+    <ApolloConsumer>
+      {client => 
+        <FormGroup label={label} large={large}
+          intent={messageIntent}
+          helperText={message}>
+    
+          <InputGroup large={large} value={link ? formatLink(link) : ""} rightElement={
+            <Button intent="primary" outlined={true} loading={loading}
+              onClick={() => {
+                if(link) {
+                  copyToClipBoard();
+                } else {
+                  createLink(client);
+                }
+              }}>
+              {link ? "Copy" : "Generate"}
+            </Button>
+          }
+          placeholder="No links have been generated..."/>
+        </FormGroup>
+      }
+    </ApolloConsumer>
+    
   );
 }

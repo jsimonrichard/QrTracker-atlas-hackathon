@@ -1,11 +1,17 @@
-import { ControlGroup, InputGroup, NonIdealState, Spinner, Button, Classes } from "@blueprintjs/core";
-import TrackerItem from "../components/tracker/trackerItem";
 import { useQuery } from "@apollo/client";
 import { loader } from "graphql.macro";
+import { Spinner, Button, Classes, NonIdealState, ControlGroup } from "@blueprintjs/core";
+import TrackerItem from "../components/tracker/trackerItem";
+import { useState } from "react";
 
+export default function Search() {
+  const urlParams = new URLSearchParams(window.location.search);
 
-export default function Browse() {
-  const { loading, error, data } = useQuery(loader('../graphql/browse.graphql'));
+  const { loading, error, data } = useQuery(loader('../graphql/search.graphql'), {
+    variables: {
+      query: urlParams.get("query")
+    }
+  });
 
   if(loading) {
     return (
@@ -30,7 +36,7 @@ export default function Browse() {
     return (
       <div className="content">
         <div className="browse-header">
-          <h1>Public Trackers</h1>
+          <h1>Search</h1>
           <form method="GET" action="/search">
             <ControlGroup>
               <input className={[Classes.INPUT, Classes.LARGE].join(" ")}
@@ -41,8 +47,8 @@ export default function Browse() {
         </div>
       
         <div className="tracker-list">
-          {data.trackerSample ?
-              data.trackerSample.map(tracker => <TrackerItem tracker={tracker} key={tracker._id} />)
+          {data.searchTrackers ?
+            data.searchTrackers.map(tracker => <TrackerItem tracker={tracker} key={tracker._id} />)
           :
             (<div className="tracker-list-item tracker-list-add-item disabled">
               None

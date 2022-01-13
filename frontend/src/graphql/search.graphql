@@ -1,0 +1,14 @@
+query Search($query: String!) {
+    searchTrackers(input: $query) {
+        ...MinFields
+    }
+}
+
+fragment MinFields on Tracker {
+  _id
+  title
+  status {
+    message
+    timestamp
+  }
+}

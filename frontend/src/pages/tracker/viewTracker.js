@@ -1,24 +1,22 @@
 import { loader } from "graphql.macro";
-import { useLazyQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Spinner, NonIdealState, Button } from "@blueprintjs/core";
 import { useContext, useEffect } from "react";
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 
 import Share from "../../components/tracker/share";
 import { AppContext } from "../..";
 import UpdateStatus from "../../components/tracker/updateStatus";
+import SubscribeButton from "../../components/tracker/subscribeButton";
 
 export default function ViewTracker({trackerId}) {
   const app = useContext(AppContext);
 
-  const [loadData, { called, loading, error, data }] = useLazyQuery(loader("../../graphql/viewTracker.graphql"), {
+  const { called, loading, error, data } = useQuery(loader("../../graphql/viewTracker.graphql"), {
     variables: {
       id: trackerId
     }
   });
-
-  // Load data on mount
-  useEffect(loadData, []);
 
   // Render
   if(!called || loading) {
@@ -55,22 +53,29 @@ export default function ViewTracker({trackerId}) {
 
 
           <div className="button-group">
+            {["collaborator", "owner"].includes(data.tracker.role) &&
+              <>
+                <UpdateStatus
+                  trackerId={trackerId}
+                  statusTemplateIncludes={data.tracker.statusTemplateIncludes}/>
 
-            <UpdateStatus
-              trackerId={trackerId}
-              statusTemplateIncludes={data.tracker.statusTemplateIncludes}
-              loadData={loadData}/>
+                <Link href={`/t/${trackerId}/edit`}>
+                  <Button
+                    outlined={true}
+                    icon="edit"
+                    intent="primary">
+                      Edit
+                  </Button>
+                </Link>
+              </>
+            }
 
-            <Link href={`/t/${trackerId}/edit`}>
-              <Button
-                outlined={true}
-                icon="edit"
-                intent="primary">
-                  Edit
-              </Button>
-            </Link>
+            {(data.tracker.role === "owner") && <Share trackerId={trackerId} data={data}/>}
 
-            {(app.currentUser.id === data.tracker.ownerId) && <Share trackerId={trackerId} />}
+            <SubscribeButton
+              isSubscribed={data.tracker.isSubscribed}
+              trackerName={data.tracker.title}
+              trackerId={trackerId}/>
           </div>
         </div>
 

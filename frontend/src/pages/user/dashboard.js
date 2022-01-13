@@ -1,43 +1,11 @@
 import { Icon, NonIdealState, Spinner } from "@blueprintjs/core";
-import { useLazyQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Link } from 'wouter';
 import { loader } from 'graphql.macro';
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AppContext } from "../..";
 
-function TrackerItem({ tracker }) {
-  let datetime = new Date(tracker.status.timestamp);
-  let now = new Date(Date.now())
-  let diff = now.getTime() - datetime.getTime();
-
-  let dateString = "";
-  if(diff < (1000 * 3600 * 24) && now.getDay() === datetime.getDay()) {
-    let hours = datetime.getHours();
-    let noonSide = hours <= 12 ? "am" : "pm";
-    hours = (hours-1)%12 + 1;
-    let minutes = String(datetime.getMinutes()).padStart(2, "0");
-
-    dateString = `${hours}:${minutes} ${noonSide}`;
-  } else {
-    let month = [
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ][datetime.getMonth()]
-    let day = datetime.getDate();
-
-    dateString = `${month} ${day}`;
-  }
-
-  return (
-    <Link href={`/t/${tracker._id}`}>
-      <div className="tracker-list-item">
-        <h4>{tracker.title}</h4>
-        <div>
-          {dateString} - {tracker.status.message}
-        </div>
-      </div>
-    </Link>
-  )
-}
+import TrackerItem from "../../components/tracker/trackerItem";
 
 function AddTrackerLink({ href }) {
   return (
@@ -51,17 +19,14 @@ function AddTrackerLink({ href }) {
 
 export default function Dashboard() {
   const app = useContext(AppContext);
-  const [loadData, { called, loading, error, data }] = useLazyQuery(loader('../../graphql/dashboardQuery.graphql'), {
+  const { loading, error, data } = useQuery(loader('../../graphql/dashboardQuery.graphql'), {
     variables: {
       userId: app.currentUser.id
     }
   });
 
-  // Load data on mount
-  useEffect(loadData, []);
 
-
-  if(!called || loading) {
+  if(loading) {
     return (
       <div className="content">
         <Spinner className="tall-spinner"/>

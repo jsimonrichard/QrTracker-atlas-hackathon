@@ -2,7 +2,7 @@ import { Dialog, Button, FormGroup, TextArea, InputGroup, Alert } from "@bluepri
 import { useContext, useState } from "react";
 import { AppContext } from "../..";
 import GeocodedInput from "./geocodedInput";
-import { useMutation } from "@apollo/client";
+import { ApolloConsumer, useMutation } from "@apollo/client";
 import { loader } from "graphql.macro";
 
 function formatLocation({
@@ -24,7 +24,7 @@ function formatLocation({
   };
 }
 
-export default function UpdateStatus({ trackerId, statusTemplateIncludes, loadData, large }) {
+export default function UpdateStatus({ trackerId, statusTemplateIncludes, large }) {
   const app = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -51,12 +51,11 @@ export default function UpdateStatus({ trackerId, statusTemplateIncludes, loadDa
     }
   });
 
-  const onSubmit = () => {
+  const onSubmit = client => {
     setLoading(true);
 
     updateStatus().then(result => {
       setErrorMessage("");
-      setLoading(false);
 
       // Clear data for next time
       setMessage("");
@@ -64,7 +63,15 @@ export default function UpdateStatus({ trackerId, statusTemplateIncludes, loadDa
       setLocation(null);
 
       setIsOpen(false);
-      loadData()
+
+      // Reload queries
+      client.refetchQueries({
+        include: "all"
+      }).then(() => {
+        setLoading(false);
+      }).catch(error => {
+        console.log(error);
+      })
 
     }).catch(error => {
       setLoading(false);
@@ -75,76 +82,79 @@ export default function UpdateStatus({ trackerId, statusTemplateIncludes, loadDa
   }
 
   return (
-    <>
-      <Button
-        large={large}
-        outlined={true}
-        icon="notifications"
-        intent="success"
-        onClick={()=>setIsOpen(true)}>
-          Update Status
-      </Button>
+    <ApolloConsumer>
+      {client => <>
+        <Button
+          large={large}
+          outlined={true}
+          icon="notifications"
+          intent="success"
+          onClick={()=>setIsOpen(true)}>
+            Update Status
+        </Button>
 
 
-      <Dialog
-        isOpen={isOpen}
-        onClose={()=>setIsOpen(false)}
-        title="Update Status"
-        icon="notifications">
+        <Dialog
+          isOpen={isOpen}
+          onClose={()=>setIsOpen(false)}
+          title="Update Status"
+          icon="notifications">
 
-          <form className="dialog-content-wrapper"
-            onSubmit={event => {
-            event.preventDefault();
+            <form className="dialog-content-wrapper"
+              onSubmit={event => {
+              event.preventDefault();
 
-            if(message) {
-              setMessageError("");
-              onSubmit();
-            } else {
-              setMessageError("Message is required");
-            }
-          }}>
-            <FormGroup label="Message" labelInfo="(required)"
-              intent={messageError ? "danger": ""}
-              helperText={messageError}>
-                <InputGroup
-                  large={true}
-                  placeholder="Write a short message here..."
-                  value={message}
-                  onChange={event => setMessage(event.target.value)}/>
-            </FormGroup>
-
-            {statusTemplateIncludes.details &&
-              <FormGroup label="Details">
-                <TextArea placeholder='Add some more details...'
-                  large={true}
-                  value={details}
-                  onChange={event => setDetails(event.target.value)}/>
+              if(message) {
+                setMessageError("");
+                onSubmit(client);
+              } else {
+                setMessageError("Message is required");
+              }
+            }}>
+              <FormGroup label="Message" labelInfo="(required)"
+                intent={messageError ? "danger": ""}
+                helperText={messageError}>
+                  <InputGroup
+                    large={true}
+                    placeholder="Write a short message here..."
+                    value={message}
+                    onChange={event => setMessage(event.target.value)}/>
               </FormGroup>
-            }
 
-            {statusTemplateIncludes.location &&
-              <FormGroup label="Location" large={true}>
-                <GeocodedInput value={location} setValue={setLocation} large={true}/>
-              </FormGroup>
-            }
+              {statusTemplateIncludes.details &&
+                <FormGroup label="Details">
+                  <TextArea placeholder='Add some more details...'
+                    large={true}
+                    value={details}
+                    onChange={event => setDetails(event.target.value)}/>
+                </FormGroup>
+              }
 
-
-            <Button
-              intent="primary"
-              outlined={true}
-              large={true}
-              loading={loading}
-              style={{float: "right"}}
-              type="submit">
-              Update Status
-            </Button>
-          </form>
-      </Dialog>
+              {statusTemplateIncludes.location &&
+                <FormGroup label="Location" large={true}>
+                  <GeocodedInput value={location} setValue={setLocation} large={true}/>
+                </FormGroup>
+              }
 
 
-      <Alert isOpen={errorMessage} onClose={() => setErrorMessage("")} intent="danger">
-        {errorMessage}
-      </Alert>
-    </>
+              <Button
+                intent="primary"
+                outlined={true}
+                large={true}
+                loading={loading}
+                style={{float: "right"}}
+                type="submit">
+                Update Status
+              </Button>
+            </form>
+        </Dialog>
+
+
+        <Alert isOpen={errorMessage} onClose={() => setErrorMessage("")} intent="danger">
+          {errorMessage}
+        </Alert>
+      </>}
+    </ApolloConsumer>
+    
   );
 }

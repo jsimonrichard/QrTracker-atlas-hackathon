@@ -10,7 +10,7 @@ export default function AcceptInvitation({ user }) {
   useEffect(() => {
     if(user) {
       const urlParams = new URLSearchParams(window.location.search);
-      user.functions.acceptInvitation(urlParams.get("invite"))
+      user.functions.acceptInvitation(urlParams.get("invite"), urlParams.get("key"))
         .then(setTrackerId)
         .catch(error => {
           console.log(error);

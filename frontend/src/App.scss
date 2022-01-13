@@ -498,3 +498,13 @@ table {
     font-size: 1rem;
   }
 }
+
+.browse-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  h1 {
+    flex: 1 0 auto;
+  }
+}

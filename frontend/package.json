@@ -8,6 +8,7 @@
     "@blueprintjs/icons": "^3.31.0",
     "@blueprintjs/popover2": "^0.12.9",
     "@blueprintjs/select": "^3.18.11",
+    "copy-text-to-clipboard": "^3.0.1",
     "google-map-react": "^2.1.10",
     "graphql": "^16.2.0",
     "graphql.macro": "^1.4.2",

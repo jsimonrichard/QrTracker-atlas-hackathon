@@ -2,6 +2,22 @@ query GetTracker($id: ObjectId!) {
     tracker(query: {_id: $id}) {
         ...AllFields
     }
+
+    collaboratorLink: inviteLink(query: {
+        tracker: {_id: $id},
+        type: "collaborate"
+    }) {
+        _id
+        key
+    }
+
+    subscriberLink: inviteLink(query: {
+        type: "subscribe",
+        tracker: {_id: $id}
+    }) {
+        _id
+        key
+    }
 }
 
 fragment AllHistoryFields on TrackerHistory {
