@@ -41,7 +41,7 @@ exports = async function(inviteId, key) {
   data[idField] = context.user.id;
 
   let { matchedCount } = await db.collection("tracker").updateOne(
-    {_id: BSON.ObjectId(invite.tracker)},
+    {_id: invite.tracker},
     {$addToSet: data}
   );
 
