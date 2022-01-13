@@ -22,7 +22,6 @@ exports = async function(trackerId, type) {
     creatorId: context.user.id,
     tracker: BSON.ObjectId(trackerId),
     key,
-    type,
-    linkPrefix: `https://${context.values.get("domainName")}/acceptInvite`
+    type
   });
 }
