@@ -58,21 +58,18 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
   let customUserDataCollection = context.services.get("mongodb-atlas").db("QrTrackerDB")
     .collection("customUserData");
   let users = await customUserDataCollection.aggregate([
-    {$project: 
-      {email: 1, _id: 0}
-    },
     {$match: {
       userId: {
         $in: subscriberIds
       }
-    }}
+    }},
+    {$project: 
+      {email: 1, _id: 0}
+    }
   ]).toArray();
 
   // Generate email list from subscriptions
-  var emailList = "";
-  users.forEach(user => {
-    emailList += user.email
-  });
+  var emailList = users.map(user => user.email).join(",");
 
   // Diagnostic
   console.log(emailList);
