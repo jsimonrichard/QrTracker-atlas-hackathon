@@ -6,6 +6,7 @@ exports = async function(changeEvent) {
     {_id: changeEvent.documentKey._id},
     {$set: {
       collaboratorIds: [],
+      subscriberIds: [],
       history: [],
       createdAt: new Date(Date.now()),
       status: {
