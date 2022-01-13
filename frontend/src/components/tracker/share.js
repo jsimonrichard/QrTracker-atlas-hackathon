@@ -29,6 +29,9 @@ export default function Share({trackerId}) {
           <div className="dialog-content-wrapper">
             <SendEmailList label="Invite Subscribers"
               onSubmit={(emails, setLoading, setErrorMessage) => {
+                setLoading(true);
+                setErrorMessage("");
+
                 // Send subscriber emails
                 app.currentUser.functions.sendInvite(emails, trackerId, "subscribe")
                 .then(() => {
@@ -44,6 +47,9 @@ export default function Share({trackerId}) {
 
             <SendEmailList label="Invite Collaborators" labelInfo="(they will have full access)"
               onSubmit={(emails, setLoading, setErrorMessage) => {
+                setLoading(true);
+                setErrorMessage("");
+
                 // Send collaborator emails
                 app.currentUser.functions.sendInvite(emails, trackerId, "collaborate")
                   .then(() => {
@@ -101,6 +107,7 @@ function SendEmailList({ label, labelInfo, onSubmit }) {
             large={true}
             className={Classes.FIXED}
             loading={loading}
+            intent="primary"
             onClick={handleSubmit}/>
         </ControlGroup>
     </FormGroup>
