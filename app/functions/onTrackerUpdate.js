@@ -74,6 +74,9 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
     emailList += user.email
   });
 
+  // Diagnostic
+  console.log(emailList);
+
   // Send the emails as long as email_list != ""
   if(emailList) {
     // Setup courier
