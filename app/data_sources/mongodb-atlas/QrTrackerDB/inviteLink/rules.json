@@ -1,0 +1,18 @@
+{
+    "collection": "inviteLink",
+    "database": "QrTrackerDB",
+    "roles": [
+        {
+            "name": "owner",
+            "apply_when": {
+                "creatorId": "%%user.id"
+            },
+            "read": true,
+            "write": true,
+            "insert": true,
+            "delete": true,
+            "search": true,
+            "additional_fields": {}
+        }
+    ]
+}
