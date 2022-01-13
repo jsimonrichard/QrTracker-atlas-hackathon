@@ -8,7 +8,7 @@ exports = async function(inviteId, key) {
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
 
   let invite;
-  console.log(intiveId);
+  console.log(inviteId);
   if(key) {
     invite = await db.collection("inviteLink").findOne({
       _id: BSON.ObjectId(inviteId),
