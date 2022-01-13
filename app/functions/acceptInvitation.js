@@ -4,16 +4,25 @@ does not have the features nessicary to validate it correctly. For that reason a
 if statement within the function must be used.
 */
 
-exports = async function(inviteId) {
+exports = async function(inviteId, key) {
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
-  let invite = await db.collection("invite").findOne({_id: BSON.ObjectId(inviteId)});
+
+  let invite;
+  if(key) {
+    invite = await db.collection("inviteLink").findOne({
+      _id: BSON.ObjectId(inviteId),
+      key
+    });
+  } else {
+    invite = await db.collection("invite").findOne({_id: BSON.ObjectId(inviteId)});
+  }
 
   if(!invite) {
-    throw Error("Not invite with the given ID exists");
+    throw Error("No invite with the given ID exists");
   }
 
   // VALIDATION (DO NOT REMOVE)
-  if(context.user.data.email != invite.email) {
+  if(!key && context.user.data.email != invite.email) {
     throw Error("This invite is not associated with the user that is currently logged in");
   }
 
