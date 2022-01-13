@@ -4,10 +4,8 @@ exports = async function(trackerId, type) {
   let trackerCollection = db.collection("tracker");
 
   let tracker = trackerCollection.findOne({
-    _id: trackerId
+    _id: BSON.ObjectId(trackerId)
   });
-
-  console.log(JSON.stringify(tracker));
 
   // VALIDATION (do not remove)
   if(tracker.ownerId !== context.user.id) {
