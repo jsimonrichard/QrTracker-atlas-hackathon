@@ -5,6 +5,8 @@ exports = (source) => {
     return "collaborator";
   } else if(source.subscriberIds.includes(context.user.id)) {
     return "subscriber";
+  } else if(source.public) {
+    return "subscriber";
   } else {
     throw Error("You have no role for this tracker");
   }
