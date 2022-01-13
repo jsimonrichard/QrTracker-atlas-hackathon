@@ -68,22 +68,17 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
     }
   ]).toArray();
 
-  let emailList = users.map(user => user.email).join(",");
+  var { CourierClient } = require("@trycourier/courier");
+  const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
-  // Send the emails as long as email_list != ""
-  if(users) {
-    // Setup courier
-    var { CourierClient } = require("@trycourier/courier");
-    const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
-
-    // Send message
-    /* TODO: Does not yet send as BCC */
+  // Send emails individually
+  users.forEach(user => {
     var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
-      recipientId: emailList,
+      recipientId: user.email,
       profile: {
-        email: emailList,
+        email: user.email,
       },
       data,
       override: {}
@@ -91,5 +86,5 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
 
     // Log confirmation
     console.log("Message "+messageId+" sent");
-  }
+  });
 }
