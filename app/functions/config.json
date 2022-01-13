@@ -6,65 +6,16 @@
         "can_evaluate": {}
     },
     {
-        "name": "subscribe",
-        "private": false
-    },
-    {
         "name": "createInviteLink",
         "private": false,
         "run_as_system": true
-    },
-    {
-        "name": "onUserCreate",
-        "private": false
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "deleteUsersItems",
-        "private": false
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "setUpInvite",
-        "private": true
-    },
-    {
-        "name": "isSubscribedResolver",
-        "private": false
-    },
-    {
-        "name": "roleResolver",
-        "private": false
-    },
-    {
-        "name": "sendInvite",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "setUpCustomUserData",
-        "private": true
-    },
-    {
-        "name": "removeSubscription",
-        "private": false
-    },
-    {
-        "name": "registerCustomUserData",
-        "private": false
     },
     {
         "name": "sendGoodbyeEmail",
         "private": true
     },
     {
-        "name": "sendResetPasswordEmail",
+        "name": "onSubscriptionUpdate",
         "private": true
     },
     {
@@ -72,12 +23,39 @@
         "private": true
     },
     {
-        "name": "onTrackerUpdate",
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "removeSubscription",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "sendInvite",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "setUpInvite",
         "private": true
     },
     {
-        "name": "getGoogleAPIKey",
+        "name": "setUpCustomUserData",
+        "private": true
+    },
+    {
+        "name": "sharedTrackerResolver",
         "private": false
+    },
+    {
+        "name": "subscribe",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "sendWelcomeEmail",
+        "private": true
     },
     {
         "name": "subscribedTrackerResolver",
@@ -88,15 +66,43 @@
         "private": true
     },
     {
-        "name": "sendWelcomeEmail",
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
-        "name": "sharedTrackerResolver",
+        "name": "sendConfirmationEmail",
         "private": false
     },
     {
-        "name": "onSubscriptionUpdate",
+        "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "getGoogleAPIKey",
+        "private": false
+    },
+    {
+        "name": "onUserCreate",
+        "private": false
+    },
+    {
+        "name": "registerCustomUserData",
+        "private": false
+    },
+    {
+        "name": "sendResetPasswordEmail",
         "private": true
+    },
+    {
+        "name": "getDomainName",
+        "private": false
+    },
+    {
+        "name": "roleResolver",
+        "private": false
+    },
+    {
+        "name": "isSubscribedResolver",
+        "private": false
     }
 ]
