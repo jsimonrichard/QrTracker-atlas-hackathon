@@ -40,7 +40,6 @@ exports = async function(inviteId, key) {
   let data = {};
   data[idField] = context.user.id;
 
-  console.log(JSON.stringify(invite.tracker));
   let { matchedCount } = await db.collection("tracker").updateOne(
     {_id: invite.tracker},
     {$addToSet: data}
@@ -53,12 +52,14 @@ exports = async function(inviteId, key) {
     throw Error("No matching tracker found");
   }
 
-  // Remove invite
-  let { deletedCount } = await db.collection("invite").deleteOne({_id: BSON.ObjectId(inviteId)});
-  if(deletedCount) {
-    console.log("Deleted invite after use");
-  } else {
-    throw Error("No invite found");
+  if(!key) {
+    // Remove invite
+    let { deletedCount } = await db.collection("invite").deleteOne({_id: BSON.ObjectId(inviteId)});
+    if(deletedCount) {
+      console.log("Deleted invite after use");
+    } else {
+      throw Error("No invite found");
+  }
   }
 
   return invite.tracker;
