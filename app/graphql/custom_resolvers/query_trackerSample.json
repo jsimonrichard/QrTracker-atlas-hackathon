@@ -1,0 +1,8 @@
+{
+    "field_name": "trackerSample",
+    "function_name": "trackerSampleResolver",
+    "input_type_format": "",
+    "on_type": "Query",
+    "payload_type": "Tracker",
+    "payload_type_format": "generated-list"
+}
