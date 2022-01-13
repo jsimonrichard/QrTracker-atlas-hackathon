@@ -1,5 +1,4 @@
 exports = (source) => {
-  return JSON.stringify(source);
   if(source.collaboratorIds.includes(context.user.id)) {
     return "collaborator";
   } else if(source.subscriberIds.includes(context.user.id)) {
