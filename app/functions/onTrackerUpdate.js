@@ -16,10 +16,6 @@ exports = async function(changeEvent) {
   };
 
 
-  // Get db
-  let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
-
-
   // If status has been updated, send email and copy to history
   if(changeEvent.updateDescription.updatedFields.hasOwnProperty("status") &&
       !Object.keys(changeEvent.updateDescription.updatedFields)
@@ -35,11 +31,6 @@ exports = async function(changeEvent) {
       }
     };
 
-
-    // Get supscribers
-    var subscription_collection = db.collection("subscription");
-    var subscriptions = await subscription_collection.find({ tracker: changeEvent.documentKey._id });
-
     // Format data
     let data = {
       trackerName: changeEvent.fullDocument.title,
@@ -48,11 +39,12 @@ exports = async function(changeEvent) {
     }
 
     // Send email
-    sendUpdateTrackerEmails(subscriptions, data);
+    sendUpdateTrackerEmails(changeEvent.fullDocument.subscriberIds, data);
   }
 
   // Update tracker
-  var tracker_collection = db.collection("tracker");
+  let tracker_collection = context.services.get("mongodb-atlas").db("QrTrackerDB")
+    .collection("tracker");
   await tracker_collection.updateOne(
     {_id: changeEvent.documentKey._id},
     update
@@ -61,15 +53,29 @@ exports = async function(changeEvent) {
 };
 
 
-async function sendUpdateTrackerEmails(subscriptions, data) {
+async function sendUpdateTrackerEmails(subscriberIds, data) {
+  // Get users
+  let customUserDataCollection = context.services.get("mongodb-atlas").db("QrTrackerDB")
+    .collection("customUserData");
+  let users = await customUserDataCollection.aggregate(
+    {$project: 
+      {email: 1, _id: 0}
+    },
+    {$match: {
+      userId: {
+        $in: subscriberIds
+      }
+    }}
+  );
+
   // Generate email list from subscriptions
-  var email_list = "";
-  subscriptions.forEach(subscription => {
-    email_list += subscription.targets.email.join(",") + ",";
+  var emailList = "";
+  users.forEach(user => {
+    emailList += user.email
   });
 
   // Send the emails as long as email_list != ""
-  if(email_list) {
+  if(emailList) {
     // Setup courier
     var { CourierClient } = require("@trycourier/courier");
     const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
@@ -78,12 +84,18 @@ async function sendUpdateTrackerEmails(subscriptions, data) {
     var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
-      recipientId: email_list,
+      recipientId: "",
       profile: {
-        email: email_list,
+        email: "",
       },
       data,
-      override: {},
+      override: {
+        channel: {
+          email: {
+            bcc: emailList
+          }
+        }
+      },
     });
 
     // Log confirmation
