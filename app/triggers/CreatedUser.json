@@ -12,7 +12,7 @@
     "event_processors": {
         "FUNCTION": {
             "config": {
-                "function_name": "sendWelcomeEmail"
+                "function_name": "onUserCreate"
             }
         }
     }
