@@ -1,32 +1,14 @@
 [
     {
-        "name": "roleResolver",
-        "private": false
-    },
-    {
-        "name": "acceptInvitation",
-        "private": false,
-        "run_as_system": true,
-        "can_evaluate": {}
-    },
-    {
-        "name": "getGoogleAPIKey",
-        "private": false
-    },
-    {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "deleteUsersItems",
-        "private": false
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
         "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "subscribe",
+        "private": false
+    },
+    {
+        "name": "sendGoodbyeEmail",
         "private": true
     },
     {
@@ -35,31 +17,57 @@
         "run_as_system": true
     },
     {
-        "name": "confirmUser",
-        "private": true
-    },
-    {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
         "name": "sendResetPasswordEmail",
         "private": true
     },
     {
-        "name": "sendWelcomeEmail",
-        "private": true
+        "name": "acceptInvitation",
+        "private": false,
+        "run_as_system": true,
+        "can_evaluate": {}
+    },
+    {
+        "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "sharedTrackerResolver",
+        "private": false
     },
     {
         "name": "subscribedTrackerResolver",
         "private": false
     },
     {
-        "name": "sendGoodbyeEmail",
+        "name": "getGoogleAPIKey",
+        "private": false
+    },
+    {
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "removeSubscription",
+        "private": false
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "isSubscribedResolver",
+        "private": false
+    },
+    {
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -67,11 +75,11 @@
         "private": true
     },
     {
-        "name": "sharedTrackerResolver",
-        "private": false
+        "name": "onSubscriptionUpdate",
+        "private": true
     },
     {
-        "name": "isSubscribedResolver",
+        "name": "roleResolver",
         "private": false
     }
 ]
