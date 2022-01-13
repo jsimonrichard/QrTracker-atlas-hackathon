@@ -68,8 +68,7 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
     }
   ]).toArray();
 
-  // Diagnostic
-  console.log(users.map(user => user.email).join(","));
+  let emailList = users.map(user => user.email).join(",");
 
   // Send the emails as long as email_list != ""
   if(users) {
@@ -78,21 +77,16 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
     const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
 
     // Send message
+    /* TODO: Does not yet send as BCC */
     var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
-      recipientId: "jsimonrichard@gmail.com",
+      recipientId: emailList,
       profile: {
-        email: "jsimonrichard@gmail.com",
+        email: emailList,
       },
       data,
-      override: {
-        mailersend: {
-          config: {
-            bcc: users
-          }
-        }
-      },
+      override: {}
     });
 
     // Log confirmation
