@@ -3,10 +3,8 @@ query GetDashboardInfo($userId: String!) {
     ...MinFields
   }
 
-  subscriptions(query: {subscriberId: $userId}) {
-    tracker {
-      ...MinFields
-    }
+  subscribed(input: $userId) {
+    ...MinFields
   }
 
   shared(input: $userId) {
