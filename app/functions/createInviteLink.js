@@ -13,7 +13,10 @@ exports = async function(trackerId, type) {
   }
   
   var srs = require('secure-random-string');
-  let key = srs({length: 12});
+  let key = srs({
+    alphanumeric: true,
+    length: 12
+  });
 
   await inviteLinkCollection.insertOne({
     creatorId: context.user.id,
