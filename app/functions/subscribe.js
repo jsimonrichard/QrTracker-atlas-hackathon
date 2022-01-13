@@ -13,7 +13,8 @@ exports = async function(trackerId) {
   // VALIDATION (do not remove)
   if(tracker.subscriberIds.includes(context.user.id)) {
     throw Error("You're already subscribed");
-  } else if(!tracker.public || !tracker.collaboratorIds.includes(context.user.id)) {
+  } else if(tracker.ownerId !== context.user.id &&
+            !tracker.public && !tracker.collaboratorIds.includes(context.user.id)) {
     throw Error("Insufficient permissions");
   }
 
