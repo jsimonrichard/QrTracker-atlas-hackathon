@@ -7,6 +7,8 @@ exports = async function(trackerId, type) {
     _id: trackerId
   });
 
+  console.log(JSON.stringify(tracker));
+
   // VALIDATION (do not remove)
   if(tracker.ownerId !== context.user.id) {
     throw Error("Insufficiant permissions");
