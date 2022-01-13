@@ -1,1 +1,1 @@
-{"dependencies":{"@trycourier/courier":"^3.2.0"}}
+{"dependencies":{"@trycourier/courier":"^3.2.0","secure-random-string":"1.1.3"}}

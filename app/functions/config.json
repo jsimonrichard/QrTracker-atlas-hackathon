@@ -4,7 +4,15 @@
         "private": false
     },
     {
-        "name": "onTrackerUpdate",
+        "name": "onUserCreate",
+        "private": false
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "onSubscriptionUpdate",
         "private": true
     },
     {
@@ -12,16 +20,37 @@
         "private": false
     },
     {
+        "name": "sendInvite",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "isSubscribedResolver",
+        "private": false
+    },
+    {
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
         "name": "setUpInvite",
         "private": true
     },
     {
-        "name": "sharedTrackerResolver",
+        "name": "resetPassword",
         "private": false
     },
     {
-        "name": "confirmUser",
+        "name": "setUpTracker",
         "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "subscribe",
+        "private": false
     },
     {
         "name": "acceptInvitation",
@@ -30,35 +59,27 @@
         "can_evaluate": {}
     },
     {
-        "name": "resetPassword",
+        "name": "getGoogleAPIKey",
         "private": false
-    },
-    {
-        "name": "setUpCustomUserData",
-        "private": true
     },
     {
         "name": "sendGoodbyeEmail",
         "private": true
     },
     {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "registerCustomUserData",
-        "private": false
-    },
-    {
         "name": "roleResolver",
         "private": false
     },
     {
-        "name": "isSubscribedResolver",
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "createInviteLink",
         "private": false
     },
     {
-        "name": "getGoogleAPIKey",
+        "name": "sharedTrackerResolver",
         "private": false
     },
     {
@@ -66,32 +87,15 @@
         "private": false
     },
     {
-        "name": "onUserCreate",
-        "private": false
-    },
-    {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
-        "name": "sendInvite",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
         "name": "sendWelcomeEmail",
         "private": true
     },
     {
-        "name": "subscribe",
+        "name": "registerCustomUserData",
         "private": false
     },
     {
-        "name": "sendResetPasswordEmail",
+        "name": "setUpCustomUserData",
         "private": true
     }
 ]
