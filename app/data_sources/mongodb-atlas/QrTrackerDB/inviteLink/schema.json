@@ -1,5 +1,8 @@
 {
     "properties": {
+        "_id": {
+            "bsonType": "objectId"
+        },
         "creatorId": {
             "bsonType": "string"
         },
