@@ -1,1 +1,14 @@
-{}
+{
+    "title": "inviteLink",
+    "properties": {
+        "creatorId": {
+            "bsonType": "string"
+        },
+        "tracker": {
+            "bsonType": "objectId"
+        },
+        "key": {
+            "bsonType": "string"
+        }
+    }
+}

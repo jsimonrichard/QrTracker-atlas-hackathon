@@ -8,9 +8,6 @@
                 "userId": "%%user.id"
             },
             "read": true,
-            "write": true,
-            "insert": true,
-            "delete": true,
             "search": true,
             "additional_fields": {}
         }
