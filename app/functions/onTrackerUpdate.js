@@ -66,7 +66,7 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
         $in: subscriberIds
       }
     }}
-  ]);
+  ]).toArray();
 
   // Generate email list from subscriptions
   var emailList = "";
