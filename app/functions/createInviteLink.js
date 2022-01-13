@@ -1,10 +1,10 @@
-exports = async function(trackerId) {
+exports = async function(trackerId, type) {
   let db = context.services.get("mongodb-atlas").db("QrTrackerDB");
   let inviteLinkCollection = db.collection("inviteLink");
   let trackerCollection = db.collection("tracker");
 
   let tracker = trackerCollection.findOne({
-    _id: BSON.ObjectId(trackerId)
+    _id: trackerId
   });
 
   // VALIDATION (do not remove)
@@ -13,10 +13,13 @@ exports = async function(trackerId) {
   }
   
   var srs = require('secure-random-string');
+  let key = srs({length: 12});
 
   await inviteLinkCollection.insertOne({
     creatorId: context.user.id,
     tracker: trackerId,
-    key: srs({length: 12})
+    key,
+    type,
+    linkPrefix: `https://${context.values.get("domainName")}/acceptInvite`
   });
 }
