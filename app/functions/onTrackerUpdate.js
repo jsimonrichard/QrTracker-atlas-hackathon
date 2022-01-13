@@ -88,7 +88,9 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
       data,
       override: {
         mailersend: {
-          bcc: users
+          config: {
+            bcc: users
+          }
         }
       },
     });
