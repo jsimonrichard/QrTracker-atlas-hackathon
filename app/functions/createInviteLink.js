@@ -20,7 +20,7 @@ exports = async function(trackerId, type) {
 
   await inviteLinkCollection.insertOne({
     creatorId: context.user.id,
-    tracker: trackerId,
+    tracker: BSON.ObjectId(trackerId),
     key,
     type,
     linkPrefix: `https://${context.values.get("domainName")}/acceptInvite`
