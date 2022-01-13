@@ -68,11 +68,8 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
     }
   ]).toArray();
 
-  // Generate email list from subscriptions
-  var emailList = users.map(user => user.email).join(",");
-
   // Diagnostic
-  console.log(emailList);
+  console.log(users.map(user => user.email).join(","));
 
   // Send the emails as long as email_list != ""
   if(emailList) {
@@ -84,16 +81,14 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
     var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
-      recipientId: "noreply@qrtracker.link",
+      recipientId: "jsimonrichard@gmail.com",
       profile: {
-        email: "noreply@qrtracker.link",
+        email: "jsimonrichard@gmail.com",
       },
       data,
       override: {
-        channel: {
-          email: {
-            bcc: emailList
-          }
+        mailersend: {
+          bcc: users
         }
       },
     });
