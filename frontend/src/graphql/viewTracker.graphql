@@ -52,4 +52,6 @@ fragment AllFields on Tracker {
     ownerId
     public
     updateStatusWithLink
+    isSubscribed
+    role
 }

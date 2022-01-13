@@ -448,15 +448,22 @@ table {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
 
   & > * {
     margin: 0.2rem;
   }
 
-  h1 {
+  .title-group {
     flex: 1 0 auto;
-    margin: 0px;
+
+    h1 {
+      margin: 0px;
+    }
+
+    p {
+      text-indent: 0px;
+    }
   }
 
   .updated-at-info {

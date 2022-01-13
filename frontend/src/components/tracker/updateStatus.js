@@ -24,7 +24,7 @@ function formatLocation({
   };
 }
 
-export default function UpdateStatus({ trackerId, statusTemplateIncludes, loadData }) {
+export default function UpdateStatus({ trackerId, statusTemplateIncludes, loadData, large }) {
   const app = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -77,7 +77,7 @@ export default function UpdateStatus({ trackerId, statusTemplateIncludes, loadDa
   return (
     <>
       <Button
-        large={true}
+        large={large}
         outlined={true}
         icon="notifications"
         intent="success"

@@ -3,7 +3,7 @@ import { useState, useContext } from "react";
 import { AppContext } from "../..";
 import { EMAIL_REGEX } from "../form";
 
-export default function Share({trackerId}) {
+export default function Share({trackerId, large}) {
   const app = useContext(AppContext);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,7 @@ export default function Share({trackerId}) {
   return (
     <>
       <Button
-        large={true}
+        large={large}
         outlined={true}
         icon="share"
         intent="danger"

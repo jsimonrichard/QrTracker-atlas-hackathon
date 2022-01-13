@@ -45,11 +45,14 @@ export default function ViewTracker({trackerId}) {
       <div className="content">
 
         <div className="tracker-header">
-          <h1>{data.tracker.title}</h1>
+          <div className="title-group">
+            <h1>{data.tracker.title}</h1>
 
-          <div className="updated-at-info">
-            {"Last updated at " + (new Date(data.tracker.updatedAt)).toLocaleString()}
+            <p>
+              {data.tracker.description}
+            </p>
           </div>
+
 
           <div className="button-group">
 
@@ -60,7 +63,6 @@ export default function ViewTracker({trackerId}) {
 
             <Link href={`/t/${trackerId}/edit`}>
               <Button
-                large={true}
                 outlined={true}
                 icon="edit"
                 intent="primary">
@@ -71,10 +73,6 @@ export default function ViewTracker({trackerId}) {
             {(app.currentUser.id === data.tracker.ownerId) && <Share trackerId={trackerId} />}
           </div>
         </div>
-
-        <p>
-          {data.tracker.description}
-        </p>
 
 
         <div className="center-content-wide">

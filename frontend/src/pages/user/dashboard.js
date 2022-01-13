@@ -86,8 +86,8 @@ export default function Dashboard() {
         <h2>Your Subscriptions</h2>
         <div className="tracker-list">
 
-          {data.subscriptions.map(subscription => 
-            <TrackerItem tracker={subscription.tracker} key={subscription.tracker._id}/>
+          {data.subscribed.map(tracker => 
+            <TrackerItem tracker={tracker} key={tracker._id}/>
           )}
 
           <AddTrackerLink href="/browse"/>
