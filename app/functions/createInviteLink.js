@@ -3,7 +3,7 @@ exports = async function(trackerId, type) {
   let inviteLinkCollection = db.collection("inviteLink");
   let trackerCollection = db.collection("tracker");
 
-  let tracker = trackerCollection.findOne({
+  let tracker = await trackerCollection.findOne({
     _id: BSON.ObjectId(trackerId)
   });
 
