@@ -1,5 +1,7 @@
 exports = (source) => {
-  if(source.collaboratorIds.includes(context.user.id)) {
+  if(source.ownerId === context.user.id) {
+    return "owner";
+  } if(source.collaboratorIds.includes(context.user.id)) {
     return "collaborator";
   } else if(source.subscriberIds.includes(context.user.id)) {
     return "subscriber";
