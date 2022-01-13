@@ -72,7 +72,7 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
   console.log(users.map(user => user.email).join(","));
 
   // Send the emails as long as email_list != ""
-  if(emailList) {
+  if(users) {
     // Setup courier
     var { CourierClient } = require("@trycourier/courier");
     const courier = CourierClient({ authorizationToken: context.values.get("courierAuthToken") });
