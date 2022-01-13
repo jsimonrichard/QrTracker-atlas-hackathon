@@ -1,24 +1,19 @@
 [
     {
-        "name": "setUpTracker",
+        "name": "sendResetPasswordEmail",
         "private": true
     },
     {
-        "name": "subscribe",
+        "name": "isSubscribedResolver",
         "private": false
     },
     {
-        "name": "sendGoodbyeEmail",
+        "name": "onSubscriptionUpdate",
         "private": true
     },
     {
-        "name": "sendInvite",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "sendResetPasswordEmail",
-        "private": true
+        "name": "sharedTrackerResolver",
+        "private": false
     },
     {
         "name": "acceptInvitation",
@@ -27,27 +22,44 @@
         "can_evaluate": {}
     },
     {
+        "name": "subscribe",
+        "private": false
+    },
+    {
+        "name": "onTrackerUpdate",
+        "private": true
+    },
+    {
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "setUpInvite",
+        "private": true
+    },
+    {
         "name": "deleteUsersItems",
         "private": false
     },
     {
-        "name": "sharedTrackerResolver",
+        "name": "resetPassword",
         "private": false
     },
     {
-        "name": "subscribedTrackerResolver",
-        "private": false
-    },
-    {
-        "name": "getGoogleAPIKey",
-        "private": false
+        "name": "sendInvite",
+        "private": false,
+        "run_as_system": true
     },
     {
         "name": "sendWelcomeEmail",
         "private": true
     },
     {
-        "name": "resetPassword",
+        "name": "subscribedTrackerResolver",
+        "private": false
+    },
+    {
+        "name": "roleResolver",
         "private": false
     },
     {
@@ -59,27 +71,19 @@
         "private": false
     },
     {
-        "name": "confirmUser",
+        "name": "sendGoodbyeEmail",
         "private": true
     },
     {
-        "name": "isSubscribedResolver",
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "getGoogleAPIKey",
         "private": false
     },
     {
-        "name": "onTrackerUpdate",
+        "name": "setUpCustomUserData",
         "private": true
-    },
-    {
-        "name": "setUpInvite",
-        "private": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
-        "private": true
-    },
-    {
-        "name": "roleResolver",
-        "private": false
     }
 ]
