@@ -10,8 +10,7 @@
             "bsonType": "objectId"
         },
         "type": {
-            "bsonType": "string",
-            "pattern": "/^(collaborate|subscribe)$/"
+            "bsonType": "string"
         }
     },
     "required": [
