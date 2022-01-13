@@ -9,6 +9,16 @@
         },
         "key": {
             "bsonType": "string"
+        },
+        "type": {
+            "bsonType": "string",
+            "pattern": "/^(collaborate|subscribe)$/"
         }
-    }
+    },
+    "required": [
+        "creatorId",
+        "tracker",
+        "key",
+        "type"
+    ]
 }
