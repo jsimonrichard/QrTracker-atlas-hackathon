@@ -4,7 +4,7 @@ exports = async () => {
   
   let trackers = await tracker_collection.aggregate([
     {$sample: {
-      $size: 12
+      size: 12
     }}
   ]).toArray();
   
