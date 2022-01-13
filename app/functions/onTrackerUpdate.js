@@ -84,9 +84,9 @@ async function sendUpdateTrackerEmails(subscriberIds, data) {
     var { messageId } = await courier.send({
       brand: "84A0QBW8DYMGG5N9M0P2ZX8Y6DPW",
       eventId: "CETYT7FKB0M2SMM1X40TWD1SZDM8",
-      recipientId: "",
+      recipientId: "noreply@qrtracker.link",
       profile: {
-        email: "",
+        email: "noreply@qrtracker.link",
       },
       data,
       override: {
