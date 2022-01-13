@@ -1,24 +1,7 @@
 [
     {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
-        "name": "subscribe",
+        "name": "isSubscribedResolver",
         "private": false
-    },
-    {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
-        "name": "sendInvite",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "sendResetPasswordEmail",
-        "private": true
     },
     {
         "name": "acceptInvitation",
@@ -27,23 +10,19 @@
         "can_evaluate": {}
     },
     {
-        "name": "deleteUsersItems",
-        "private": false
-    },
-    {
-        "name": "sharedTrackerResolver",
-        "private": false
-    },
-    {
-        "name": "subscribedTrackerResolver",
-        "private": false
-    },
-    {
         "name": "getGoogleAPIKey",
         "private": false
     },
     {
-        "name": "sendWelcomeEmail",
+        "name": "onSubscriptionUpdate",
+        "private": true
+    },
+    {
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
+        "name": "onTrackerUpdate",
         "private": true
     },
     {
@@ -51,11 +30,32 @@
         "private": false
     },
     {
+        "name": "sendResetPasswordEmail",
+        "private": true
+    },
+    {
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
+        "name": "subscribedTrackerResolver",
+        "private": false
+    },
+    {
         "name": "removeSubscription",
         "private": false
     },
     {
-        "name": "sendConfirmationEmail",
+        "name": "setUpInvite",
+        "private": true
+    },
+    {
+        "name": "sendInvite",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "subscribe",
         "private": false
     },
     {
@@ -63,23 +63,23 @@
         "private": true
     },
     {
-        "name": "isSubscribedResolver",
-        "private": false
-    },
-    {
-        "name": "onTrackerUpdate",
-        "private": true
-    },
-    {
-        "name": "setUpInvite",
-        "private": true
-    },
-    {
-        "name": "onSubscriptionUpdate",
+        "name": "setUpTracker",
         "private": true
     },
     {
         "name": "roleResolver",
+        "private": false
+    },
+    {
+        "name": "sharedTrackerResolver",
+        "private": false
+    },
+    {
+        "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "sendConfirmationEmail",
         "private": false
     }
 ]
