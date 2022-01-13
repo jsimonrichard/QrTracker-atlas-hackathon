@@ -1,12 +1,53 @@
 [
     {
+        "name": "sendWelcomeEmail",
+        "private": true
+    },
+    {
         "name": "acceptInvitation",
         "private": false,
         "run_as_system": true,
         "can_evaluate": {}
     },
     {
+        "name": "sharedTrackerResolver",
+        "private": false
+    },
+    {
+        "name": "sendConfirmationEmail",
+        "private": false
+    },
+    {
+        "name": "subscribedTrackerResolver",
+        "private": false
+    },
+    {
         "name": "deleteUsersItems",
+        "private": false
+    },
+    {
+        "name": "resetPassword",
+        "private": false
+    },
+    {
+        "name": "sendGoodbyeEmail",
+        "private": true
+    },
+    {
+        "name": "setUpTracker",
+        "private": true
+    },
+    {
+        "name": "confirmUser",
+        "private": true
+    },
+    {
+        "name": "sendInvite",
+        "private": false,
+        "run_as_system": true
+    },
+    {
+        "name": "getGoogleAPIKey",
         "private": false
     },
     {
@@ -18,48 +59,15 @@
         "private": true
     },
     {
-        "name": "sendConfirmationEmail",
-        "private": false
-    },
-    {
-        "name": "sharedTrackerResolver",
-        "private": false
-    },
-    {
-        "name": "sendInvite",
-        "private": false,
-        "run_as_system": true
-    },
-    {
-        "name": "resetPassword",
-        "private": false
-    },
-    {
-        "name": "sendWelcomeEmail",
-        "private": true
-    },
-    {
-        "name": "setUpTracker",
-        "private": true
-    },
-    {
-        "name": "sendGoodbyeEmail",
-        "private": true
-    },
-    {
         "name": "setUpInvite",
         "private": true
     },
     {
-        "name": "confirmUser",
-        "private": true
-    },
-    {
-        "name": "getGoogleAPIKey",
-        "private": false
-    },
-    {
         "name": "onSubscriptionUpdate",
         "private": true
+    },
+    {
+        "name": "roleResolver",
+        "private": false
     }
 ]

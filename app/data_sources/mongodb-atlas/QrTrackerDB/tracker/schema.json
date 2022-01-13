@@ -9,12 +9,6 @@
                 "bsonType": "string"
             }
         },
-        "subscriberIds": {
-            "bsonType": "array",
-            "items": {
-                "bsonType": "string"
-            }
-        },
         "createdAt": {
             "bsonType": "date"
         },
@@ -157,6 +151,12 @@
                 "details",
                 "location"
             ]
+        },
+        "subscriberIds": {
+            "bsonType": "array",
+            "items": {
+                "bsonType": "string"
+            }
         },
         "title": {
             "bsonType": "string"
