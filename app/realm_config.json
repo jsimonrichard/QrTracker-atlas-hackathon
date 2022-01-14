@@ -4,5 +4,5 @@
     "name": "QrTracker",
     "location": "US-VA",
     "deployment_model": "LOCAL",
-    "environment": "development"
+    "environment": "production"
 }
