@@ -4,6 +4,7 @@ import { Link } from "wouter";
 import { loader } from "graphql.macro";
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../..";
+import DeleteButton from "../../components/tracker/deleteButton";
 
 export default function EditTracker({ trackerId }) {
   const app = useContext(AppContext);
@@ -58,6 +59,13 @@ export default function EditTracker({ trackerId }) {
               Back
           </Button>
         </Link>
+
+        <DeleteButton
+          trackerId={trackerId}
+          trackerName={data.tracker.title}
+          large={true}
+          outlined={true}
+          style={{float: "right"}}/>
         
         <div className="center-content">
           <EditTrackerSettings

@@ -48,7 +48,6 @@ Sign up at https://qrtracker-yibtf.mongodbstitch.com/
 There are still a lot of bugs to iron out and features to be added.
 * Delete buttons are missing for trackers
 * There's no way to revoke a collaborator's access
-* There's no way to delete a tracker
 * Search results could be better formatted
 * The namesake of QrTracker: I'd like to create a QR code display for the share links
 (and a way to print that QR code)

@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { useLocation } from "wouter";
 import { AppContext } from "../..";
 
-export default function SubscribeButton({isSubscribed, trackerId, trackerName, loadData}) {
+export default function SubscribeButton({isSubscribed, trackerId, trackerName}) {
   const app = useContext(AppContext);
 
   const [_, setLocation] = useLocation();

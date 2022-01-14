@@ -1,0 +1,5 @@
+mutation DeleteTracker($id: ObjectId) {
+    deleteOneTracker(query: {_id: $id}) {
+        _id
+    }
+}
